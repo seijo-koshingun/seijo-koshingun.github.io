@@ -31,6 +31,9 @@
   .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
   .shots img, .qr img { width:100%; border-radius:10px; display:block; }
   .qr { max-width:360px; margin:0 auto; }
+  .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
+  .link { display:block; padding:14px 16px; border:1px solid var(--line); border-radius:12px; color:var(--ink); text-decoration:none; background:#fbfaff; }
+  .link:hover { border-color:var(--gold); }
   footer { text-align:center; font-size:.85em; color:var(--sub); padding:24px 16px 40px; }
   footer a { color:var(--navy); }
 </style>
@@ -67,6 +70,21 @@
     </div>
   </section>
 
+  <section class="card" id="feedback">
+    <h2>ご意見・不具合のご報告 <span class="en">Feedback</span></h2>
+    <p>感想・ご要望・不具合など、ひとことでも気軽にお送りください。お名前やメールは要りません。<br>
+    <span class="en">Any comment is welcome, even one line. No name or email needed.</span></p>
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">意見を送る / Send feedback</a>
+  </section>
+
+  <section class="card" id="follow">
+    <h2>最新情報 <span class="en">Follow us</span></h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X（旧 Twitter）</b><br>@seijo_koshingun<br><span class="note">開発の様子・テストのお知らせ / Dev updates</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">遊んでいる動画（毎週） / Gameplay videos</span></a>
+    </div>
+  </section>
+
   <section class="card">
     <h2>QR コード <span class="en">QR codes</span></h2>
     <div class="qr"><img src="qr.png" alt="①グループ ②テスターになる の QR コード"></div>
@@ -82,6 +100,7 @@
 <footer>
   <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・
   <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">ご意見 / Feedback</a> ・
   <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">プライバシーポリシー / Privacy Policy</a><br>
   連絡先 / Contact: seijo.koshingun@gmail.com<br>
   © 2026 聖女行進軍プロジェクト / Saints March Project
