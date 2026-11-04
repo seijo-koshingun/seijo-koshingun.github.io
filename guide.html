@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFFMDXSV3P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NFFMDXSV3P');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>遊び方ガイド / Guide - 聖女行進軍</title>
+<meta name="description" content="『聖女行進軍』の遊び方ガイド。町の取り方・兵種と聖女の性能・陣形と作戦・バフとデバフ。 Guide for The March of the Saints.">
+<link rel="icon" href="icon.png">
+<script>
+  // 言語：?lang= → 保存した選択 → 端末の言語（日本語以外は英語）
+  (function () {
+    var q = new URLSearchParams(location.search).get('lang'), s = null;
+    try { s = localStorage.getItem('guide_lang'); } catch (e) {}
+    var l = q || s || ((navigator.language || '').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+    l = l === 'en' ? 'en' : 'ja';
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+  })();
+</script>
+<style>
+  :root { --ink:#1f1d33; --sub:#5d5a72; --bg:#f6f4fb; --card:#ffffff; --gold:#b8862b; --navy:#2c2a5c; --line:#e3dff0; --up:#c0392b; --down:#2471a3; --on:#ffffff; }
+  * { box-sizing: border-box; }
+  html[data-lang="ja"] .en, html[data-lang="en"] .ja { display:none !important; }
+  body { margin:0; font-family: "Hiragino Sans","Yu Gothic UI","Noto Sans JP",system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.7; }
+  main { max-width:960px; margin:0 auto; padding:0 16px 48px; }
+  a { color:var(--navy); }
+  .top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:16px; }
+  .langs { display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--card); flex:0 0 auto; }
+  .langs button { border:0; background:transparent; color:var(--ink); padding:6px 14px; font:inherit; font-size:.9em; cursor:pointer; }
+  html[data-lang="ja"] .langs button[data-l="ja"], html[data-lang="en"] .langs button[data-l="en"] { background:var(--navy); color:var(--on); }
+  h1 { font-size:1.6rem; margin:16px 0 4px; }
+  .sub { color:var(--sub); font-size:.92em; }
+  nav.toc { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 8px; }
+  nav.toc a { padding:6px 12px; border:1px solid var(--line); border-radius:999px; background:var(--card); text-decoration:none; font-size:.92em; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; margin:16px 0; }
+  .card h2 { margin:0 0 12px; font-size:1.25rem; color:var(--navy); }
+  .card h3 { margin:16px 0 6px; font-size:1.05rem; }
+  .draft { background:#fff6e0; border:2px solid var(--gold); border-radius:10px; padding:8px 12px; font-weight:bold; }
+  .scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table { border-collapse:collapse; width:100%; font-size:.92em; }
+  th, td { border-bottom:1px solid var(--line); padding:8px 6px; text-align:left; vertical-align:top; }
+  th { background:#f1eef9; font-weight:bold; white-space:nowrap; }
+  table.stats { min-width:700px; }
+  td.who { display:flex; gap:10px; min-width:280px; }
+  td.who img { width:72px; height:72px; flex:0 0 72px; object-fit:contain; }
+  .tag { display:inline-block; font-size:.85em; color:var(--navy); background:#eeeafb; border-radius:6px; padding:0 6px; margin:2px 0; }
+  .num { display:block; font-weight:bold; }
+  .bar { display:block; width:56px; height:6px; background:#ece9f5; border-radius:3px; overflow:hidden; }
+  .bar i { display:block; height:100%; background:var(--gold); }
+  .up { color:var(--up); font-weight:bold; }
+  .down { color:var(--down); font-weight:bold; }
+  .chip { display:inline-block; margin-top:2px; padding:0 6px; border-radius:4px; font-size:.85em; border:1px solid currentColor; white-space:nowrap; }
+  ul { padding-left:1.2em; }
+  li { margin:4px 0; }
+  footer { text-align:center; font-size:.85em; color:var(--sub); padding:24px 16px 40px; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --ink:#ece9f5; --sub:#b3afc6; --bg:#16151f; --card:#1f1d2b; --line:#34314a; --navy:#b9b4ff; --up:#ff7b6b; --down:#7cc0ff; --on:#16151f; }
+    :root:not([data-theme="light"]) th { background:#26233a; }
+    :root:not([data-theme="light"]) .tag { background:#2d2a45; }
+    :root:not([data-theme="light"]) .bar { background:#34314a; }
+    :root:not([data-theme="light"]) .draft { background:#3a3220; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <a href="./"><span class="ja">← 聖女行進軍 トップ</span><span class="en">← The March of the Saints</span></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-l="ja">日本語</button><button type="button" data-l="en">English</button>
+    </div>
+  </div>
+  <h1><span class="ja">遊び方ガイド</span><span class="en">Guide</span></h1>
+  <p class="ja">町の取り方、兵種と聖女の性能、陣形と作戦、戦闘の数字の下に出るバフ・デバフの意味をまとめました。</p>
+  <p class="en">How towns work, class and saint stats, formations and tactics, and what the buff/debuff labels in battle mean.</p>
+  <nav class="toc">
+    <a href="#towns"><span class="ja">町の取り方</span><span class="en">Towns</span></a>
+    <a href="#classes"><span class="ja">兵種</span><span class="en">Classes</span></a>
+    <a href="#saints"><span class="ja">聖女</span><span class="en">Saints</span></a>
+    <a href="#formation"><span class="ja">陣形と作戦</span><span class="en">Formations &amp; tactics</span></a>
+    <a href="#buffs"><span class="ja">バフ・デバフ</span><span class="en">Buffs &amp; debuffs</span></a>
+    <a href="#terrain"><span class="ja">地形</span><span class="en">Terrain</span></a>
+    <a href="#controls"><span class="ja">操作</span><span class="en">Controls</span></a>
+  </nav>
+
+  <section class="card" id="towns">
+    <h2><span class="ja">町の取り方</span><span class="en">Taking towns</span></h2>
+    <ul class="ja">
+      <li>町に部隊を入れて、しばらくいると自分の町になります。部隊を多く入れるほど早く取れます。敵の部隊が中にいる間は取れません。</li>
+      <li><b>補給</b>：自分の城から、つながった自分の町を伝って補給が届きます。補給の届く所では速く歩け、疲れにくくなります。届かない所に長くいると、スタミナが下がり続けます。</li>
+      <li><b>挟む</b>：補給の切れた敵の町を、自分の町で両側から挟むと、しばらくして自分の町に寝返ります。</li>
+      <li><b>中継の町</b>を奪うと、その先の敵の町は補給が切れ、やがて中立に戻ります。</li>
+      <li>自分の町の中では受けるダメージが減り、体力も早く回復します。</li>
+    </ul>
+    <ul class="en">
+      <li>Keep a squad inside a town for a while to take it. More squads take it faster. You can't take it while an enemy squad is inside.</li>
+      <li><b>Supply</b> runs from your castle through connected towns. Inside supply you move faster and tire less; stay outside too long and stamina keeps dropping.</li>
+      <li><b>Pincer</b>: an enemy town cut off from supply and flanked by your towns soon switches to your side.</li>
+      <li>Take a <b>relay town</b> and the enemy towns beyond it lose supply and soon turn neutral.</li>
+      <li>Inside your own towns you take less damage and heal faster.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="classes">
+    <h2><span class="ja">兵種</span><span class="en">Classes</span></h2>
+    
+    <p class="ja">1 部隊は聖女（隊長）と兵 4 人の 5 人です。数字はレベル 1 の値で、棒は全兵種・聖女の中でいちばん高い値との比べです。</p>
+    <p class="en">A squad is a saint (leader) plus four soldiers. Numbers are level 1; bars compare against the highest value across all classes and saints.</p>
+    <div class="scroll"><table class="stats"><thead><tr><th><span class="ja">兵種</span><span class="en">Class</span></th><th><span class='ja'>体力</span><span class='en'>HP</span></th><th><span class='ja'>攻撃</span><span class='en'>ATK</span></th><th><span class='ja'>守り</span><span class='en'>DEF</span></th><th><span class='ja'>魔力</span><span class='en'>MAG</span></th><th><span class='ja'>魔守</span><span class='en'>RES</span></th><th><span class='ja'>速さ</span><span class='en'>SPD</span></th></tr></thead><tbody><tr><td class="who"><img src="img/class_soldier.png" alt="Soldier" loading="lazy"><div><b><span class="ja">兵士</span><span class="en">Soldier</span></b><br><span class="tag"><span class="ja">近接</span><span class="en">Melee</span></span><br><span class="ja">前に立って攻める。1 回の戦闘で 3 回攻撃する（ほかの兵は 2 回）</span><span class="en">Stands in front and hits hard. Attacks 3 times per battle (others attack twice).</span></div></td><td><span class="num">62</span><span class="bar"><i style="width:67%"></i></span></td><td><span class="num">19</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">20</span><span class="bar"><i style="width:87%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">9</span><span class="bar"><i style="width:56%"></i></span></td><td><span class="num">5</span><span class="bar"><i style="width:45%"></i></span></td></tr><tr><td class="who"><img src="img/class_heavy.png" alt="Heavy Soldier" loading="lazy"><div><b><span class="ja">重装兵</span><span class="en">Heavy Soldier</span></b><br><span class="tag"><span class="ja">近接</span><span class="en">Melee</span></span><br><span class="ja">固く守り、弱った味方をかばう（同じ部隊の傷ついた兵への近接・矢を代わりに受ける）。足は遅い</span><span class="en">Tough and protective: takes melee and arrow hits for wounded squadmates. Slow.</span></div></td><td><span class="num">76</span><span class="bar"><i style="width:83%"></i></span></td><td><span class="num">11</span><span class="bar"><i style="width:58%"></i></span></td><td><span class="num">23</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">14</span><span class="bar"><i style="width:88%"></i></span></td><td><span class="num">3</span><span class="bar"><i style="width:27%"></i></span></td></tr><tr><td class="who"><img src="img/class_archer.png" alt="Archer" loading="lazy"><div><b><span class="ja">弓使い</span><span class="en">Archer</span></b><br><span class="tag"><span class="ja">矢</span><span class="en">Arrow</span></span><br><span class="ja">後ろから矢で撃つ</span><span class="en">Shoots arrows from the back line.</span></div></td><td><span class="num">54</span><span class="bar"><i style="width:59%"></i></span></td><td><span class="num">19</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">10</span><span class="bar"><i style="width:43%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">11</span><span class="bar"><i style="width:69%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:55%"></i></span></td></tr><tr><td class="who"><img src="img/class_mage.png" alt="Mage" loading="lazy"><div><b><span class="ja">魔法使い</span><span class="en">Mage</span></b><br><span class="tag"><span class="ja">魔法</span><span class="en">Magic</span></span><br><span class="ja">範囲の魔法で撃つ（まわりの敵にも半分）。鎧の硬い相手に強い</span><span class="en">Area magic (half damage to nearby enemies too). Good against heavy armor.</span></div></td><td><span class="num">50</span><span class="bar"><i style="width:54%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">7</span><span class="bar"><i style="width:30%"></i></span></td><td><span class="num">18</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">14</span><span class="bar"><i style="width:88%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:55%"></i></span></td></tr><tr><td class="who"><img src="img/class_thief.png" alt="Thief" loading="lazy"><div><b><span class="ja">シーフ</span><span class="en">Thief</span></b><br><span class="tag"><span class="ja">近接</span><span class="en">Melee</span></span><br><span class="ja">足が速く、攻撃が当たると資金を盗む</span><span class="en">Very fast. Steals gold when its attacks land.</span></div></td><td><span class="num">66</span><span class="bar"><i style="width:72%"></i></span></td><td><span class="num">13</span><span class="bar"><i style="width:68%"></i></span></td><td><span class="num">15</span><span class="bar"><i style="width:65%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">8</span><span class="bar"><i style="width:50%"></i></span></td><td><span class="num">11</span><span class="bar"><i style="width:100%"></i></span></td></tr><tr><td class="who"><img src="img/class_healer.png" alt="Healer" loading="lazy"><div><b><span class="ja">ヒーラー</span><span class="en">Healer</span></b><br><span class="tag"><span class="ja">魔法</span><span class="en">Magic</span></span><br><span class="ja">同じ部隊の傷ついた味方を回復する</span><span class="en">Heals wounded allies in the squad.</span></div></td><td><span class="num">52</span><span class="bar"><i style="width:57%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">9</span><span class="bar"><i style="width:39%"></i></span></td><td><span class="num">8</span><span class="bar"><i style="width:44%"></i></span></td><td><span class="num">15</span><span class="bar"><i style="width:94%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:55%"></i></span></td></tr><tr><td class="who"><img src="img/class_dwarf.png" alt="Dwarf" loading="lazy"><div><b><span class="ja">ドワーフ</span><span class="en">Dwarf</span></b><br><span class="tag"><span class="ja">近接 ・ 山が得意</span><span class="en">Melee · Mountain expert</span></span><br><span class="ja">山が得意。山では速く進み、奇襲できる</span><span class="en">Mountain expert: moves fast and ambushes in mountains.</span></div></td><td><span class="num">46</span><span class="bar"><i style="width:50%"></i></span></td><td><span class="num">18</span><span class="bar"><i style="width:95%"></i></span></td><td><span class="num">15</span><span class="bar"><i style="width:65%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">7</span><span class="bar"><i style="width:44%"></i></span></td><td><span class="num">4</span><span class="bar"><i style="width:36%"></i></span></td></tr><tr><td class="who"><img src="img/class_elf.png" alt="Elf" loading="lazy"><div><b><span class="ja">エルフ</span><span class="en">Elf</span></b><br><span class="tag"><span class="ja">矢 ・ 森が得意</span><span class="en">Arrow · Forest expert</span></span><br><span class="ja">森が得意。森では速く進み、奇襲できる。矢で撃つ</span><span class="en">Forest expert: moves fast and ambushes in forests. Shoots arrows.</span></div></td><td><span class="num">35</span><span class="bar"><i style="width:38%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:63%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:26%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">7</span><span class="bar"><i style="width:44%"></i></span></td><td><span class="num">7</span><span class="bar"><i style="width:64%"></i></span></td></tr><tr><td class="who"><img src="img/class_mermaid.png" alt="Mermaid" loading="lazy"><div><b><span class="ja">マーメイド</span><span class="en">Mermaid</span></b><br><span class="tag"><span class="ja">魔法 ・ 水が得意</span><span class="en">Magic · Water expert</span></span><br><span class="ja">水が得意。水では速く進み、奇襲できる。範囲の魔法で撃つ</span><span class="en">Water expert: moves fast and ambushes in water. Area magic.</span></div></td><td><span class="num">32</span><span class="bar"><i style="width:35%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">5</span><span class="bar"><i style="width:22%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:67%"></i></span></td><td><span class="num">9</span><span class="bar"><i style="width:56%"></i></span></td><td><span class="num">7</span><span class="bar"><i style="width:64%"></i></span></td></tr><tr><td class="who"><img src="img/class_pegasus.png" alt="Pegasus Knight" loading="lazy"><div><b><span class="ja">ペガサス騎士</span><span class="en">Pegasus Knight</span></b><br><span class="tag"><span class="ja">近接</span><span class="en">Melee</span></span><br><span class="ja">森・山・水も速く越える</span><span class="en">Crosses forest, mountain and water quickly.</span></div></td><td><span class="num">66</span><span class="bar"><i style="width:72%"></i></span></td><td><span class="num">19</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">15</span><span class="bar"><i style="width:65%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">10</span><span class="bar"><i style="width:62%"></i></span></td><td><span class="num">10</span><span class="bar"><i style="width:91%"></i></span></td></tr></tbody></table></div>
+  </section>
+
+  <section class="card" id="saints">
+    <h2><span class="ja">聖女と必殺技</span><span class="en">Saints and special moves</span></h2>
+    
+    <p class="ja">聖女は部隊の隊長で、どの聖女も前に出て戦います。倒されると部隊は弱くなり、崩れやすくなります。必殺技は時間でたまり、宝石のボタンで撃てます。そばにいる聖女の必殺技は続けて撃てます（連携必殺技）。</p>
+    <p class="en">Saints lead their squads and fight on the front line; if a saint falls, the squad weakens. Special moves charge over time and fire from the gem button. Saints standing close together can chain their specials.</p>
+    <div class="scroll"><table class="stats"><thead><tr><th><span class="ja">聖女</span><span class="en">Saint</span></th><th><span class='ja'>体力</span><span class='en'>HP</span></th><th><span class='ja'>攻撃</span><span class='en'>ATK</span></th><th><span class='ja'>守り</span><span class='en'>DEF</span></th><th><span class='ja'>魔力</span><span class='en'>MAG</span></th><th><span class='ja'>魔守</span><span class='en'>RES</span></th><th><span class='ja'>速さ</span><span class='en'>SPD</span></th></tr></thead><tbody><tr><td class="who"><img src="img/saint_lux.png" alt="Lux" loading="lazy"><div><b><span class="ja">ルクス（光）</span><span class="en">Lux (Light)</span></b><br><span class="ja">必殺技 <b>聖域の宣言</b>：自分のものでない町を 1 つ、その場で自分の町にする</span><span class="en">Special: <b>Holy Ground Call</b> — Instantly claims one town that isn&#x27;t yours.</span></div></td><td><span class="num">64</span><span class="bar"><i style="width:70%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:26%"></i></span></td><td><span class="num">13</span><span class="bar"><i style="width:72%"></i></span></td><td><span class="num">16</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">5</span><span class="bar"><i style="width:45%"></i></span></td></tr><tr><td class="who"><img src="img/saint_aegis.png" alt="Aegis" loading="lazy"><div><b><span class="ja">アイギス（盾）</span><span class="en">Aegis (Shield)</span></b><br><span class="ja">必殺技 <b>パーフェクトパリィ</b>：自分の部隊が、次の戦闘で近接の攻撃を受けない</span><span class="en">Special: <b>Perfect Parry</b> — Her squad takes no melee hits in the next battle.</span></div></td><td><span class="num">92</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">14</span><span class="bar"><i style="width:61%"></i></span></td><td><span class="num">17</span><span class="bar"><i style="width:94%"></i></span></td><td><span class="num">14</span><span class="bar"><i style="width:88%"></i></span></td><td><span class="num">8</span><span class="bar"><i style="width:73%"></i></span></td></tr><tr><td class="who"><img src="img/saint_milia.png" alt="Milia" loading="lazy"><div><b><span class="ja">ミリア（癒し）</span><span class="en">Milia (Healing)</span></b><br><span class="ja">必殺技 <b>ヒーリングサークル</b>：範囲の味方の体力を回復</span><span class="en">Special: <b>Healing Circle</b> — Heals allies in an area.</span></div></td><td><span class="num">64</span><span class="bar"><i style="width:70%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:26%"></i></span></td><td><span class="num">13</span><span class="bar"><i style="width:72%"></i></span></td><td><span class="num">16</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">5</span><span class="bar"><i style="width:45%"></i></span></td></tr><tr><td class="who"><img src="img/saint_stella.png" alt="Stella" loading="lazy"><div><b><span class="ja">ステラ（星）</span><span class="en">Stella (Stars)</span></b><br><span class="ja">必殺技 <b>極光の星槌</b>：目の前の範囲の敵に大きなダメージ</span><span class="en">Special: <b>Aurora Star Hammer</b> — Big damage to enemies right in front.</span></div></td><td><span class="num">82</span><span class="bar"><i style="width:89%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">11</span><span class="bar"><i style="width:48%"></i></span></td><td><span class="num">17</span><span class="bar"><i style="width:94%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:75%"></i></span></td><td><span class="num">9</span><span class="bar"><i style="width:82%"></i></span></td></tr><tr><td class="who"><img src="img/saint_nocto.png" alt="Nocto" loading="lazy"><div><b><span class="ja">ノクト（闇）</span><span class="en">Nocto (Darkness)</span></b><br><span class="ja">必殺技 <b>呪詛の帳</b>：広い範囲の敵にダメージと、スタミナを大きく下げる</span><span class="en">Special: <b>Curtain of Curses</b> — Damages a wide area and drains stamina.</span></div></td><td><span class="num">64</span><span class="bar"><i style="width:70%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:26%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:67%"></i></span></td><td><span class="num">16</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">5</span><span class="bar"><i style="width:45%"></i></span></td></tr><tr><td class="who"><img src="img/saint_marin.png" alt="Marin" loading="lazy"><div><b><span class="ja">マリン（水）</span><span class="en">Marin (Water)</span></b><br><span class="ja">必殺技 <b>水禍乱舞</b>：まわりの敵にダメージ。押し流して足を遅くする</span><span class="en">Special: <b>Wild Water Dance</b> — Damages nearby enemies, pushes them back and slows them.</span></div></td><td><span class="num">82</span><span class="bar"><i style="width:89%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">11</span><span class="bar"><i style="width:48%"></i></span></td><td><span class="num">17</span><span class="bar"><i style="width:94%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:75%"></i></span></td><td><span class="num">9</span><span class="bar"><i style="width:82%"></i></span></td></tr><tr><td class="who"><img src="img/saint_igni.png" alt="Igni" loading="lazy"><div><b><span class="ja">イグニ（炎）</span><span class="en">Igni (Fire)</span></b><br><span class="ja">必殺技 <b>業炎の烙印</b>：遠くの範囲の敵にダメージ。次の戦闘で攻撃が 1 回減る</span><span class="en">Special: <b>Burning Fire Mark</b> — Long-range fire. Hit squads lose one attack next battle.</span></div></td><td><span class="num">64</span><span class="bar"><i style="width:70%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:26%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:67%"></i></span></td><td><span class="num">16</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">5</span><span class="bar"><i style="width:45%"></i></span></td></tr><tr><td class="who"><img src="img/saint_popo.png" alt="Popo" loading="lazy"><div><b><span class="ja">ポポ（花）</span><span class="en">Popo (Flowers)</span></b><br><span class="ja">必殺技 <b>花冠の守り</b>：足もとに花畑。中の味方を回復し、受けるダメージを減らす</span><span class="en">Special: <b>Flower Crown Guard</b> — Flower field: heals allies inside and reduces damage taken.</span></div></td><td><span class="num">82</span><span class="bar"><i style="width:89%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">11</span><span class="bar"><i style="width:48%"></i></span></td><td><span class="num">17</span><span class="bar"><i style="width:94%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:75%"></i></span></td><td><span class="num">9</span><span class="bar"><i style="width:82%"></i></span></td></tr><tr><td class="who"><img src="img/saint_sylphy.png" alt="Sylphy" loading="lazy"><div><b><span class="ja">シルフィ（風）</span><span class="en">Sylphy (Wind)</span></b><br><span class="ja">必殺技 <b>追い風のいたずら</b>：まわりの味方のスタミナを戻し、足を速く、攻撃を増やす</span><span class="en">Special: <b>Tailwind Trick</b> — Restores stamina, speeds up allies and adds attacks.</span></div></td><td><span class="num">64</span><span class="bar"><i style="width:70%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">6</span><span class="bar"><i style="width:26%"></i></span></td><td><span class="num">13</span><span class="bar"><i style="width:72%"></i></span></td><td><span class="num">16</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="num">7</span><span class="bar"><i style="width:64%"></i></span></td></tr><tr><td class="who"><img src="img/saint_selene.png" alt="Selene" loading="lazy"><div><b><span class="ja">セレネ（月）</span><span class="en">Selene (Moon)</span></b><br><span class="ja">必殺技 <b>月夜の魅了</b>：まわりの敵が、次の戦闘で味方を攻撃することがある</span><span class="en">Special: <b>Moonlight Charm</b> — Nearby enemies may attack their own allies next battle.</span></div></td><td><span class="num">82</span><span class="bar"><i style="width:89%"></i></span></td><td><span class="num">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="num">11</span><span class="bar"><i style="width:48%"></i></span></td><td><span class="num">17</span><span class="bar"><i style="width:94%"></i></span></td><td><span class="num">12</span><span class="bar"><i style="width:75%"></i></span></td><td><span class="num">9</span><span class="bar"><i style="width:82%"></i></span></td></tr></tbody></table></div>
+  </section>
+
+  <section class="card" id="formation">
+    <h2><span class="ja">陣形と作戦</span><span class="en">Formations and tactics</span></h2>
+    <h3><span class="ja">陣形</span><span class="en">Formations</span></h3>
+    <p class="ja">部隊を選んでいるときに、右下の「陣形」のボタンで変えられます（選んだ部隊の陣形が変わります。どの部隊も 4 つとも選べます）。2 人以上欠けると陣形が崩れ、効き目がなくなります。</p>
+    <p class="en">While a squad is selected, change its formation with the Formation button at the bottom right (every squad can use all four). If two or more members fall, the formation breaks and its bonus is lost.</p>
+    <div class="scroll"><table>
+      <tr><th><span class="ja">陣形</span><span class="en">Formation</span></th><th><span class="ja">効き目</span><span class="en">Effect</span></th></tr>
+      <tr><td><span class="ja">方円</span><span class="en">Circle</span></td><td><span class="ja">受けるダメージが下がる（守り）</span><span class="en">Takes less damage (defense)</span></td></tr>
+      <tr><td><span class="ja">鋒矢</span><span class="en">Arrow</span></td><td><span class="ja">与えるダメージが上がる（突撃・隊長が先頭）</span><span class="en">Deals more damage (charge, leader in front)</span></td></tr>
+      <tr><td><span class="ja">鶴翼</span><span class="en">Crane</span></td><td><span class="ja">弓・魔法の与えるダメージが上がる</span><span class="en">Arrows and magic deal more damage</span></td></tr>
+      <tr><td><span class="ja">長蛇</span><span class="en">Snake</span></td><td><span class="ja">足が速くなる（戦闘の効き目は無し・疲れやすい）</span><span class="en">Moves faster (no battle bonus, tires faster)</span></td></tr>
+    </table></div>
+    <h3><span class="ja">作戦</span><span class="en">Tactics</span></h3>
+    <p class="ja">作戦は、戦闘で誰を狙うかを決めます。戦闘中に画面を押すと戦闘が止まり、作戦のメニューが出ます。選んだ作戦は味方の全部隊にかかります。</p>
+    <p class="en">Tactics decide who your squads target in battle. Tap the screen during a battle to pause it and open the tactics menu. The tactic applies to all your squads.</p>
+    <div class="scroll"><table>
+      <tr><th><span class="ja">作戦</span><span class="en">Tactic</span></th><th><span class="ja">狙う相手</span><span class="en">Target</span></th></tr>
+      <tr><td><span class="ja">体力の低い敵から</span><span class="en">Weakest First</span></td><td><span class="ja">体力の割合がいちばん低い敵</span><span class="en">The enemy with the lowest HP ratio</span></td></tr>
+      <tr><td><span class="ja">分散攻撃</span><span class="en">Spread Attack</span></td><td><span class="ja">まだ狙われていない、体力がいちばん残っている敵</span><span class="en">An untargeted enemy with the most HP left</span></td></tr>
+      <tr><td><span class="ja">隊長狙い</span><span class="en">Leader Hunt</span></td><td><span class="ja">敵の隊長（倒せばその戦闘は勝ち）</span><span class="en">The enemy leader (defeat them to win the battle)</span></td></tr>
+      <tr><td><span class="ja">後衛狙い</span><span class="en">Back Line Hunt</span></td><td><span class="ja">弓使い・魔法使い・聖女</span><span class="en">Archers, mages and saints</span></td></tr>
+    </table></div>
+  </section>
+
+  <section class="card" id="buffs">
+    <h2><span class="ja">バフ・デバフ</span><span class="en">Buffs and debuffs</span></h2>
+    
+    <p class="ja">戦闘のダメージの数字の下に「<span class="up">側+20%</span>」のような短い名前で出ます。<span class="up">赤（+）はダメージを増やすもの</span>、<span class="down">青（−）はダメージを減らすもの</span>です。同じ名前でも、攻める側と受ける側で赤にも青にもなります。</p>
+    <p class="en">They appear under the damage numbers in battle as short labels like “<span class="up">Side+20%</span>”. <span class="up">Red (+) raises the damage</span>, <span class="down">blue (−) lowers it</span>. The same label can be red or blue depending on who is attacking.</p>
+    <div class="scroll"><table>
+      <tr><th><span class="ja">名前</span><span class="en">Name</span></th><th><span class="ja">いつ付くか</span><span class="en">When</span></th><th><span class="ja">効き目</span><span class="en">Effect</span></th></tr>
+      <tr><td><span class="ja">側面</span><span class="en">From the Side</span><br><span class="chip up"><span class="ja">側</span><span class="en">Side</span>+</span></td><td><span class="ja">敵の横から攻めた</span><span class="en">Attacking from the flank</span></td><td><span class="ja">相手が受けるダメージが増える</span><span class="en">Target takes more damage</span></td></tr>
+      <tr><td><span class="ja">背後</span><span class="en">From Behind</span><br><span class="chip up"><span class="ja">背</span><span class="en">Back</span>+</span></td><td><span class="ja">敵の後ろから攻めた</span><span class="en">Attacking from the rear</span></td><td><span class="ja">相手が受けるダメージが大きく増える</span><span class="en">Target takes much more damage</span></td></tr>
+      <tr><td><span class="ja">包囲</span><span class="en">Surrounded</span><br><span class="chip up"><span class="ja">囲</span><span class="en">Surround</span>+</span></td><td><span class="ja">別の方向から 2 部隊以上に挟まれた</span><span class="en">Flanked by 2+ squads from different sides</span></td><td><span class="ja">受けるダメージが増え、スタミナも下がり続ける</span><span class="en">Takes more damage; stamina keeps dropping</span></td></tr>
+      <tr><td><span class="ja">密集</span><span class="en">Packed</span><br><span class="chip up"><span class="ja">密</span><span class="en">Packed</span>+</span> <span class="chip down"><span class="ja">密</span><span class="en">Packed</span>−</span></td><td><span class="ja">味方の部隊が 3 つ以上固まっている</span><span class="en">3+ allied squads bunched up</span></td><td><span class="ja">受けるダメージが増え（固まるほど大きい）、与えるダメージも減る</span><span class="en">Takes more damage (more squads, more damage) and deals less</span></td></tr>
+      <tr><td><span class="ja">奇襲</span><span class="en">Ambush</span><br><span class="chip up"><span class="ja">奇</span><span class="en">Ambush</span>+</span> <span class="chip down"><span class="ja">奇</span><span class="en">Ambush</span>−</span></td><td><span class="ja">森・山・水を得意な兵が、その地形から仕掛けた</span><span class="en">Terrain experts fighting from their terrain</span></td><td><span class="ja">与えるダメージが増え、受けるダメージが減る（得意な兵が多いほど大きい）</span><span class="en">Deals more, takes less (more experts, bigger bonus)</span></td></tr>
+      <tr><td><span class="ja">橋</span><span class="en">Bridge</span><br><span class="chip up"><span class="ja">橋</span><span class="en">Bridge</span>+</span></td><td><span class="ja">橋を渡っている途中</span><span class="en">Crossing a bridge</span></td><td><span class="ja">受けるダメージが増える</span><span class="en">Takes more damage</span></td></tr>
+      <tr><td><span class="ja">町</span><span class="en">Town</span><br><span class="chip down"><span class="ja">町</span><span class="en">Town</span>−</span></td><td><span class="ja">補給のつながった自分の町の中にいる</span><span class="en">Inside your own supplied town</span></td><td><span class="ja">受けるダメージが減る</span><span class="en">Takes less damage</span></td></tr>
+      <tr><td><span class="ja">背水</span><span class="en">Last Stand</span><br><span class="chip up"><span class="ja">背水</span><span class="en">Last Stand</span>+</span> <span class="chip down"><span class="ja">背水</span><span class="en">Last Stand</span>−</span></td><td><span class="ja">町の数で大きく負けている側</span><span class="en">The side far behind in towns</span></td><td><span class="ja">与えるダメージが増え、受けるダメージが減る</span><span class="en">Deals more, takes less</span></td></tr>
+      <tr><td><span class="ja">スタミナ</span><span class="en">Stamina</span><br><span class="chip up"><span class="ja">ス</span><span class="en">S</span>+</span> <span class="chip down"><span class="ja">ス</span><span class="en">S</span>−</span></td><td><span class="ja">スタミナが減っている</span><span class="en">Stamina is low</span></td><td><span class="ja">減るほど弱く、打たれ弱くなる</span><span class="en">The lower it is, the weaker and frailer the squad</span></td></tr>
+      <tr><td><span class="ja">無将</span><span class="en">Leaderless</span><br><span class="chip down"><span class="ja">無将</span><span class="en">Leaderless</span>−</span></td><td><span class="ja">隊長が倒れた部隊</span><span class="en">The leader has fallen</span></td><td><span class="ja">与えるダメージが減り、足も遅くなる</span><span class="en">Deals less damage and moves slower</span></td></tr>
+      <tr><td><span class="ja">円・矢・翼</span><span class="en">Circle / Arrow / Crane</span><br><span class="chip up"><span class="ja">円</span><span class="en">Circle</span>+</span> <span class="chip down"><span class="ja">円</span><span class="en">Circle</span>−</span></td><td><span class="ja">陣形の効き目</span><span class="en">Formation bonuses</span></td><td><span class="ja">上の「陣形」のとおり</span><span class="en">See Formations above</span></td></tr>
+      <tr><td><span class="ja">城の主</span><span class="en">Castle Lord</span><br><span class="chip down"><span class="ja">城の主</span><span class="en">Castle Lord</span>−</span></td><td><span class="ja">ボスが自分の城のそばにいる</span><span class="en">A boss near its own castle</span></td><td><span class="ja">ボスが受けるダメージが減る</span><span class="en">The boss takes less damage</span></td></tr>
+      <tr><td><span class="ja">本気</span><span class="en">Full Power</span><br><span class="chip up"><span class="ja">本気</span><span class="en">Full Power</span>+</span></td><td><span class="ja">ボスの体力が半分を切った</span><span class="en">A boss below half HP</span></td><td><span class="ja">ボスが与えるダメージが増える</span><span class="en">The boss deals more damage</span></td></tr>
+    </table></div>
+    <h3><span class="ja">スタミナ</span><span class="en">Stamina</span></h3>
+    <p class="ja">旗の下の「ス」のゲージです。歩く・戦う・仲間が倒れると減り、休む・自分の町にいると戻ります。とても低くなると部隊は逃げ出し（潰走）、0 になると足が半分になります。</p>
+    <p class="en">The gauge under the flag. It drops from walking, fighting and losing members, and recovers by resting or staying in your towns. Very low stamina makes the squad rout; at 0 it moves at half speed.</p>
+  </section>
+
+  <section class="card" id="terrain">
+    <h2><span class="ja">地形</span><span class="en">Terrain</span></h2>
+    <ul class="ja">
+      <li>森・山・水はとても遅く進みます。その地形が得意な兵（森＝エルフ・山＝ドワーフ・水＝マーメイド）が多いほど速くなり、ペガサス騎士もどの地形でも速くします。</li>
+      <li>得意な兵がいる部隊は、その地形から奇襲できます（奇襲の部隊は青みがかって見え、旗の下に「奇襲」が出ます）。</li>
+      <li>道と橋は平原より速く歩けます。</li>
+    </ul>
+    <ul class="en">
+      <li>Forest, mountain and water are very slow. Each terrain expert (forest = Elf, mountain = Dwarf, water = Mermaid) speeds the squad up there, and Pegasus Knights help on any terrain.</li>
+      <li>Squads with terrain experts can ambush from that terrain (they look bluish and show "Ambush" under the flag).</li>
+      <li>Roads and bridges are faster than plains.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="controls">
+    <h2><span class="ja">操作</span><span class="en">Controls</span></h2>
+    <div class="scroll"><table>
+      <tr><th><span class="ja">操作</span><span class="en">Action</span></th><th><span class="ja">スマホ</span><span class="en">Phone</span></th></tr>
+      <tr><td><span class="ja">部隊を選ぶ・進ませる</span><span class="en">Select / move</span></td><td><span class="ja">部隊を押して、行き先を押す</span><span class="en">Tap a squad, then tap the destination</span></td></tr>
+      <tr><td><span class="ja">一時停止</span><span class="en">Pause</span></td><td><span class="ja">一時停止のボタン（止めている間も命令できます）</span><span class="en">The pause button (you can still give orders while paused)</span></td></tr>
+      <tr><td><span class="ja">陣形</span><span class="en">Formation</span></td><td><span class="ja">部隊を選んで、右下の「陣形」のボタン</span><span class="en">Select a squad, then the Formation button (bottom right)</span></td></tr>
+      <tr><td><span class="ja">作戦</span><span class="en">Tactics</span></td><td><span class="ja">戦闘中に画面を押す（戦闘が止まってメニューが出る）</span><span class="en">Tap the screen during a battle (it pauses and shows the menu)</span></td></tr>
+      <tr><td><span class="ja">必殺技</span><span class="en">Special move</span></td><td><span class="ja">画面の宝石のボタン（撃てるようになると光ります）</span><span class="en">The gem button (it glows when ready)</span></td></tr>
+    </table></div>
+    <p class="sub"><span class="ja">PC の体験版はマウスで遊べます（キーボードの W・A・D・X か矢印、ゲームパッドも可）。</span><span class="en">The PC demo plays with a mouse (W/A/D/X or arrow keys and gamepads also work).</span></p>
+  </section>
+</main>
+<footer>
+  <a href="./"><span class="ja">聖女行進軍 トップ</span><span class="en">The March of the Saints</span></a> ・ <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a><br>
+  <span class="ja">このページは来てくださった人の数を知るために Google アナリティクスを使っています（個人は特定しません）。</span>
+  <span class="en">This page uses Google Analytics to count visits (no personal identification).</span><br>
+  © 2026 聖女行進軍プロジェクト / Saints March Project
+</footer>
+<script>
+  document.querySelectorAll('.langs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-l');
+      document.documentElement.setAttribute('data-lang', l);
+      document.documentElement.lang = l;
+      try { localStorage.setItem('guide_lang', l); } catch (e) {}
+    });
+  });
+</script>
+</body>
+</html>
