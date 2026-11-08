@@ -29,7 +29,7 @@ a { color:var(--cyan); }
 .langs button { border:0; background:transparent; color:var(--text); padding:5px 10px; border-radius:9px; font:inherit; font-size:13px; cursor:pointer; }
 .langs button[aria-pressed=true] { background:var(--pink); color:#fff; }
 .L { display:none; } html[data-lang=ja] .L[data-l=ja], html[data-lang=en] .L[data-l=en], html[data-lang=zh-Hans] .L[data-l=zh-Hans], html[data-lang=zh-Hant] .L[data-l=zh-Hant], html[data-lang=ko] .L[data-l=ko], html[data-lang=es] .L[data-l=es] { display:block; }
-header { text-align:center; padding:20px 0 8px; } .logo { width:min(100%,720px); height:auto; }
+header { text-align:center; padding:20px 0 8px; } .logo { height:min(30vw,250px); width:auto; max-width:100%; object-fit:contain; }
 .lead { color:var(--sub); max-width:720px; margin:8px auto 0; }
 .notice { background:#2a1838; border:1px solid var(--pink); border-radius:10px; padding:10px 14px; margin:16px 0; box-shadow:0 0 14px rgba(255,60,190,.25); }
 .notice b { color:var(--pink-soft); }
