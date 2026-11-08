@@ -1,170 +1,604 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" data-lang="ja">
 <head>
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFFMDXSV3P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-NFFMDXSV3P');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NFFMDXSV3P');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>聖女行進軍 / The March of the Saints</title>
-<meta name="description" content="10部隊が入り乱れる、リアルタイム戦略ゲーム『聖女行進軍』。Android のテスター募集中（全章無料）。 A real-time strategy game. Android testers wanted (all chapters free).">
+<meta name="description" content="10 部隊が入り乱れる戦場で、聖女たちの必殺技で戦局をひっくり返すリアルタイム戦略ゲーム。PC の無料体験版を itch.io で配信中。もう一つのモード SURVIVORS も準備中。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://seijo-koshingun.github.io/">
 <meta property="og:title" content="聖女行進軍 / The March of the Saints">
-<meta property="og:description" content="Android テスター募集中（全章無料） / Android testers wanted (free)">
+<meta property="og:description" content="PC 無料体験版を itch.io で配信中・新モード SURVIVORS 準備中 / Free PC demo on itch.io. SURVIVORS mode coming soon.">
 <meta property="og:image" content="https://seijo-koshingun.github.io/header.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@seijo_koshingun">
 <link rel="icon" href="icon.png">
 <style>
-  :root { --ink:#1f1d33; --sub:#5d5a72; --bg:#f6f4fb; --card:#ffffff; --gold:#b8862b; --navy:#2c2a5c; --line:#e3dff0; }
-  * { box-sizing: border-box; }
-  body { margin:0; font-family: "Hiragino Sans","Yu Gothic UI","Noto Sans JP",system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.7; }
+  :root { --ink:#1f1d33; --sub:#5d5a72; --bg:#f6f4fb; --card:#ffffff; --gold:#b8862b; --navy:#2c2a5c; --line:#e3dff0; --pink:#d42a9a; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Hiragino Sans","Yu Gothic UI","Noto Sans JP","Noto Sans SC","Noto Sans TC","Noto Sans KR","Malgun Gothic",system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.7; }
   header img { display:block; width:100%; max-height:420px; object-fit:cover; }
   main { max-width:760px; margin:0 auto; padding:0 16px 48px; }
-  h1 { font-size:1.6rem; margin:24px 0 4px; }
-  .en { color:var(--sub); font-size:.95em; }
-  .lead { margin:8px 0 24px; }
+  .top { display:flex; justify-content:flex-end; padding-top:12px; }
+  .langs { display:flex; flex-wrap:wrap; gap:4px; border:1px solid var(--line); border-radius:12px; padding:3px; background:#fff; }
+  .langs button { border:0; background:transparent; color:var(--ink); padding:5px 9px; border-radius:9px; font:inherit; font-size:13px; cursor:pointer; }
+  .langs button[aria-pressed=true] { background:var(--navy); color:#fff; }
+  .L { display:none; } html[data-lang="ja"] .L[data-l="ja"], html[data-lang="en"] .L[data-l="en"], html[data-lang="zh-Hans"] .L[data-l="zh-Hans"], html[data-lang="zh-Hant"] .L[data-l="zh-Hant"], html[data-lang="ko"] .L[data-l="ko"], html[data-lang="es"] .L[data-l="es"], html[data-lang="ru"] .L[data-l="ru"], html[data-lang="pt-BR"] .L[data-l="pt-BR"] { display:block; }
+  h1 { font-size:1.6rem; margin:20px 0 4px; }
+  .lead { margin:8px 0 20px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; margin:16px 0; }
+  .card.hi { border:2px solid var(--gold); }
+  .card.surv { background:#1c1630; color:#ece6f6; border-color:#ff3cbe; }
+  .card.surv h2 { color:#ffb3e6; }
   .card h2 { margin:0 0 12px; font-size:1.25rem; color:var(--navy); }
   ol.steps { list-style:none; padding:0; margin:0; counter-reset:s; }
   ol.steps li { counter-increment:s; display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid var(--line); }
   ol.steps li:first-child { border-top:none; }
   ol.steps li::before { content:counter(s); flex:0 0 32px; height:32px; border-radius:50%; background:var(--navy); color:#fff; display:grid; place-items:center; font-weight:bold; }
   .btn { display:inline-block; margin-top:6px; padding:10px 16px; border-radius:10px; background:var(--gold); color:#fff; text-decoration:none; font-weight:bold; }
-  .btn.alt { background:var(--navy); }
+  .btn.alt { background:var(--navy); } .btn.pink { background:#ff3cbe; }
   .note { font-size:.9em; color:var(--sub); }
   .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
   .shots img, .qr img { width:100%; border-radius:10px; display:block; }
-  .qr { max-width:360px; margin:0 auto; }
+  .qr { max-width:300px; margin:12px auto 0; }
   .video { position:relative; width:100%; aspect-ratio:16/9; margin:0 0 8px; border-radius:14px; overflow:hidden; background:#000; }
   .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
   .ask { background:#fff6e0; border:2px solid var(--gold); border-radius:14px; padding:16px 20px; margin:16px 0; }
   .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
   .link { display:block; padding:14px 16px; border:1px solid var(--line); border-radius:12px; color:var(--ink); text-decoration:none; background:#fbfaff; }
   .link:hover { border-color:var(--gold); }
-  footer { text-align:center; font-size:.85em; color:var(--sub); padding:24px 16px 40px; }
+  footer { text-align:center; font-size:.85em; color:var(--sub); padding:24px 0 40px; }
   footer a { color:var(--navy); }
 </style>
 </head>
 <body>
 <header><img src="header.jpg" alt="聖女行進軍 The March of the Saints"></header>
 <main>
-  <h1>聖女行進軍 <span class="en">The March of the Saints</span></h1>
-  <p class="lead">10部隊が入り乱れる戦場で、聖女たちの必殺技で戦局をひっくり返す、リアルタイム戦略ゲームです。<br>
-  <span class="en">A real-time strategy game where ten squads clash on one battlefield and the Saints' special moves turn the tide.</span></p>
+<div class="top"><div class="langs" role="group" aria-label="Language"><button type="button" data-set="ja" aria-pressed="false">日本語</button><button type="button" data-set="en" aria-pressed="false">English</button><button type="button" data-set="zh-Hans" aria-pressed="false">简体中文</button><button type="button" data-set="zh-Hant" aria-pressed="false">繁體中文</button><button type="button" data-set="ko" aria-pressed="false">한국어</button><button type="button" data-set="es" aria-pressed="false">Español</button><button type="button" data-set="ru" aria-pressed="false">Русский</button><button type="button" data-set="pt-BR" aria-pressed="false">Português</button></div></div>
+<section class="L" data-l="ja" lang="ja">
+  <h1>聖女行進軍</h1>
+  <p class="lead">10 部隊が入り乱れる戦場で、聖女たちの必殺技で戦局をひっくり返す、リアルタイム戦略ゲームです。</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="聖女行進軍" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">プレイ動画（開発中の版）</p>
+  <p class="note">ゲームの言語：日本語・English・简体中文・繁體中文（한국어・Español・Русский・Português (Brasil) を準備中）</p>
 
-  <div class="video">
-    <iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="聖女行進軍 プレイ動画 / The March of the Saints gameplay" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-  </div>
-  <p class="note">プレイ動画（開発中の版） <span class="en">Gameplay (in-development build)</span> ・ <a href="#zh">中文說明（繁體／简体）</a></p>
-
-  <section class="card" id="guide">
-    <h2>遊び方ガイド <span class="en">How to play</span></h2>
-    <p>町の取り方、兵種と聖女の性能、陣形と作戦、戦闘で出るバフ・デバフの意味をまとめました。<br>
-    <span class="en">Towns, class and saint stats, formations and tactics, and the buff/debuff labels in battle.</span></p>
-    <a class="btn alt" href="guide.html">遊び方ガイドを見る / Open the guide</a>
+  <section class="card hi" id="pc-ja">
+    <h2>PC 無料体験版（Windows）</h2>
+    <p>1〜2 章（1〜8 面・イージー）を無料で遊べます。1 章のあとにゲームの中で短い感想を送ると、2 章が開きます。製品版（3 章・全 14 面・ノーマルとハード）は 12 月に itch.io で 2.99 ドルで販売予定です。</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">itch.io で無料で遊ぶ</a>
   </section>
 
-  <section class="card" id="survivors">
-    <h2>もう一つのモード「SURVIVORS」（準備中）<br><span class="en">SURVIVORS mode (coming soon)</span></h2>
-    <p>押し寄せる敵の群れを、聖女の力で切り開いて進むサバイバーモードを準備しています。操作・スキル・仲間の聖女・ステージとボスを攻略ページにまとめました（日本語・English・简体中文・繁體中文・한국어・Español）。<br>
-    <span class="en">A survivors-style mode where you carve through enemy hordes with the power of the Saints is on the way. Controls, skills, Ally Saints, stages and bosses are in the guide (6 languages).</span></p>
-    <a class="btn alt" href="survivors.html">SURVIVORS 攻略ガイド / SURVIVORS guide</a>
+  <section class="card surv" id="survivors-ja">
+    <h2>もう一つのモード「SURVIVORS」（準備中）</h2>
+    <p>押し寄せる敵の群れを、聖女の力で切り開いて進むサバイバーモードを準備しています。操作・スキル・仲間の聖女・ステージとボスを攻略ページにまとめました。</p>
+    <a class="btn pink" href="survivors.html">SURVIVORS 攻略ガイド</a>
   </section>
 
-  <div class="ask">
-    <b>ご意見を募集しています！</b> 遊んだ感想・こうしてほしい・不具合など、ひとことでも大歓迎です（名前もメールも要りません）。<br>
-    <span class="en">We'd love your feedback — even one line helps. No name or email needed.</span><br>
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">意見を送る / Send feedback</a>
-  </div>
-
-  <section class="card" id="test">
-    <h2>Android テスター募集中（全章無料）<br><span class="en">Android testers wanted (all chapters free)</span></h2>
-    <ol class="steps">
-      <li><div>グループに参加する<br><span class="en">Join the tester group</span><br>
-        <a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">グループに参加 / Join group</a></div></li>
-      <li><div>「テスターになる」を押す（①と同じ Google アカウントで）<br><span class="en">Tap "Become a tester" (same Google account as step 1)</span><br>
-        <a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">テスターになる / Become a tester</a></div></li>
-      <li><div>Google Play から入れて、14 日間そのままにしてください。ときどき遊んでもらえるとうれしいです。<br><span class="en">Install from Google Play and keep it for 14 days. Playing now and then is very welcome!</span><br>
-        <a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">Google Play で開く / Open in Google Play</a></div></li>
-    </ol>
-    <p class="note">アプリが出てこないとき：Play ストアのアカウントが①と同じかを確かめてください。参加の直後は数分かかることがあります。<br>
-    <span class="en">Can't find the app? Make sure your Play Store account is the one you joined with. It can take a few minutes after joining.</span></p>
-    <p class="note">相互テスト歓迎です（X で声をかけてください）。<span class="en">Test-for-test welcome — ping us on X.</span></p>
+  <section class="card" id="guide-ja">
+    <h2>遊び方ガイド</h2>
+    <p>町の取り方、兵種と聖女の性能、陣形と作戦、戦闘で出るバフ・デバフの意味をまとめました。</p>
+    <a class="btn alt" href="guide.html">遊び方ガイドを見る</a>
   </section>
 
-  <section class="card" id="pc">
-    <h2>PC 体験版（無料・Windows）<br><span class="en">Free PC demo (Windows)</span></h2>
-    <p>1〜2 章（1〜8 面・イージー）を無料で遊べます。1 章のあとにゲームの中で短い感想を送ると、2 章が開きます。製品版（3 章・全 14 面・ノーマルとハード）は 12 月に itch.io で 2.99 ドル（約 400 円）で販売予定です。全 14 面は、上の Android のテスター版でも無料で遊べます。<br>
-    <span class="en">Chapters 1-2 (stages 1-8) on Easy, free. Answer a short in-game survey after Chapter 1 to unlock Chapter 2. The full game (Chapter 3, all 14 stages, Normal and Hard) is planned for December on itch.io at $2.99. All 14 stages are also free in the Android tester version above.</span></p>
-    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">itch.io で遊ぶ / Play on itch.io</a>
-  </section>
-
-
-  <section class="card" id="zh" lang="zh-Hant">
-    <h2>招募 Android 測試員（所有章節免費）</h2>
-    <p>日本個人開發的即時戰略遊戲《聖女行進軍》正在進行 Android 封閉測試。遊戲支援中文（簡體）。</p>
-    <ol class="steps">
-      <li><div>加入測試群組<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">加入群組</a></div></li>
-      <li><div>用同一個 Google 帳號按「成為測試人員」<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">成為測試人員</a></div></li>
-      <li><div>從 Google Play 安裝，保留 14 天就好。有空時玩一下更好！<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">在 Google Play 開啟</a></div></li>
-    </ol>
-    <p class="note">個人開發者歡迎互測，我也會幫你測試（請在 X 上聯絡 @seijo_koshingun）。意見回饋可以用中文寫：<a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">意見表單</a></p>
-    <p class="note" lang="zh-Hans">简体中文：加入群组 → 用同一个 Google 账号点“成为测试人员” → 从 Google Play 安装并保留 14 天。欢迎独立开发者互测！</p>
-    <p class="note">新模式「SURVIVORS」（準備中）攻略：<a href="survivors.html?lang=zh-Hant">繁體中文</a> ・ <a href="survivors.html?lang=zh-Hans" lang="zh-Hans">简体中文</a></p>
-  </section>
+  <div class="ask"><b>ご意見を募集しています！</b> 遊んだ感想・こうしてほしい・不具合など、ひとことでも大歓迎です（名前もメールも要りません）。<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">意見を送る</a></div>
 
   <section class="card">
-    <h2>ゲームの様子 <span class="en">Screenshots</span></h2>
-    <div class="shots">
-      <img src="shot1.jpg" alt="スクリーンショット 1">
-      <img src="shot2.jpg" alt="スクリーンショット 2">
-      <img src="shot3.jpg" alt="スクリーンショット 3">
-      <img src="shot5.jpg" alt="スクリーンショット 4">
-    </div>
+    <h2>ゲームの様子</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
   </section>
 
-  <section class="card" id="feedback">
-    <h2>ご意見・不具合のご報告 <span class="en">Feedback</span></h2>
-    <p>感想・ご要望・不具合など、ひとことでも気軽にお送りください。お名前やメールは要りません。<br>
-    <span class="en">Any comment is welcome, even one line. No name or email needed.</span></p>
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">意見を送る / Send feedback</a>
+  <section class="card" id="android-ja">
+    <h2>Android 版（12 月公開予定・全章無料）</h2>
+    <p>Android 版は 12 月に無料で公開予定です（広告あり・一度の購入で広告を消せます）。いまはテスターを募集していて、テスターは全章を無料で遊べます。</p>
+    <ol class="steps">
+      <li><div>テスターのグループに参加する<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">グループに参加</a></div></li>
+      <li><div>「テスターになる」を押す（①と同じ Google アカウントで）<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">テスターになる</a></div></li>
+      <li><div>Google Play から入れて、14 日間そのままにしてください。ときどき遊んでもらえるとうれしいです。<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">Google Play で開く</a></div></li>
+    </ol>
+    <p class="note">アプリが出てこないとき：Play ストアのアカウントが①と同じかを確かめてください。参加の直後は数分かかることがあります。相互テストも歓迎です（X で声をかけてください）。</p>
+    <div class="qr"><img src="qr.png" alt="①グループ ②テスターになる の QR コード" loading="lazy"></div>
   </section>
 
-  <section class="card" id="follow">
-    <h2>最新情報 <span class="en">Follow us</span></h2>
+  <section class="card" id="follow-ja">
+    <h2>最新情報</h2>
     <div class="links">
-      <a class="link" href="https://x.com/seijo_koshingun"><b>X（旧 Twitter）</b><br>@seijo_koshingun<br><span class="note">開発の様子・テストのお知らせ / Dev updates</span></a>
-      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">遊んでいる動画（毎週） / Gameplay videos</span></a>
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">開発の様子・お知らせ</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">遊んでいる動画</span></a>
     </div>
   </section>
 
   <section class="card">
-    <h2>QR コード <span class="en">QR codes</span></h2>
-    <div class="qr"><img src="qr.png" alt="①グループ ②テスターになる の QR コード"></div>
+    <h2>このゲームについて</h2>
+    <p>ひとりで作っている個人開発のゲームです。PC 版は itch.io で、体験版（1〜2 章）は無料、製品版は 12 月に 2.99 ドルで販売予定。Android 版は 12 月に無料で公開予定（広告あり・一度の購入で広告を消せます）。<br>ゲームの絵・曲・文章の一部に生成 AI を使っています（キャラの絵・挿絵・BGM の一部・物語の下書き・訳。物語と英語の訳は人が直しています）。プログラムは AI（Claude）が書き、人が遊んで確かめながら直しています。</p>
+  </section>
+
+  <footer>
+    <a href="guide.html">遊び方ガイド</a> ・ <a href="survivors.html">SURVIVORS 攻略</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">ご意見</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">プライバシーポリシー</a><br>
+    連絡先: seijo.koshingun@gmail.com<br>
+    このページは来てくださった人の数を知るために Google アナリティクスを使っています（個人は特定しません）。<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
+<section class="L" data-l="en" lang="en">
+  <h1>The March of the Saints</h1>
+  <p class="lead">A real-time strategy game where ten squads clash on one battlefield and the Saints' special moves turn the tide.</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="The March of the Saints" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">Gameplay (in-development build)</p>
+  <p class="note">Game languages: 日本語, English, 简体中文, 繁體中文 (한국어, Español, Русский and Português (Brasil) coming soon)</p>
+
+  <section class="card hi" id="pc-en">
+    <h2>Free PC demo (Windows)</h2>
+    <p>Play Chapters 1-2 (stages 1-8) on Easy for free. Answer a short in-game survey after Chapter 1 to unlock Chapter 2. The full game (Chapter 3, all 14 stages, Normal and Hard) is planned for December on itch.io at $2.99.</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Play free on itch.io</a>
+  </section>
+
+  <section class="card surv" id="survivors-en">
+    <h2>A second mode: SURVIVORS (coming soon)</h2>
+    <p>A survivors-style mode where you carve through enemy hordes with the power of the Saints is on the way. Controls, skills, Ally Saints, stages and bosses are in the guide.</p>
+    <a class="btn pink" href="survivors.html">SURVIVORS guide</a>
+  </section>
+
+  <section class="card" id="guide-en">
+    <h2>How to play</h2>
+    <p>How towns work, class and saint stats, formations and tactics, and what the buff/debuff labels in battle mean.</p>
+    <a class="btn alt" href="guide.html">Open the guide</a>
+  </section>
+
+  <div class="ask"><b>We'd love your feedback!</b> Impressions, requests or bugs — even one line helps. No name or email needed.<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Send feedback</a></div>
+
+  <section class="card">
+    <h2>Screenshots</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="android-en">
+    <h2>Android (coming in December, all chapters free)</h2>
+    <p>The Android version is planned for December, free to play (with ads; a one-time purchase removes them). We're looking for testers now, and testers can play every chapter for free.</p>
+    <ol class="steps">
+      <li><div>Join the tester group<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">Join group</a></div></li>
+      <li><div>Tap "Become a tester" (with the same Google account as step 1)<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">Become a tester</a></div></li>
+      <li><div>Install from Google Play and keep it for 14 days. Playing now and then is very welcome!<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">Open in Google Play</a></div></li>
+    </ol>
+    <p class="note">Can't find the app? Make sure your Play Store account is the one you joined with. It can take a few minutes after joining. Test-for-test is welcome — ping us on X.</p>
+    <div class="qr"><img src="qr.png" alt="QR codes: (1) tester group (2) become a tester" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="follow-en">
+    <h2>Follow us</h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">Dev updates and news</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">Gameplay videos</span></a>
+    </div>
   </section>
 
   <section class="card">
-    <h2>このゲームについて <span class="en">About</span></h2>
-    <p>ひとりで作っている個人開発のゲームです。Android は 12 月に無料で公開予定（広告あり・400 円で広告を消せます）。PC 版は itch.io で、体験版（1〜2 章）は無料、製品版は 12 月に 2.99 ドルで販売予定です。<br>
-    ゲームの絵・曲・文章の一部に生成 AI を使っています（キャラの絵・挿絵・BGM の一部・物語の下書き・訳。物語と英語の訳は人が直しています）。プログラムは AI（Claude）が書き、人が遊んで確かめながら直しています。</p>
-    <p class="en">Made solo. Coming to Android in December, free to play with ads (a one-time purchase removes them). On PC, the free demo (Chapters 1-2) is on itch.io now, and the full game is planned for December on itch.io at $2.99. Some art, music and text were made with generative AI (character art, illustrations, some music, story drafts and translations; the story and the English text were edited by a person). The game code was written with AI (Claude) and tested and corrected by a person through play.</p>
+    <h2>About</h2>
+    <p>Made solo. On PC, the free demo (Chapters 1-2) is on itch.io now, and the full game is planned for December on itch.io at $2.99. The Android version is planned for December, free to play with ads (a one-time purchase removes them).<br>Some art, music and text were made with generative AI (character art, illustrations, some music, story drafts and translations; the story and the English text were edited by a person). The game code was written with AI (Claude) and tested and corrected by a person through play.</p>
   </section>
+
+  <footer>
+    <a href="guide.html">Guide</a> ・ <a href="survivors.html">SURVIVORS guide</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Feedback</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">Privacy Policy</a><br>
+    Contact: seijo.koshingun@gmail.com<br>
+    This page uses Google Analytics to count visits (no personal identification).<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
+<section class="L" data-l="zh-Hans" lang="zh-Hans">
+  <h1>圣女行进军</h1>
+  <p class="lead">在 10 支部队混战的战场上，用圣女们的必杀技扭转战局——这是一款即时战略游戏。</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="圣女行进军" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">游戏视频（开发中的版本）</p>
+  <p class="note">游戏语言：日本語、English、简体中文、繁體中文（한국어、Español、Русский、Português (Brasil) 准备中）</p>
+
+  <section class="card hi" id="pc-zh-Hans">
+    <h2>PC 免费试玩版（Windows）</h2>
+    <p>可免费游玩第 1～2 章（第 1～8 关，简单难度）。完成第 1 章后，在游戏内提交一段简短的感想，即可解锁第 2 章。正式版（第 3 章，全 14 关，普通与困难难度）预计 12 月在 itch.io 以 $2.99 发售。</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">在 itch.io 免费游玩</a>
+  </section>
+
+  <section class="card surv" id="survivors-zh-Hans">
+    <h2>另一个模式“SURVIVORS”（准备中）</h2>
+    <p>我们正在准备一个幸存者模式：借助圣女的力量，在汹涌而来的敌群中杀出一条血路。操作、技能、同伴圣女、关卡与首领都已整理在攻略页面中。</p>
+    <a class="btn pink" href="survivors.html">SURVIVORS 攻略指南</a>
+  </section>
+
+  <section class="card" id="guide-zh-Hans">
+    <h2>玩法指南</h2>
+    <p>整理了城镇的占领方法、兵种与圣女的性能、阵形与作战，以及战斗中出现的增益/减益效果的含义。</p>
+    <a class="btn alt" href="guide.html">查看玩法指南</a>
+  </section>
+
+  <div class="ask"><b>欢迎提出意见！</b> 游玩感想、希望改进的地方、bug 等等，哪怕只有一句话也非常欢迎（无需填写名字或邮箱）。<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">发送意见</a></div>
+
+  <section class="card">
+    <h2>游戏画面</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="android-zh-Hans">
+    <h2>Android 版（预计 12 月推出，全部章节免费）</h2>
+    <p>Android 版预计于 12 月免费推出（含广告，一次性购买即可去除广告）。目前正在招募测试者，测试者可以免费游玩全部章节。</p>
+    <ol class="steps">
+      <li><div>加入测试者群组<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">加入群组</a></div></li>
+      <li><div>点击“成为测试者”（使用与①相同的 Google 账号）<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">成为测试者</a></div></li>
+      <li><div>从 Google Play 安装，并保留 14 天。如果能时不时玩一玩，我们会非常开心。<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">在 Google Play 中打开</a></div></li>
+    </ol>
+    <p class="note">找不到应用时：请确认 Play 商店的账号与①相同。刚加入后可能需要等待几分钟。也欢迎互测（请在 X 上联系我们）。</p>
+    <div class="qr"><img src="qr.png" alt="①群组 ②成为测试者 的二维码" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="follow-zh-Hans">
+    <h2>最新消息</h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">开发动态与公告</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">游玩视频</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>关于本游戏</h2>
+    <p>这是一款由一个人独立开发的游戏。PC 版在 itch.io 上，试玩版（第 1～2 章）免费，正式版预计 12 月以 $2.99 发售。Android 版预计 12 月免费推出（含广告，一次性购买即可去除广告）。<br>游戏的部分图像、音乐和文字使用了生成式 AI（角色图、插图、部分 BGM、故事草稿、翻译；故事与英文翻译经过人工修改）。程序由 AI（Claude）编写，并由人一边游玩确认一边修改。</p>
+  </section>
+
+  <footer>
+    <a href="guide.html">玩法指南</a> ・ <a href="survivors.html">SURVIVORS 攻略</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">意见反馈</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">隐私政策</a><br>
+    联系方式: seijo.koshingun@gmail.com<br>
+    本页面使用 Google Analytics 来了解访问人数（不会识别个人身份）。<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
+<section class="L" data-l="zh-Hant" lang="zh-Hant">
+  <h1>聖女行進軍</h1>
+  <p class="lead">在 10 支部隊混戰的戰場上，以聖女們的必殺技扭轉戰局——這是一款即時戰略遊戲。</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="聖女行進軍" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">遊戲影片（開發中的版本）</p>
+  <p class="note">遊戲語言：日本語、English、简体中文、繁體中文（한국어、Español、Русский、Português (Brasil) 準備中）</p>
+
+  <section class="card hi" id="pc-zh-Hant">
+    <h2>PC 免費試玩版（Windows）</h2>
+    <p>可免費遊玩第 1～2 章（第 1～8 關，簡單難度）。完成第 1 章後，在遊戲內送出簡短的心得，就能開啟第 2 章。正式版（第 3 章，全 14 關，普通與困難難度）預計 12 月在 itch.io 以 $2.99 販售。</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">在 itch.io 免費遊玩</a>
+  </section>
+
+  <section class="card surv" id="survivors-zh-Hant">
+    <h2>另一個模式「SURVIVORS」（準備中）</h2>
+    <p>我們正在準備一個倖存者模式：藉由聖女的力量，在蜂擁而至的敵群中殺出一條血路。操作、技能、夥伴聖女、關卡與頭目都整理在攻略頁面中。</p>
+    <a class="btn pink" href="survivors.html">SURVIVORS 攻略指南</a>
+  </section>
+
+  <section class="card" id="guide-zh-Hant">
+    <h2>玩法指南</h2>
+    <p>整理了城鎮的佔領方式、兵種與聖女的性能、陣形與作戰，以及戰鬥中出現的增益／減益效果的意義。</p>
+    <a class="btn alt" href="guide.html">查看玩法指南</a>
+  </section>
+
+  <div class="ask"><b>歡迎提供意見！</b> 遊玩心得、希望改進的地方、Bug 等等，就算只有一句話也非常歡迎（不需要填寫名字或 Email）。<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">送出意見</a></div>
+
+  <section class="card">
+    <h2>遊戲畫面</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="android-zh-Hant">
+    <h2>Android 版（預計 12 月推出，所有章節免費）</h2>
+    <p>Android 版預計於 12 月免費推出（含廣告，只要購買一次就能移除廣告）。目前正在招募測試人員，測試人員可以免費遊玩所有章節。</p>
+    <ol class="steps">
+      <li><div>加入測試人員群組<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">加入群組</a></div></li>
+      <li><div>點選「成為測試人員」（使用與①相同的 Google 帳戶）<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">成為測試人員</a></div></li>
+      <li><div>從 Google Play 安裝，並保留 14 天。如果能偶爾玩一玩，我們會很開心。<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">在 Google Play 中開啟</a></div></li>
+    </ol>
+    <p class="note">找不到應用程式時：請確認 Play 商店的帳戶與①相同。剛加入後可能需要等幾分鐘。也歡迎互相測試（請在 X 上跟我們說一聲）。</p>
+    <div class="qr"><img src="qr.png" alt="①群組 ②成為測試人員 的 QR 碼" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="follow-zh-Hant">
+    <h2>最新消息</h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">開發近況與公告</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">遊玩影片</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>關於這款遊戲</h2>
+    <p>這是一款由一個人獨立開發的遊戲。PC 版在 itch.io 上，試玩版（第 1～2 章）免費，正式版預計 12 月以 $2.99 販售。Android 版預計 12 月免費推出（含廣告，只要購買一次就能移除廣告）。<br>遊戲的部分圖像、音樂和文字使用了生成式 AI（角色圖、插圖、部分 BGM、故事草稿、翻譯；故事與英文翻譯經過人工修改）。程式由 AI（Claude）撰寫，並由人實際遊玩確認、一邊修正。</p>
+  </section>
+
+  <footer>
+    <a href="guide.html">玩法指南</a> ・ <a href="survivors.html">SURVIVORS 攻略</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">意見回饋</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">隱私權政策</a><br>
+    聯絡方式: seijo.koshingun@gmail.com<br>
+    本頁面使用 Google Analytics 來了解造訪人數（不會識別個人身分）。<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
+<section class="L" data-l="ko" lang="ko">
+  <h1>The March of the Saints</h1>
+  <p class="lead">10개 부대가 뒤엉킨 전장에서 성녀들의 필살기로 전세를 뒤집는 실시간 전략 게임입니다.</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="The March of the Saints" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">플레이 영상 (개발 중인 버전)</p>
+  <p class="note">게임 언어: 日本語, English, 简体中文, 繁體中文 (한국어, Español, Русский, Português (Brasil) 준비 중)</p>
+
+  <section class="card hi" id="pc-ko">
+    <h2>PC 무료 체험판 (Windows)</h2>
+    <p>1~2장(1~8스테이지, 이지)을 무료로 플레이할 수 있습니다. 1장을 마친 뒤 게임 안에서 짧은 소감을 보내면 2장이 열립니다. 정식판(3장, 전 14스테이지, 노멀과 하드)은 12월에 itch.io에서 $2.99에 판매할 예정입니다.</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">itch.io에서 무료로 플레이</a>
+  </section>
+
+  <section class="card surv" id="survivors-ko">
+    <h2>또 하나의 모드 “SURVIVORS” (준비 중)</h2>
+    <p>밀려드는 적의 무리를 성녀의 힘으로 헤쳐 나가는 서바이버 모드를 준비하고 있습니다. 조작, 스킬, 동료 성녀, 스테이지와 보스를 공략 페이지에 정리했습니다.</p>
+    <a class="btn pink" href="survivors.html">SURVIVORS 공략 가이드</a>
+  </section>
+
+  <section class="card" id="guide-ko">
+    <h2>플레이 가이드</h2>
+    <p>마을 점령 방법, 병종과 성녀의 성능, 진형과 작전, 전투에서 나오는 버프·디버프의 의미를 정리했습니다.</p>
+    <a class="btn alt" href="guide.html">플레이 가이드 보기</a>
+  </section>
+
+  <div class="ask"><b>여러분의 의견을 기다립니다!</b> 플레이 소감, 바라는 점, 버그 등 한마디라도 대환영입니다(이름도 이메일도 필요 없습니다).<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">의견 보내기</a></div>
+
+  <section class="card">
+    <h2>게임 화면</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="android-ko">
+    <h2>Android 버전 (12월 출시 예정, 모든 장 무료)</h2>
+    <p>Android 버전은 12월에 무료로 출시할 예정입니다(광고 포함, 한 번 구매하면 광고를 없앨 수 있습니다). 지금은 테스터를 모집하고 있으며, 테스터는 모든 장을 무료로 플레이할 수 있습니다.</p>
+    <ol class="steps">
+      <li><div>테스터 그룹에 참여하기<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">그룹 참여</a></div></li>
+      <li><div>“테스터 되기”를 누르기(①과 같은 Google 계정으로)<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">테스터 되기</a></div></li>
+      <li><div>Google Play에서 설치하고 14일 동안 그대로 두세요. 가끔 플레이해 주시면 정말 기쁘겠습니다.<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">Google Play에서 열기</a></div></li>
+    </ol>
+    <p class="note">앱이 보이지 않을 때: Play 스토어 계정이 ①과 같은지 확인해 주세요. 참여 직후에는 몇 분 정도 걸릴 수 있습니다. 상호 테스트도 환영합니다(X에서 말을 걸어 주세요).</p>
+    <div class="qr"><img src="qr.png" alt="①그룹 ②테스터 되기 QR 코드" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="follow-ko">
+    <h2>최신 소식</h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">개발 소식·공지</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">플레이 영상</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>이 게임에 대해</h2>
+    <p>혼자서 만들고 있는 1인 개발 게임입니다. PC 버전은 itch.io에서 체험판(1~2장)을 무료로 제공하며, 정식판은 12월에 $2.99에 판매할 예정입니다. Android 버전은 12월에 무료로 출시할 예정입니다(광고 포함, 한 번 구매하면 광고를 없앨 수 있습니다).<br>게임의 그림, 음악, 글의 일부에 생성형 AI를 사용했습니다(캐릭터 그림, 삽화, BGM 일부, 스토리 초안, 번역. 스토리와 영어 번역은 사람이 수정했습니다). 프로그램은 AI(Claude)가 작성하고, 사람이 직접 플레이하며 확인하고 고치고 있습니다.</p>
+  </section>
+
+  <footer>
+    <a href="guide.html">플레이 가이드</a> ・ <a href="survivors.html">SURVIVORS 공략</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">의견</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">개인정보처리방침</a><br>
+    연락처: seijo.koshingun@gmail.com<br>
+    이 페이지는 방문자 수를 파악하기 위해 Google 애널리틱스를 사용합니다(개인을 식별하지 않습니다).<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
+<section class="L" data-l="es" lang="es">
+  <h1>The March of the Saints</h1>
+  <p class="lead">Un juego de estrategia en tiempo real en el que 10 escuadrones se enfrentan en un mismo campo de batalla y los ataques especiales de las Santas cambian el rumbo del combate.</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="The March of the Saints" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">Video de juego (versión en desarrollo)</p>
+  <p class="note">Idiomas del juego: 日本語, English, 简体中文, 繁體中文 (한국어, Español, Русский y Português (Brasil) en preparación)</p>
+
+  <section class="card hi" id="pc-es">
+    <h2>Demo gratuita para PC (Windows)</h2>
+    <p>Juega gratis los capítulos 1 y 2 (fases 1-8, en Fácil). Al terminar el capítulo 1, envía una breve opinión desde el juego y se desbloqueará el capítulo 2. La versión completa (capítulo 3, las 14 fases, Normal y Difícil) saldrá a la venta en diciembre en itch.io por $2.99.</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Juega gratis en itch.io</a>
+  </section>
+
+  <section class="card surv" id="survivors-es">
+    <h2>Otro modo: “SURVIVORS” (en preparación)</h2>
+    <p>Estamos preparando un modo de supervivencia en el que te abres paso entre hordas de enemigos con el poder de las Santas. En la guía encontrarás los controles, las habilidades, las Santas aliadas, las fases y los jefes.</p>
+    <a class="btn pink" href="survivors.html">Guía de SURVIVORS</a>
+  </section>
+
+  <section class="card" id="guide-es">
+    <h2>Guía de juego</h2>
+    <p>Cómo tomar pueblos, las características de los tipos de unidad y de las Santas, formaciones y tácticas, y qué significan las mejoras y penalizaciones (buffs/debuffs) que aparecen en combate.</p>
+    <a class="btn alt" href="guide.html">Ver la guía de juego</a>
+  </section>
+
+  <div class="ask"><b>¡Queremos conocer tu opinión!</b> Impresiones, sugerencias, errores… cualquier comentario, por breve que sea, es bienvenido (no hace falta nombre ni correo).<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Enviar opinión</a></div>
+
+  <section class="card">
+    <h2>Capturas del juego</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="android-es">
+    <h2>Versión para Android (llega en diciembre, todos los capítulos gratis)</h2>
+    <p>La versión para Android se publicará gratis en diciembre (con anuncios; puedes quitarlos con una sola compra). Ahora mismo buscamos testers, y los testers pueden jugar todos los capítulos gratis.</p>
+    <ol class="steps">
+      <li><div>Únete al grupo de testers<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">Unirme al grupo</a></div></li>
+      <li><div>Toca “Hacerse tester” (con la misma cuenta de Google que en ①)<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">Hacerse tester</a></div></li>
+      <li><div>Instálalo desde Google Play y mantenlo instalado durante 14 días. ¡Nos alegrará mucho que lo juegues de vez en cuando!<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">Abrir en Google Play</a></div></li>
+    </ol>
+    <p class="note">¿No aparece la app? Comprueba que tu cuenta de Play Store sea la misma que en ①. Justo después de unirte puede tardar unos minutos. También aceptamos pruebas mutuas (escríbenos en X).</p>
+    <div class="qr"><img src="qr.png" alt="Códigos QR: ① grupo ② hacerse tester" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="follow-es">
+    <h2>Novedades</h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">Desarrollo y anuncios</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">Videos de juego</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Sobre este juego</h2>
+    <p>Es un juego independiente creado por una sola persona. En PC, la demo (capítulos 1-2) es gratuita en itch.io, y la versión completa saldrá a la venta en diciembre por $2.99. La versión para Android se publicará gratis en diciembre (con anuncios; puedes quitarlos con una sola compra).<br>Parte del arte, la música y los textos del juego se hicieron con IA generativa (arte de personajes, ilustraciones, parte de la música de fondo, borradores de la historia y traducciones; la historia y la traducción al inglés las corrigió una persona). El código lo escribe una IA (Claude), y una persona lo corrige mientras juega y comprueba que todo funcione.</p>
+  </section>
+
+  <footer>
+    <a href="guide.html">Guía de juego</a> ・ <a href="survivors.html">Guía de SURVIVORS</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Opiniones</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">Política de privacidad</a><br>
+    Contacto: seijo.koshingun@gmail.com<br>
+    Esta página usa Google Analytics para saber cuántas personas la visitan (no identifica a nadie personalmente).<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
+<section class="L" data-l="ru" lang="ru">
+  <h1>The March of the Saints</h1>
+  <p class="lead">Это стратегия в реальном времени, где 10 отрядов сходятся на одном поле боя, а особые приёмы святых переворачивают ход сражения.</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="The March of the Saints" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">Геймплей (версия в разработке)</p>
+  <p class="note">Языки игры: 日本語, English, 简体中文, 繁體中文 (한국어, Español, Русский и Português (Brasil) — в подготовке)</p>
+
+  <section class="card hi" id="pc-ru">
+    <h2>Бесплатная демоверсия для ПК (Windows)</h2>
+    <p>Главы 1–2 (уровни 1–8, сложность «Лёгкая») доступны бесплатно. После главы 1 отправьте короткий отзыв прямо в игре — и откроется глава 2. Полная версия (глава 3, все 14 уровней, сложности «Обычная» и «Высокая») выйдет в декабре на itch.io по цене $2.99.</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Играть бесплатно на itch.io</a>
+  </section>
+
+  <section class="card surv" id="survivors-ru">
+    <h2>Второй режим — «SURVIVORS» (в подготовке)</h2>
+    <p>Мы готовим режим выживания: прорубайте путь сквозь наступающие орды врагов силой святых. Управление, навыки, союзные святые, уровни и боссы собраны на странице с руководством.</p>
+    <a class="btn pink" href="survivors.html">Руководство по SURVIVORS</a>
+  </section>
+
+  <section class="card" id="guide-ru">
+    <h2>Как играть</h2>
+    <p>Как захватывать города, характеристики родов войск и святых, построения и тактика, а также что означают баффы и дебаффы в бою.</p>
+    <a class="btn alt" href="guide.html">Открыть руководство</a>
+  </section>
+
+  <div class="ask"><b>Ждём ваших отзывов!</b> Впечатления, пожелания, ошибки — будем рады даже одной фразе (имя и почта не нужны).<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Отправить отзыв</a></div>
+
+  <section class="card">
+    <h2>Скриншоты</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="android-ru">
+    <h2>Версия для Android (выйдет в декабре, все главы бесплатно)</h2>
+    <p>Версия для Android выйдет в декабре бесплатно (с рекламой; убрать рекламу можно одной покупкой). Сейчас мы ищем тестировщиков — они могут бесплатно играть во все главы.</p>
+    <ol class="steps">
+      <li><div>Вступите в группу тестировщиков<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">Вступить в группу</a></div></li>
+      <li><div>Нажмите «Стать тестировщиком» (с тем же аккаунтом Google, что и в ①)<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">Стать тестировщиком</a></div></li>
+      <li><div>Установите игру из Google Play и не удаляйте её 14 дней. Будем рады, если вы будете иногда в неё играть.<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">Открыть в Google Play</a></div></li>
+    </ol>
+    <p class="note">Не находите приложение? Проверьте, что аккаунт в Play Маркете тот же, что и в ①. Сразу после вступления может пройти несколько минут. Взаимное тестирование тоже приветствуется — напишите нам в X.</p>
+    <div class="qr"><img src="qr.png" alt="QR-коды: ① группа ② стать тестировщиком" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="follow-ru">
+    <h2>Новости</h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">Ход разработки и новости</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">Видео с игрой</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Об игре</h2>
+    <p>Эту инди-игру делает один человек. На ПК демоверсия (главы 1–2) бесплатно доступна на itch.io, а полная версия выйдет там же в декабре по цене $2.99. Версия для Android выйдет в декабре бесплатно (с рекламой; убрать рекламу можно одной покупкой).<br>Часть графики, музыки и текстов в игре создана с помощью генеративного ИИ (рисунки персонажей, иллюстрации, часть фоновой музыки, черновики сюжета и переводы; сюжет и английский перевод отредактированы человеком). Код игры пишет ИИ (Claude), а человек проверяет всё в игре и исправляет.</p>
+  </section>
+
+  <footer>
+    <a href="guide.html">Как играть</a> ・ <a href="survivors.html">Руководство по SURVIVORS</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Отзывы</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">Политика конфиденциальности</a><br>
+    Контакты: seijo.koshingun@gmail.com<br>
+    Эта страница использует Google Analytics, чтобы знать число посетителей (личность не определяется).<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
+<section class="L" data-l="pt-BR" lang="pt-BR">
+  <h1>The March of the Saints</h1>
+  <p class="lead">Um jogo de estratégia em tempo real em que 10 esquadrões se enfrentam no mesmo campo de batalha e os golpes especiais das Santas viram o rumo do combate.</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NXaPN5RfIL8?rel=0" title="The March of the Saints" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <p class="note">Vídeo de gameplay (versão em desenvolvimento)</p>
+  <p class="note">Idiomas do jogo: 日本語, English, 简体中文, 繁體中文 (한국어, Español, Русский e Português (Brasil) em preparação)</p>
+
+  <section class="card hi" id="pc-pt-BR">
+    <h2>Demo gratuita para PC (Windows)</h2>
+    <p>Jogue de graça os capítulos 1 e 2 (fases 1 a 8, no Fácil). Depois do capítulo 1, envie uma opinião rápida dentro do jogo para liberar o capítulo 2. A versão completa (capítulo 3, todas as 14 fases, Normal e Difícil) será vendida em dezembro no itch.io por $2.99.</p>
+    <a class="btn" href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Jogar de graça no itch.io</a>
+  </section>
+
+  <section class="card surv" id="survivors-pt-BR">
+    <h2>Outro modo: “SURVIVORS” (em preparação)</h2>
+    <p>Estamos preparando um modo de sobrevivência em que você abre caminho entre hordas de inimigos com o poder das Santas. Controles, habilidades, Santas aliadas, fases e chefes estão reunidos na página do guia.</p>
+    <a class="btn pink" href="survivors.html">Guia de SURVIVORS</a>
+  </section>
+
+  <section class="card" id="guide-pt-BR">
+    <h2>Como jogar</h2>
+    <p>Como conquistar cidades, os atributos das classes e das Santas, formações e táticas, e o que significam os buffs e debuffs que aparecem em combate.</p>
+    <a class="btn alt" href="guide.html">Ver o guia</a>
+  </section>
+
+  <div class="ask"><b>Queremos saber sua opinião!</b> Impressões, sugestões, bugs… até uma frase já ajuda muito (não precisa de nome nem e-mail).<br><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Enviar opinião</a></div>
+
+  <section class="card">
+    <h2>Imagens do jogo</h2>
+    <div class="shots"><img src="shot1.jpg" alt="" loading="lazy"><img src="shot2.jpg" alt="" loading="lazy"><img src="shot3.jpg" alt="" loading="lazy"><img src="shot5.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="android-pt-BR">
+    <h2>Versão para Android (lançamento em dezembro, todos os capítulos grátis)</h2>
+    <p>A versão para Android será lançada de graça em dezembro (com anúncios; uma única compra remove os anúncios). Estamos procurando testadores agora, e os testadores podem jogar todos os capítulos de graça.</p>
+    <ol class="steps">
+      <li><div>Entre no grupo de testadores<br><a class="btn alt" href="https://groups.google.com/g/seijo-koshingun-testers">Entrar no grupo</a></div></li>
+      <li><div>Toque em “Ser testador” (com a mesma conta Google usada em ①)<br><a class="btn" href="https://play.google.com/apps/testing/com.seijokoshingun.marchofthesaints">Ser testador</a></div></li>
+      <li><div>Instale pelo Google Play e mantenha o app instalado por 14 dias. Vamos ficar muito felizes se você jogar de vez em quando!<br><a class="btn alt" href="https://play.google.com/store/apps/details?id=com.seijokoshingun.marchofthesaints">Abrir no Google Play</a></div></li>
+    </ol>
+    <p class="note">O app não aparece? Confira se a conta da Play Store é a mesma de ①. Logo depois de entrar, pode levar alguns minutos. Testes mútuos também são bem-vindos (fale com a gente no X).</p>
+    <div class="qr"><img src="qr.png" alt="Códigos QR: ① grupo ② ser testador" loading="lazy"></div>
+  </section>
+
+  <section class="card" id="follow-pt-BR">
+    <h2>Novidades</h2>
+    <div class="links">
+      <a class="link" href="https://x.com/seijo_koshingun"><b>X</b><br>@seijo_koshingun<br><span class="note">Desenvolvimento e avisos</span></a>
+      <a class="link" href="https://www.youtube.com/@seijo_koshingun"><b>YouTube</b><br>@seijo_koshingun<br><span class="note">Vídeos de gameplay</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Sobre o jogo</h2>
+    <p>É um jogo independente feito por uma só pessoa. No PC, a demo (capítulos 1-2) é gratuita no itch.io, e a versão completa será vendida lá em dezembro por $2.99. A versão para Android será lançada de graça em dezembro (com anúncios; uma única compra remove os anúncios).<br>Parte da arte, da música e dos textos do jogo foi feita com IA generativa (arte dos personagens, ilustrações, parte da trilha sonora, rascunhos da história e traduções; a história e a tradução para o inglês foram revisadas por uma pessoa). O código é escrito por IA (Claude), e uma pessoa o corrige enquanto joga e testa.</p>
+  </section>
+
+  <footer>
+    <a href="guide.html">Como jogar</a> ・ <a href="survivors.html">Guia de SURVIVORS</a><br>
+    <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・ <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・ <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">Opinião</a> ・ <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">Política de Privacidade</a><br>
+    Contato: seijo.koshingun@gmail.com<br>
+    Esta página usa o Google Analytics para saber quantas pessoas a visitam (sem identificar ninguém).<br>
+    © 2026 聖女行進軍プロジェクト / Saints March Project
+  </footer>
+</section>
 </main>
-<footer>
-  <a href="guide.html">遊び方ガイド / Guide</a> ・
-  <a href="survivors.html">SURVIVORS 攻略 / SURVIVORS guide</a><br>
-  <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a> ・
-  <a href="https://www.youtube.com/@seijo_koshingun">YouTube</a> ・
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfy81tHnsOsJiLjp9ytJcQzEO7hpH9ey59RaOYAIG8onMZog/viewform">ご意見 / Feedback</a> ・
-  <a href="https://docs.google.com/document/d/e/2PACX-1vSKH4ltNVp9aqGFDvISbF03gd7Whk63UDdf56UdzmFj-VG-AYsJIuB8BuZ1Qp66YJZi52CezM6b4jzf/pub">プライバシーポリシー / Privacy Policy</a><br>
-  連絡先 / Contact: seijo.koshingun@gmail.com<br>
-  このページは来てくださった人の数を知るために Google アナリティクスを使っています（個人は特定しません）。<br>
-  <span class="en">This page uses Google Analytics to count visits (no personal identification).</span><br>
-  © 2026 聖女行進軍プロジェクト / Saints March Project
-</footer>
+<script>
+(function () {
+  var T = {"ja":"聖女行進軍 / The March of the Saints","en":"The March of the Saints","zh-Hans":"圣女行进军","zh-Hant":"聖女行進軍","ko":"The March of the Saints","es":"The March of the Saints","ru":"The March of the Saints","pt-BR":"The March of the Saints"};
+  function pick() {
+    try { var q = new URLSearchParams(location.search).get('lang'); if (q && T[q]) return q; } catch (e) {}
+    try { var s = localStorage.getItem('site_lang'); if (s && T[s]) return s; } catch (e) {}
+    var n = (navigator.language || 'ja').toLowerCase();
+    if (n.indexOf('ja') === 0) return 'ja';
+    if (n.indexOf('zh') === 0) return /tw|hk|mo|hant/.test(n) ? 'zh-Hant' : 'zh-Hans';
+    if (n.indexOf('ko') === 0) return 'ko'; if (n.indexOf('es') === 0) return 'es';
+    if (n.indexOf('ru') === 0) return 'ru'; if (n.indexOf('pt') === 0) return 'pt-BR';
+    return 'en';
+  }
+  function set(l, save) {
+    document.documentElement.setAttribute('data-lang', l); document.documentElement.lang = l; document.title = T[l];
+    [].forEach.call(document.querySelectorAll('[data-set]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set') === l ? 'true' : 'false'); });
+    if (save) { try { localStorage.setItem('site_lang', l); } catch (e) {} }
+  }
+  [].forEach.call(document.querySelectorAll('[data-set]'), function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-set'), true); }); });
+  set(pick(), false);
+})();
+</script>
 </body>
 </html>
