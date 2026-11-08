@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SURVIVORS 攻略ガイド｜聖女行進軍</title>
+<meta name="description" content="聖女行進軍のもう一つのモード「SURVIVORS」の遊び方と攻略。操作・スキル（聖矢・聖火・聖光）・仲間の聖女・必殺技・ステージとボス。">
+<meta property="og:title" content="SURVIVORS Guide | The March of the Saints"><meta property="og:description" content="How to play SURVIVORS, the second mode of The March of the Saints: controls, skills (Holy Arrow, Holy Fire, Holy Light), Ally Saints, Specials, stages and bosses."><meta property="og:image" content="https://seijo-koshingun.github.io/img/surv_title_en.png">
+<link rel="icon" href="icon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFFMDXSV3P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NFFMDXSV3P');</script>
+<style>:root { --bg:#120e1c; --panel:#1c1630; --panel2:#241c3c; --line:#3a2f5c; --text:#ece6f6; --sub:#b4a9cc; --pink:#ff3cbe; --pink-soft:#ffb3e6; --gold:#e8c46a; --cyan:#7ee8ff; --purple:#c060ff;
+  --c-double:#f0c060; --c-missile:#ff8a5c; --c-laser:#7ee8ff; --c-passive:#c8b8f0; --c-saint:#ff8fd0; }
+* { box-sizing:border-box; }
+html, body { margin:0; background:var(--bg); color:var(--text); }
+body { font:16px/1.75 "Hiragino Sans","Noto Sans JP","Noto Sans SC","Noto Sans TC","Noto Sans KR","Yu Gothic UI","Malgun Gothic",sans-serif; }
+a { color:var(--cyan); }
+.wrap { max-width:980px; margin:0 auto; padding:0 16px 64px; }
+.top { display:flex; justify-content:flex-end; padding-top:12px; }
+.langs { display:flex; flex-wrap:wrap; gap:4px; border:1px solid var(--line); border-radius:12px; padding:3px; }
+.langs button { border:0; background:transparent; color:var(--text); padding:5px 10px; border-radius:9px; font:inherit; font-size:13px; cursor:pointer; }
+.langs button[aria-pressed=true] { background:var(--pink); color:#fff; }
+.L { display:none; } html[data-lang=ja] .L[data-l=ja], html[data-lang=en] .L[data-l=en], html[data-lang=zh-Hans] .L[data-l=zh-Hans], html[data-lang=zh-Hant] .L[data-l=zh-Hant], html[data-lang=ko] .L[data-l=ko], html[data-lang=es] .L[data-l=es] { display:block; }
+header { text-align:center; padding:20px 0 8px; } .logo { width:min(100%,720px); height:auto; }
+.lead { color:var(--sub); max-width:720px; margin:8px auto 0; }
+.notice { background:#2a1838; border:1px solid var(--pink); border-radius:10px; padding:10px 14px; margin:16px 0; box-shadow:0 0 14px rgba(255,60,190,.25); }
+.notice b { color:var(--pink-soft); }
+nav.toc { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:20px 0 8px; }
+nav.toc a { text-decoration:none; color:var(--text); background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:4px 14px; font-size:14px; }
+nav.toc a:hover { border-color:var(--pink); }
+h2 { font-size:24px; margin:48px 0 12px; padding-left:12px; border-left:5px solid var(--pink); text-shadow:0 0 12px rgba(255,60,190,.45); }
+h3 { font-size:18px; margin:24px 0 8px; color:var(--pink-soft); }
+h3.g-double { color:var(--c-double); } h3.g-missile { color:var(--c-missile); } h3.g-laser { color:var(--c-laser); }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+.grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); } .grid.one { grid-template-columns:1fr; margin-bottom:8px; }
+.skill { display:flex; gap:12px; align-items:flex-start; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px; }
+.skill img { width:56px; height:56px; flex:none; border-radius:10px; background:#0c0914; }
+.skill > div > b:first-child { display:block; font-size:16px; }
+.skill.g-double > div > b:first-child { color:var(--c-double); } .skill.g-missile > div > b:first-child { color:var(--c-missile); } .skill.g-laser > div > b:first-child { color:var(--c-laser); } .skill.g-passive > div > b:first-child { color:var(--c-passive); } .skill.g-saint > div > b:first-child { color:var(--c-saint); }
+.skill .d { color:var(--sub); font-size:14px; line-height:1.6; } .skill .d b { color:var(--pink-soft); }
+.slot { font-size:14px; color:var(--sub); margin:4px 0 12px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { border-bottom:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+th { color:var(--pink-soft); font-weight:600; }
+.ctrl { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); margin:12px 0; }
+.ctrl h3 { margin:0 0 6px; } .ctrl th { width:42%; }
+kbd { display:inline-block; min-width:1.6em; text-align:center; font:13px/1.6 ui-monospace,Consolas,monospace; background:var(--panel2); border:1px solid var(--line); border-bottom-width:3px; border-radius:6px; padding:0 6px; margin:0 2px; }
+.purple { color:var(--purple); }
+.tips li { margin:6px 0; } .tips b { margin-right:4px; }
+.flow { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; counter-reset:s; }
+.flow div { background:var(--panel2); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:14px; }
+.flow div::before { counter-increment:s; content:counter(s); display:inline-block; width:22px; height:22px; line-height:22px; text-align:center; border-radius:50%; background:var(--pink); color:#fff; font-weight:700; margin-right:6px; }
+.note { color:var(--sub); font-size:14px; }
+.cta { text-align:center; margin:48px 0 0; }
+.cta > a { display:inline-block; background:var(--pink); color:#fff; text-decoration:none; font-weight:700; border-radius:999px; padding:12px 28px; box-shadow:0 0 18px rgba(255,60,190,.5); }
+footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
+@media (max-width:560px) { h2 { font-size:20px; } .stages th, .stages td { padding:6px; font-size:14px; } }</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><div class="langs" role="group" aria-label="Language"><button type="button" data-set="ja" aria-pressed="false">日本語</button><button type="button" data-set="en" aria-pressed="false">English</button><button type="button" data-set="zh-Hans" aria-pressed="false">简体中文</button><button type="button" data-set="zh-Hant" aria-pressed="false">繁體中文</button><button type="button" data-set="ko" aria-pressed="false">한국어</button><button type="button" data-set="es" aria-pressed="false">Español</button></div></div>
+<section class="L" data-l="ja" lang="ja">
+<header><img src="img/surv_title_ja.png" alt="SURVIVORS" class="logo">
+<p class="lead">『聖女行進軍』のもう一つのモード。押し寄せる敵の群れを、聖女の力で切り開いて進むサバイバーです。タイトルの「モード切替」から遊べます。</p></header>
+<div class="notice"><b>SURVIVORS は、ただいま実装の準備中です。</b>このページの内容は開発中のもので、公開までに変わることがあります。</div>
+<nav class="toc"><a href="#flow-ja">流れ</a><a href="#controls-ja">操作</a><a href="#skills-ja">スキル</a><a href="#passive-ja">守りと動き</a><a href="#allies-ja">仲間の聖女</a><a href="#special-ja">必殺技</a><a href="#items-ja">拾う物</a><a href="#stages-ja">ステージとボス</a><a href="#tips-ja">攻略のコツ</a></nav>
+
+<h2 id="flow-ja">1 ステージの流れ</h2>
+<div class="flow"><div>谷の道を奥へ進む。敵は四方から押し寄せる</div><div>倒した敵の経験値の玉を拾ってレベルアップ。3 つから 1 つ選ぶ</div><div>途中の 2 つの広場で「心なき聖女」の一団と戦う（みな倒すまで先へ進めない）</div><div>道の終わりでボスと対決。倒せばステージクリア</div></div>
+<p class="note">次のステージはレベル 1 から始まります。体験版で遊べるのはステージ 1 です。</p>
+
+<h2 id="controls-ja">操作</h2>
+<p class="note">攻撃はすべて自動です。初めの弾と、選んだスキル（聖矢・聖火・聖光）を勝手に撃つので、動きと回避、必殺技に集中できます。</p>
+<div class="ctrl">
+<div class="card"><h3>キーボード</h3><table>
+<tr><th>移動</th><td><kbd>W</kbd><kbd>A</kbd><kbd>X</kbd>（<kbd>Z</kbd>）<kbd>D</kbd></td></tr><tr><th>回避</th><td><kbd>Enter</kbd></td></tr><tr><th>必殺技</th><td><kbd>Space</kbd> （撃てる最初の宝石）</td></tr><tr><th>進路方向へ向き直し</th><td><kbd>S</kbd></td></tr>
+<tr><th>視点</th><td><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></td></tr><tr><th>ズーム</th><td><kbd>Q</kbd><kbd>E</kbd></td></tr><tr><th>ポーズ</th><td><kbd>Esc</kbd></td></tr><tr><th>全画面・音</th><td><kbd>F11</kbd>・<kbd>Alt</kbd>+<kbd>Enter</kbd>・音は <kbd>M</kbd></td></tr>
+</table></div>
+<div class="card"><h3>マウス（PC）</h3><table>
+<tr><th>移動</th><td>左クリックで歩きはじめ、もう一度クリックで止まる（歩く間はカーソルの向きへ）</td></tr><tr><th>回避</th><td>右クリック（動かさずに離すと、カーソルの向きへ）</td></tr><tr><th>必殺技</th><td>宝石をクリック</td></tr><tr><th>視点</th><td>右ボタンを押したままドラッグ</td></tr><tr><th>ズーム</th><td>ホイール</td></tr><tr><th>ポーズ</th><td>右上の ‖ をクリック</td></tr>
+</table><p class="note">キーで動かすと、歩くのが切れます。レベルアップの選択やポーズの間は止まり、終わるとまた歩きます。</p></div>
+<div class="card"><h3>スマホ</h3><table>
+<tr><th>移動</th><td>左のスティック</td></tr><tr><th>回避</th><td>右上の「回避」ボタン（押したままスワイプで、その向きへ）</td></tr><tr><th>必殺技</th><td>右下の宝石をタップ</td></tr><tr><th>進路方向へ向き直し</th><td>画面の右側をダブルタップ</td></tr><tr><th>視点</th><td>画面の右側をドラッグ</td></tr><tr><th>ズーム</th><td>2 本指</td></tr><tr><th>ポーズ</th><td>右上の ‖・戻る</td></tr>
+</table></div>
+</div>
+<p class="note">「進路方向へ向き直し」は、カメラを進む道の少し先へ 1 回向け直します。パッドでも遊べます（回避は A／×、必殺技は Y／△、向き直しは R1）。回避の向きは、スワイプした向き → 動いている向き → 聖女が向いている向き、の順に決まります。</p>
+<h3>ジャスト回避</h3>
+<p>ボスの攻撃は、当たる前に地面に範囲が出ます。黄色（1 秒）→ 赤（1 秒）→ 紫と変わり、<b class="purple">紫になった 0.5 秒の間</b>に回避すると「ジャスト回避！」。飛んでくる弾（ボスや心なき聖女の弾、弓兵の矢）は印が出ませんが、当たる 0.5 秒前までに回避を押していればジャスト回避です。大型の敵の殴りも同じです。必殺技を取ったあとは、ジャスト回避で必殺技のゲージが 1/3 たまります（1 回の回避で 1 度だけ）。</p>
+
+<h2 id="skills-ja">スキル：聖矢・聖火・聖光</h2>
+<p>攻撃のスキルは聖矢・聖火・聖光の 3 種類に分かれ、<b>それぞれの種類から選べるスキルは 1 つだけ</b>です。一度選んだスキルは変えられず、あとはレベル（最大 Lv9）を上げて強くします。どのスキルを組み合わせるかが、そのまま戦い方になります。</p>
+<div class="grid one"><div class="skill g-double"><img src="img/surv_bolt.png" alt="" width="56" height="56" loading="lazy"><div><b>初めの弾</b><span class="d">最初から前へ連射する弾。聖光のスキルを選ぶと、光線に置き換わります。</span></div></div></div>
+<h3 class="g-double">聖矢（せいや）— 撃つ向きを足す</h3><p class="slot">初めの弾と同じ粒の弾を、別の向きへも撃ちます。スキルごとの違いは撃つ向きだけで、どれも Lv1 で 1 発、Lv2 で 2 発になります（扇だけは最初から 2 発）。敵を貫きません。Lv が上がると威力が上がり、Lv3・5・7 で連射が速くなります。</p>
+<div class="grid"><div class="skill g-double"><img src="img/surv_dbl.png" alt="" width="56" height="56" loading="lazy"><div><b>斜めの聖矢</b><span class="d">斜め前（45°）へも撃つ。Lv2 で左右の両方へ。</span></div></div><div class="skill g-double"><img src="img/surv_vert.png" alt="" width="56" height="56" loading="lazy"><div><b>横の聖矢</b><span class="d">真横（90°）へも撃つ。Lv2 で左右の両方へ。</span></div></div><div class="skill g-double"><img src="img/surv_tail.png" alt="" width="56" height="56" loading="lazy"><div><b>背の聖矢</b><span class="d">真後ろへも撃つ。Lv2 で 2 発、少し開いて。後ろから来る敵に。</span></div></div><div class="skill g-double"><img src="img/surv_backdbl.png" alt="" width="56" height="56" loading="lazy"><div><b>返しの聖矢</b><span class="d">真後ろへ撃つ。Lv2 で 2 発を横に並べて（ツイン）。</span></div></div><div class="skill g-double"><img src="img/surv_spread.png" alt="" width="56" height="56" loading="lazy"><div><b>扇の聖矢</b><span class="d">左右の斜め前（15°）へ扇に広げて撃つ。最初から 2 発。</span></div></div></div>
+<h3 class="g-missile">聖火（せいか）— 爆ぜる炎</h3><p class="slot">落ちたり地面を這ったりして、敵に当たると爆ぜます。まとまった敵に強いスキルです。</p>
+<div class="grid"><div class="skill g-missile"><img src="img/surv_crawl.png" alt="" width="56" height="56" loading="lazy"><div><b>地走りの聖火</b><span class="d">横へ落ち、地面を這って前へ。敵に当たると広く爆ぜる。Lv2 で左右の両方へ。</span></div></div><div class="skill g-missile"><img src="img/surv_hawk.png" alt="" width="56" height="56" loading="lazy"><div><b>疾風の聖火</b><span class="d">横へ落ち、外の斜め前（45°）へ速く這う。山や壁に当たると 90° 曲がって這い続ける。敵に当たると爆ぜて、1 度だけ跳ね返る。Lv2 で左右の両方へ。</span></div></div><div class="skill g-missile"><img src="img/surv_back2.png" alt="" width="56" height="56" loading="lazy"><div><b>前後の聖火</b><span class="d">斜め前と、反対側の斜め後ろへ 2 つ同時に。敵に当たると爆ぜる。Lv2 で左右の 4 つに。</span></div></div><div class="skill g-missile"><img src="img/surv_sspread.png" alt="" width="56" height="56" loading="lazy"><div><b>小散りの聖火</b><span class="d">斜め後ろへ落として小さく爆ぜ、しばらく燃え残る。後ろの敵に。Lv2 で左右の斜め後ろへ 2 つ。</span></div></div><div class="skill g-missile"><img src="img/surv_bomb.png" alt="" width="56" height="56" loading="lazy"><div><b>散華の聖火</b><span class="d">前へ放り、落ちた所で大きく爆ぜて燃え残る。一番広い。</span></div></div></div>
+<h3 class="g-laser">聖光（せいこう）— 貫く光</h3><p class="slot">敵を貫く光。<b>選ぶと初めの弾が光線に置き換わります。</b>スキルごとに得意な敵がはっきり分かれています（列・近くの群れ・離れた群れ・1 体・ボス）。</p>
+<div class="grid"><div class="skill g-laser"><img src="img/surv_laser.png" alt="" width="56" height="56" loading="lazy"><div><b>一筋の聖光</b><span class="d">前へ、敵を貫く細く長い光を一瞬で放つ。一列に並んだ敵に強い。細く前だけなので、横の敵には当たらない。</span></div></div><div class="skill g-laser"><img src="img/surv_ripple.png" alt="" width="56" height="56" loading="lazy"><div><b>波紋の聖光</b><span class="d">前へ、飛びながら大きく広がる光の輪を放つ。貫く。離れた群れに強い。Lv3・6・9 で輪が 1 つずつ増える。出た直後の輪は小さい。</span></div></div><div class="skill g-laser"><img src="img/surv_twin.png" alt="" width="56" height="56" loading="lazy"><div><b>双つの聖光</b><span class="d">前（左右 30° まで）のいちばん近い敵を狙い、短い光を 2 本並べてすばやく撃つ。1 本は 2 体まで貫く。ボスや大きな敵など、1 体の敵に強い。</span></div></div><div class="skill g-laser"><img src="img/surv_cyclone.png" alt="" width="56" height="56" loading="lazy"><div><b>渦巻の聖光</b><span class="d">前へ、太く短い渦の光をしばらく出し続ける（向きについて動く）。近くに固まった敵を何度も打ち、押し返す。遠くには届かない。</span></div></div><div class="skill g-laser"><img src="img/surv_orb.png" alt="" width="56" height="56" loading="lazy"><div><b>宝珠の聖光</b><span class="d">光の玉をためてから放つ（ためる間は大きく聖女を覆い、触れた敵を打つ）。ゆっくり進み、まわりの敵を吸い寄せて打ち続ける。ボスや大きな敵に強い。</span></div></div></div>
+
+<h2 id="passive-ja">守りと動き（パッシブ）</h2><p>攻撃を強くするパッシブはありません。生き残るための力です（どれも最大 Lv5）。</p>
+<div class="grid"><div class="skill g-passive"><img src="img/surv_armor.png" alt="" width="56" height="56" loading="lazy"><div><b>守りの鎧</b><span class="d">受けるダメージ −1</span></div></div><div class="skill g-passive"><img src="img/surv_heart.png" alt="" width="56" height="56" loading="lazy"><div><b>生命の泉</b><span class="d">最大の体力 +20%（仲間の体力も同じ割合で増える）</span></div></div><div class="skill g-passive"><img src="img/surv_wind.png" alt="" width="56" height="56" loading="lazy"><div><b>癒やしの風</b><span class="d">体力が毎秒 0.3 戻る</span></div></div><div class="skill g-passive"><img src="img/surv_boots.png" alt="" width="56" height="56" loading="lazy"><div><b>疾風の靴</b><span class="d">歩く速さ +10%</span></div></div><div class="skill g-passive"><img src="img/surv_magnet.png" alt="" width="56" height="56" loading="lazy"><div><b>引き寄せの石</b><span class="d">玉を拾う範囲 +30%</span></div></div></div>
+
+<h2 id="allies-ja">仲間の聖女と陣形</h2>
+<div class="grid"><div class="skill g-saint"><img src="img/surv_ally.png" alt="" width="56" height="56" loading="lazy"><div><b>仲間の聖女（最大 2 人）</b><span class="d">主人公と同じ攻撃を一緒に撃ちます。仲間は自分の体力を持ち、敵の攻撃を受けて尽きると倒れます（倒れた仲間は、また加えられます）。回復は仲間にも届き、必殺技の宝石も増えます。</span></div></div><div class="skill g-saint"><img src="img/surv_form_follow.png" alt="" width="56" height="56" loading="lazy"><div><b>陣形：追従</b><span class="d">仲間が主人公の通った跡をついて来て撃つ。最初はこの形。横展開とは、また入れ替えられる。</span></div></div><div class="skill g-saint"><img src="img/surv_form_side.png" alt="" width="56" height="56" loading="lazy"><div><b>陣形：横展開</b><span class="d">仲間が主人公の左右、少し後ろに並んで撃つ。レベルアップの選択にときどき出ます。追従とは、また入れ替えられる。</span></div></div></div>
+
+<h2 id="special-ja">必殺技</h2>
+<div class="grid one"><div class="skill g-saint"><img src="img/surv_sp.png" alt="" width="56" height="56" loading="lazy"><div><b>聖女の必殺技（Lv1〜4）</b><span class="d">レベルアップで取ると、主人公も仲間も必殺技が使えるようになります。<b>取るまではゲージがたまりません。</b>攻撃を当てるとゲージがたまり、ジャスト回避でも 1/3 たまります。主人公と仲間に 1 つずつ宝石があり、満タンの宝石を押すと、その聖女が主人公の前の広い範囲に大きなダメージを与えます（撃つ間は戦いの時間が止まります）。Lv が上がると、みなの必殺技の威力と広さが上がります。</span></div></div></div>
+
+<h2 id="items-ja">拾う物</h2>
+<div class="card"><table><tr><th>経験値の玉</th><td>倒した敵が落とす。集めるとレベルアップ。</td></tr><tr><th>宝箱</th><td>途中の広場の心なき聖女の一団のうち 1 人が落とす（一団に 1 つ）。持っているスキルかパッシブのどれか 1 つのレベルが上がる（15% で 3 つ）。上げられる物が無いときは体力 +30。</td></tr><tr><th>命の果実</th><td>体力が最大の 30% 戻る（仲間にも）。</td></tr><tr><th>聖なる鐘</th><td>6 秒の間、まわりの敵がみな逃げ出す。</td></tr><tr><th>吸い寄せの石</th><td>地面の経験値の玉をみな引き寄せる。</td></tr></table></div>
+
+<h2 id="stages-ja">ステージとボス</h2>
+<div class="card"><table class="stages"><tr><th>ステージ</th><th>途中の広場</th><th>ボス</th></tr>
+<tr><td>STAGE 1「緑風の谷」</td><td>心なき聖女 2 体 → 3 体</td><td>鎖の工匠モルド</td></tr>
+<tr><td>STAGE 2「黄昏の荒野」</td><td>3 体 → 4 体</td><td>鉄壁のガルヴァン</td></tr>
+<tr><td>STAGE 3「枯れ野の祭壇」</td><td>4 体 → 4 体</td><td>影鎖ヴェイル</td></tr>
+<tr><td>STAGE 4「紅蓮竜の谷」</td><td>4 体 → 5 体</td><td>紅蓮竜</td></tr>
+</table><p class="note">奥のステージほど道が長く、敵が固くなります。ボスも紅蓮竜も、範囲攻撃と弾幕を使います（奥のステージほど多い）。危険な範囲は、黄 → 赤 → 紫の印で知らせます。心なき聖女は、見た目の違う 5 人が出ます（攻撃は同じ）。</p></div>
+
+<h2 id="tips-ja">攻略のコツ</h2>
+<div class="card"><ul class="tips"><li><b>必殺技は早めに取る。</b>取るまではゲージがたまらないので、後回しにすると損をします。</li><li><b>攻撃のスキルは聖矢・聖火・聖光の 3 種類。</b>どのスキルがレベルアップの選択に出るかはランダムです。それぞれの種類で最初に選んだスキルが、そのままその種類の攻撃になり、あとはレベルアップで強化されていきます。</li><li><b>スキルの組み合わせで穴をふさぐ。</b>前は聖光か初めの弾、後ろは背・返しの聖矢か小散りの聖火、と向きが重ならないように選ぶと囲まれにくくなります。</li><li><b>仲間は早めに加える。</b>仲間は主人公と同じ攻撃を撃つので、撃つ数がそのまま増え、必殺技の宝石も増えます。仲間も体力が尽きると倒れるので、命の果実や癒やしの風で支えましょう。倒れても、また加えられます。</li><li><b>紫の印は狙い目。</b>危険な範囲が紫になった 0.5 秒の間に回避するとジャスト回避。必殺技を取っていれば、ゲージが 1/3 たまります。</li><li><b>広場の前に体力を整える。</b>心なき聖女の一団は強敵です。癒やしの風や生命の泉で備えておくと安定します。</li></ul></div>
+
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">無料の PC 体験版を遊ぶ（itch.io）</a><p class="note">体験版への SURVIVORS の追加も準備中です。</p><p><a class="back" href="./">公式ページへ戻る</a></p></div>
+</section>
+<section class="L" data-l="en" lang="en">
+<header><img src="img/surv_title_en.png" alt="SURVIVORS" class="logo">
+<p class="lead">The second mode of <i>The March of the Saints</i>: a survivors-style action mode where you carve through endless enemy hordes with the power of the Saints. Choose "Switch Mode" on the title screen to play.</p></header>
+<div class="notice"><b>SURVIVORS is currently being prepared for release.</b> Everything on this page is from the game in development and may change before launch.</div>
+<nav class="toc"><a href="#flow-en">Flow</a><a href="#controls-en">Controls</a><a href="#skills-en">Skills</a><a href="#passive-en">Defense & Movement</a><a href="#allies-en">Ally Saints</a><a href="#special-en">Specials</a><a href="#items-en">Pickups</a><a href="#stages-en">Stages & Bosses</a><a href="#tips-en">Tips</a></nav>
+
+<h2 id="flow-en">How a stage plays</h2>
+<div class="flow"><div>Push deeper along the valley road while enemies swarm in from every side</div><div>Pick up EXP orbs from defeated enemies to level up, then choose 1 of 3 options</div><div>Fight groups of Lost-Heart Saints in two squares along the way (you can't move on until they're all down)</div><div>Face the boss at the end of the road. Defeat it to clear the stage</div></div>
+<p class="note">Each new stage starts again from level 1. The demo includes Stage 1.</p>
+
+<h2 id="controls-en">Controls</h2>
+<p class="note">All attacks are automatic. Your Starter Shot and the skills you pick (Holy Arrow, Holy Fire, Holy Light) fire on their own, so you can focus on moving, dodging and Specials.</p>
+<div class="ctrl">
+<div class="card"><h3>Keyboard</h3><table>
+<tr><th>Move</th><td><kbd>W</kbd><kbd>A</kbd><kbd>X</kbd>（<kbd>Z</kbd>）<kbd>D</kbd></td></tr><tr><th>Dodge</th><td><kbd>Enter</kbd></td></tr><tr><th>Special</th><td><kbd>Space</kbd> (first ready gem)</td></tr><tr><th>Face your path</th><td><kbd>S</kbd></td></tr>
+<tr><th>Camera</th><td><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></td></tr><tr><th>Zoom</th><td><kbd>Q</kbd><kbd>E</kbd></td></tr><tr><th>Pause</th><td><kbd>Esc</kbd></td></tr><tr><th>Fullscreen / Sound</th><td><kbd>F11</kbd>・<kbd>Alt</kbd>+<kbd>Enter</kbd>・Sound: <kbd>M</kbd></td></tr>
+</table></div>
+<div class="card"><h3>Mouse (PC)</h3><table>
+<tr><th>Move</th><td>Left-click to start walking, click again to stop (you walk toward the cursor)</td></tr><tr><th>Dodge</th><td>Right-click (release without moving to dodge toward the cursor)</td></tr><tr><th>Special</th><td>Click a gem</td></tr><tr><th>Camera</th><td>Hold the right button and drag</td></tr><tr><th>Zoom</th><td>Mouse wheel</td></tr><tr><th>Pause</th><td>Click ‖ at the top right</td></tr>
+</table><p class="note">Moving with the keys cancels walking. Walking pauses while choosing a level-up or paused, and resumes afterward.</p></div>
+<div class="card"><h3>Phone</h3><table>
+<tr><th>Move</th><td>Left stick</td></tr><tr><th>Dodge</th><td>The "Dodge" button at the top right (hold and swipe to dodge that way)</td></tr><tr><th>Special</th><td>Tap a gem at the bottom right</td></tr><tr><th>Face your path</th><td>Double-tap the right side of the screen</td></tr><tr><th>Camera</th><td>Drag the right side of the screen</td></tr><tr><th>Zoom</th><td>Two fingers</td></tr><tr><th>Pause</th><td>‖ at the top right / Back</td></tr>
+</table></div>
+</div>
+<p class="note">"Face your path" turns the camera once toward the road ahead. Gamepads work too (Dodge: A/×, Special: Y/△, Face your path: R1). Dodge direction is decided in this order: swipe direction → movement direction → the way the Saint is facing.</p>
+<h3>Perfect Dodge</h3>
+<p>Before a boss attacks, the danger area appears on the ground. It turns yellow (1 sec) → red (1 sec) → purple. Dodge <b class="purple">during the 0.5 sec it is purple</b> for a "Perfect Dodge!". Projectiles (shots from bosses and Lost-Heart Saints, archers' arrows) have no marker, but dodging within 0.5 sec before one hits also counts. The same goes for large enemies' punches. Once you have the Special, a Perfect Dodge fills 1/3 of the gauge (once per dodge).</p>
+
+<h2 id="skills-en">Skills: Holy Arrow, Holy Fire, Holy Light</h2>
+<p>Attack skills come in three types: Holy Arrow, Holy Fire and Holy Light. <b>You can take only one skill of each type.</b> Once chosen it cannot be changed; you make it stronger by raising its level (up to Lv9). Your combination of skills is your fighting style.</p>
+<div class="grid one"><div class="skill g-double"><img src="img/surv_bolt.png" alt="" width="56" height="56" loading="lazy"><div><b>Starter Shot</b><span class="d">Fires forward rapidly from the start. When you take a Holy Light skill, it is replaced by a beam.</span></div></div></div>
+<h3 class="g-double">Holy Arrow — adds firing directions</h3><p class="slot">Fires the same shots as the Starter Shot in other directions. The skills differ only in direction: 1 shot at Lv1 and 2 shots at Lv2 (Fan starts with 2). Does not pierce. Damage rises with level, and fire rate increases at Lv3, 5 and 7.</p>
+<div class="grid"><div class="skill g-double"><img src="img/surv_dbl.png" alt="" width="56" height="56" loading="lazy"><div><b>Diagonal Holy Arrow</b><span class="d">Also fires diagonally forward (45°). Both sides at Lv2.</span></div></div><div class="skill g-double"><img src="img/surv_vert.png" alt="" width="56" height="56" loading="lazy"><div><b>Side Holy Arrow</b><span class="d">Also fires straight to the side (90°). Both sides at Lv2.</span></div></div><div class="skill g-double"><img src="img/surv_tail.png" alt="" width="56" height="56" loading="lazy"><div><b>Rear Holy Arrow</b><span class="d">Also fires straight back. 2 slightly spread shots at Lv2. For enemies behind you.</span></div></div><div class="skill g-double"><img src="img/surv_backdbl.png" alt="" width="56" height="56" loading="lazy"><div><b>Back-Diagonal Holy Arrow</b><span class="d">Fires straight back. 2 shots side by side (twin) at Lv2.</span></div></div><div class="skill g-double"><img src="img/surv_spread.png" alt="" width="56" height="56" loading="lazy"><div><b>Fan Holy Arrow</b><span class="d">Fires in a fan toward both front diagonals (15°). 2 shots from the start.</span></div></div></div>
+<h3 class="g-missile">Holy Fire — exploding flames</h3><p class="slot">Drops or crawls along the ground and explodes on contact. Strong against packed enemies.</p>
+<div class="grid"><div class="skill g-missile"><img src="img/surv_crawl.png" alt="" width="56" height="56" loading="lazy"><div><b>Crawling Holy Fire</b><span class="d">Drops to the side and crawls forward along the ground. Explodes widely on contact. Both sides at Lv2.</span></div></div><div class="skill g-missile"><img src="img/surv_hawk.png" alt="" width="56" height="56" loading="lazy"><div><b>Gale Holy Fire</b><span class="d">Drops to the side and races diagonally outward (45°). Turns 90° when it hits a mountain or wall and keeps crawling. Explodes on contact and bounces once. Both sides at Lv2.</span></div></div><div class="skill g-missile"><img src="img/surv_back2.png" alt="" width="56" height="56" loading="lazy"><div><b>Fore-and-Aft Holy Fire</b><span class="d">Flies diagonally forward and diagonally backward on the opposite side at once. Explodes on contact. 4 at Lv2.</span></div></div><div class="skill g-missile"><img src="img/surv_sspread.png" alt="" width="56" height="56" loading="lazy"><div><b>Scatter Holy Fire</b><span class="d">Drops diagonally behind you, makes a small explosion and keeps burning for a while. For enemies behind you. 2 (both rear diagonals) at Lv2.</span></div></div><div class="skill g-missile"><img src="img/surv_bomb.png" alt="" width="56" height="56" loading="lazy"><div><b>Blossom Holy Fire</b><span class="d">Lobbed forward; explodes widely where it lands and keeps burning. The widest area.</span></div></div></div>
+<h3 class="g-laser">Holy Light — piercing light</h3><p class="slot">Light that pierces enemies. <b>Taking one replaces your Starter Shot with a beam.</b> Each skill clearly suits a different target (lines, nearby crowds, distant crowds, single enemies, bosses).</p>
+<div class="grid"><div class="skill g-laser"><img src="img/surv_laser.png" alt="" width="56" height="56" loading="lazy"><div><b>Holy Ray</b><span class="d">Instantly fires a long, thin piercing ray forward. Strong against enemies in a line. Narrow and forward-only, so it misses enemies to the side.</span></div></div><div class="skill g-laser"><img src="img/surv_ripple.png" alt="" width="56" height="56" loading="lazy"><div><b>Ripple Holy Light</b><span class="d">Fires a ring of light that grows as it flies. Pierces. Strong against distant crowds. Gains one more ring at Lv3, 6 and 9. Rings are small right after firing.</span></div></div><div class="skill g-laser"><img src="img/surv_twin.png" alt="" width="56" height="56" loading="lazy"><div><b>Twin Holy Light</b><span class="d">Targets the nearest enemy ahead (within 30° left/right) and rapidly fires two short beams side by side. Each pierces up to 2 enemies. Strong against single targets like bosses and large enemies.</span></div></div><div class="skill g-laser"><img src="img/surv_cyclone.png" alt="" width="56" height="56" loading="lazy"><div><b>Spiral Holy Light</b><span class="d">Keeps a thick, short spiral of light going forward for a while (it follows your facing). Hits packed nearby enemies repeatedly and pushes them back. Short range.</span></div></div><div class="skill g-laser"><img src="img/surv_orb.png" alt="" width="56" height="56" loading="lazy"><div><b>Orb Holy Light</b><span class="d">Charges an orb of light, then releases it (while charging it surrounds the Saint and hits enemies that touch it). The slow orb pulls in nearby enemies and keeps hitting them. Strong against bosses and large enemies.</span></div></div></div>
+
+<h2 id="passive-en">Defense & Movement (passives)</h2><p>No passive makes your attacks stronger; these keep you alive (each up to Lv5).</p>
+<div class="grid"><div class="skill g-passive"><img src="img/surv_armor.png" alt="" width="56" height="56" loading="lazy"><div><b>Guardian Armor</b><span class="d">Damage taken −1</span></div></div><div class="skill g-passive"><img src="img/surv_heart.png" alt="" width="56" height="56" loading="lazy"><div><b>Fountain of Life</b><span class="d">Max HP +20% (allies' HP rises by the same rate)</span></div></div><div class="skill g-passive"><img src="img/surv_wind.png" alt="" width="56" height="56" loading="lazy"><div><b>Healing Wind</b><span class="d">Recover 0.3 HP per second</span></div></div><div class="skill g-passive"><img src="img/surv_boots.png" alt="" width="56" height="56" loading="lazy"><div><b>Gale Boots</b><span class="d">Walk speed +10%</span></div></div><div class="skill g-passive"><img src="img/surv_magnet.png" alt="" width="56" height="56" loading="lazy"><div><b>Magnet Stone</b><span class="d">Orb pickup range +30%</span></div></div></div>
+
+<h2 id="allies-en">Ally Saints & Formations</h2>
+<div class="grid"><div class="skill g-saint"><img src="img/surv_ally.png" alt="" width="56" height="56" loading="lazy"><div><b>Ally Saint (up to 2)</b><span class="d">Fires the same attacks as the hero. Allies have their own HP and fall when it runs out from enemy attacks (fallen allies can join again). Healing reaches allies too, and each ally adds a Special gem.</span></div></div><div class="skill g-saint"><img src="img/surv_form_follow.png" alt="" width="56" height="56" loading="lazy"><div><b>Formation: Follow</b><span class="d">Allies follow the hero's trail and fire. This is the starting formation. Can be switched back to Spread.</span></div></div><div class="skill g-saint"><img src="img/surv_form_side.png" alt="" width="56" height="56" loading="lazy"><div><b>Formation: Spread</b><span class="d">Allies line up left and right, slightly behind the hero, and fire. Sometimes offered on level-up. Can be switched back to Follow.</span></div></div></div>
+
+<h2 id="special-en">Specials</h2>
+<div class="grid one"><div class="skill g-saint"><img src="img/surv_sp.png" alt="" width="56" height="56" loading="lazy"><div><b>Saint's Special (Lv1–4)</b><span class="d">Take it on level-up to unlock Specials for the hero and allies. <b>The gauge does not fill until you take it.</b> Landing hits fills the gauge, and a Perfect Dodge fills 1/3. The hero and each ally have one gem; press a full gem and that Saint deals heavy damage over a wide area in front of the hero (the battle pauses during the Special). Higher levels raise everyone's Special damage and range.</span></div></div></div>
+
+<h2 id="items-en">Pickups</h2>
+<div class="card"><table><tr><th>EXP orb</th><td>Dropped by defeated enemies. Collect them to level up.</td></tr><tr><th>Chest</th><td>Dropped by one Lost-Heart Saint in each group at the squares. Raises the level of one of your skills or passives (3 at a 15% chance). If nothing can be raised, restores 30 HP.</td></tr><tr><th>Fruit of Life</th><td>Restores 30% of max HP (allies too).</td></tr><tr><th>Holy Bell</th><td>For 6 seconds, nearby enemies all flee.</td></tr><tr><th>Lodestone</th><td>Pulls in every EXP orb on the ground.</td></tr></table></div>
+
+<h2 id="stages-en">Stages & Bosses</h2>
+<div class="card"><table class="stages"><tr><th>Stage</th><th>Squares on the way</th><th>Boss</th></tr>
+<tr><td>STAGE 1 "Valley of Green Winds"</td><td>Lost-Heart Saints: 2 → 3</td><td>Mold the Chainsmith</td></tr>
+<tr><td>STAGE 2 "Twilight Wastes"</td><td>3 → 4</td><td>Galvan the Iron Wall</td></tr>
+<tr><td>STAGE 3 "Altar of the Withered Fields"</td><td>4 → 4</td><td>Veil of the Shadow Chain</td></tr>
+<tr><td>STAGE 4 "Valley of the Crimson Dragon"</td><td>4 → 5</td><td>Crimson Dragon</td></tr>
+</table><p class="note">Later stages have longer roads and tougher enemies. Bosses and the Crimson Dragon use area attacks and bullet barrages (more in later stages). Danger areas are marked yellow → red → purple. Lost-Heart Saints come in five different looks, all with the same attacks.</p></div>
+
+<h2 id="tips-en">Tips</h2>
+<div class="card"><ul class="tips"><li><b>Take the Special early.</b>The gauge does not fill until you take it, so putting it off wastes charge.</li><li><b>Three types of attack skills: Holy Arrow, Holy Fire, Holy Light.</b>Which skills appear on level-up is random. The first skill you pick in each type becomes that type's attack for the run, and you power it up as you level.</li><li><b>Cover your blind spots with your combination.</b>Pick skills that don't overlap in direction — Holy Light or the Starter Shot in front, Rear/Back-Diagonal Holy Arrow or Scatter Holy Fire behind — and you'll be surrounded less.</li><li><b>Recruit allies early.</b>Allies fire the same attacks as the hero, multiplying your shots, and add Special gems. They fall when their HP runs out, so support them with Fruit of Life and Healing Wind. Fallen allies can join again.</li><li><b>Purple marks are your chance.</b>Dodge during the 0.5 sec a danger area is purple for a Perfect Dodge. Once you have the Special, it fills 1/3 of the gauge.</li><li><b>Get your HP ready before the squares.</b>The Lost-Heart Saint groups are tough. Healing Wind and Fountain of Life make those fights steadier.</li></ul></div>
+
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Play the free PC demo (itch.io)</a><p class="note">SURVIVORS is also being prepared for the demo.</p><p><a class="back" href="./">Back to the official page</a></p></div>
+</section>
+<section class="L" data-l="zh-Hans" lang="zh-Hans">
+<header><img src="img/surv_title_zh.png" alt="SURVIVORS" class="logo">
+<p class="lead">《圣女行进军》的另一种模式。凭借圣女之力，在汹涌而来的敌群中杀出一条血路的幸存者类玩法。在标题画面选择「切换模式」即可游玩。</p></header>
+<div class="notice"><b>SURVIVORS 目前正在准备上线。</b>本页内容来自开发中的版本，正式推出前可能会有变动。</div>
+<nav class="toc"><a href="#flow-zh-Hans">流程</a><a href="#controls-zh-Hans">操作</a><a href="#skills-zh-Hans">技能</a><a href="#passive-zh-Hans">防御与移动</a><a href="#allies-zh-Hans">同伴圣女</a><a href="#special-zh-Hans">必杀技</a><a href="#items-zh-Hans">拾取物</a><a href="#stages-zh-Hans">关卡与首领</a><a href="#tips-zh-Hans">攻略技巧</a></nav>
+
+<h2 id="flow-zh-Hans">一个关卡的流程</h2>
+<div class="flow"><div>沿着山谷的道路向深处前进，敌人从四面八方涌来</div><div>拾取被打倒的敌人掉落的经验宝珠来升级，从 3 项中选 1 项</div><div>在途中的 2 个广场与「失心圣女」群战斗（全部打倒才能前进）</div><div>在道路尽头与首领决战，击败即可通关</div></div>
+<p class="note">下一关会从 1 级重新开始。体验版可以游玩第 1 关。</p>
+
+<h2 id="controls-zh-Hans">操作</h2>
+<p class="note">所有攻击都是自动的。初始弹和选择的技能（圣矢・圣火・圣光）会自动发射，你可以专心移动、闪避和使用必杀技。</p>
+<div class="ctrl">
+<div class="card"><h3>键盘</h3><table>
+<tr><th>移动</th><td><kbd>W</kbd><kbd>A</kbd><kbd>X</kbd>（<kbd>Z</kbd>）<kbd>D</kbd></td></tr><tr><th>闪避</th><td><kbd>Enter</kbd></td></tr><tr><th>必杀技</th><td><kbd>Space</kbd> （第一颗可用的宝石）</td></tr><tr><th>转向前进方向</th><td><kbd>S</kbd></td></tr>
+<tr><th>视角</th><td><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></td></tr><tr><th>缩放</th><td><kbd>Q</kbd><kbd>E</kbd></td></tr><tr><th>暂停</th><td><kbd>Esc</kbd></td></tr><tr><th>全屏・声音</th><td><kbd>F11</kbd>・<kbd>Alt</kbd>+<kbd>Enter</kbd>・声音： <kbd>M</kbd></td></tr>
+</table></div>
+<div class="card"><h3>鼠标（PC）</h3><table>
+<tr><th>移动</th><td>左键点击开始行走，再点一次停下（行走时朝光标方向）</td></tr><tr><th>闪避</th><td>右键（不拖动就松开，朝光标方向闪避）</td></tr><tr><th>必杀技</th><td>点击宝石</td></tr><tr><th>视角</th><td>按住右键拖动</td></tr><tr><th>缩放</th><td>滚轮</td></tr><tr><th>暂停</th><td>点击右上角的 ‖</td></tr>
+</table><p class="note">用按键移动会取消行走。升级选择和暂停期间会停下，结束后继续行走。</p></div>
+<div class="card"><h3>手机</h3><table>
+<tr><th>移动</th><td>左侧摇杆</td></tr><tr><th>闪避</th><td>右上角的「闪避」按钮（按住滑动可朝该方向闪避）</td></tr><tr><th>必杀技</th><td>点击右下角的宝石</td></tr><tr><th>转向前进方向</th><td>双击屏幕右侧</td></tr><tr><th>视角</th><td>拖动屏幕右侧</td></tr><tr><th>缩放</th><td>双指</td></tr><tr><th>暂停</th><td>右上角的 ‖・返回键</td></tr>
+</table></div>
+</div>
+<p class="note">「转向前进方向」会把镜头转向前方道路一次。也支持手柄（闪避 A／×、必杀技 Y／△、转向 R1）。闪避方向依次取：滑动方向 → 移动方向 → 圣女面朝的方向。</p>
+<h3>完美闪避</h3>
+<p>首领攻击前，地面会显示危险范围。颜色按 黄（1 秒）→ 红（1 秒）→ 紫 变化，在<b class="purple">变成紫色的 0.5 秒内</b>闪避即为「完美闪避！」。飞来的子弹（首领和失心圣女的子弹、弓兵的箭）没有标记，但在命中前 0.5 秒内按下闪避也算完美闪避。大型敌人的拳击也一样。取得必杀技后，完美闪避会让必杀技槽积累 1/3（每次闪避仅一次）。</p>
+
+<h2 id="skills-zh-Hans">技能：圣矢・圣火・圣光</h2>
+<p>攻击技能分为圣矢、圣火、圣光 3 类，<b>每一类只能选择 1 个技能</b>。选定后无法更换，之后通过提升等级（最高 Lv9）来变强。技能的组合就是你的战斗方式。</p>
+<div class="grid one"><div class="skill g-double"><img src="img/surv_bolt.png" alt="" width="56" height="56" loading="lazy"><div><b>初始弹</b><span class="d">从一开始就向前连射的子弹。选择圣光类技能后，会替换为光线。</span></div></div></div>
+<h3 class="g-double">圣矢 — 增加射击方向</h3><p class="slot">向其他方向发射与初始弹相同的子弹。各技能只有方向不同，Lv1 为 1 发，Lv2 为 2 发（只有扇形从一开始就是 2 发）。不穿透。威力随等级提升，Lv3・5・7 时射速加快。</p>
+<div class="grid"><div class="skill g-double"><img src="img/surv_dbl.png" alt="" width="56" height="56" loading="lazy"><div><b>斜向圣矢</b><span class="d">同时向斜前方（45°）射击。Lv2 时左右两侧。</span></div></div><div class="skill g-double"><img src="img/surv_vert.png" alt="" width="56" height="56" loading="lazy"><div><b>横向圣矢</b><span class="d">同时向正侧方（90°）射击。Lv2 时左右两侧。</span></div></div><div class="skill g-double"><img src="img/surv_tail.png" alt="" width="56" height="56" loading="lazy"><div><b>背向圣矢</b><span class="d">同时向正后方射击。Lv2 时 2 发，稍微张开。对付后方来敌。</span></div></div><div class="skill g-double"><img src="img/surv_backdbl.png" alt="" width="56" height="56" loading="lazy"><div><b>回身圣矢</b><span class="d">向正后方射击。Lv2 时 2 发横向并排（双发）。</span></div></div><div class="skill g-double"><img src="img/surv_spread.png" alt="" width="56" height="56" loading="lazy"><div><b>扇形圣矢</b><span class="d">向左右斜前方（15°）扇形射击。从一开始就是 2 发。</span></div></div></div>
+<h3 class="g-missile">圣火 — 爆裂之火</h3><p class="slot">落下或贴地爬行，碰到敌人就会爆炸。擅长对付成群的敌人。</p>
+<div class="grid"><div class="skill g-missile"><img src="img/surv_crawl.png" alt="" width="56" height="56" loading="lazy"><div><b>地行圣火</b><span class="d">落在侧面，贴地向前爬行。碰到敌人时大范围爆炸。Lv2 时左右两侧。</span></div></div><div class="skill g-missile"><img src="img/surv_hawk.png" alt="" width="56" height="56" loading="lazy"><div><b>疾风圣火</b><span class="d">落在侧面，向外侧斜前方（45°）高速爬行。碰到山或墙会转 90° 继续爬行。碰到敌人爆炸，并反弹 1 次。Lv2 时左右两侧。</span></div></div><div class="skill g-missile"><img src="img/surv_back2.png" alt="" width="56" height="56" loading="lazy"><div><b>前后圣火</b><span class="d">同时飞向斜前方和另一侧的斜后方。碰到敌人爆炸。Lv2 时变为 4 个。</span></div></div><div class="skill g-missile"><img src="img/surv_sspread.png" alt="" width="56" height="56" loading="lazy"><div><b>小散圣火</b><span class="d">落在斜后方，小范围爆炸并持续燃烧一段时间。对付后方的敌人。Lv2 时左右斜后方各 1 个。</span></div></div><div class="skill g-missile"><img src="img/surv_bomb.png" alt="" width="56" height="56" loading="lazy"><div><b>散华圣火</b><span class="d">向前抛出，在落点大范围爆炸并持续燃烧。范围最广。</span></div></div></div>
+<h3 class="g-laser">圣光 — 贯穿之光</h3><p class="slot">贯穿敌人的光。<b>选择后，初始弹会替换为光线。</b>各技能擅长的对象截然不同（成列・近处敌群・远处敌群・单体・首领）。</p>
+<div class="grid"><div class="skill g-laser"><img src="img/surv_laser.png" alt="" width="56" height="56" loading="lazy"><div><b>一道圣光</b><span class="d">瞬间向前放出细长的贯穿光线。擅长对付排成一列的敌人。只有前方一条细线，打不到侧面的敌人。</span></div></div><div class="skill g-laser"><img src="img/surv_ripple.png" alt="" width="56" height="56" loading="lazy"><div><b>波纹圣光</b><span class="d">向前放出边飞边扩大的光环。可贯穿。擅长对付远处的敌群。Lv3・6・9 时各增加 1 个光环。刚放出时光环较小。</span></div></div><div class="skill g-laser"><img src="img/surv_twin.png" alt="" width="56" height="56" loading="lazy"><div><b>双子圣光</b><span class="d">瞄准前方（左右 30° 以内）最近的敌人，快速发射 2 道并排的短光。每道最多贯穿 2 个敌人。擅长对付首领、大型敌人等单体。</span></div></div><div class="skill g-laser"><img src="img/surv_cyclone.png" alt="" width="56" height="56" loading="lazy"><div><b>漩涡圣光</b><span class="d">向前持续放出一段粗短的漩涡之光（随朝向移动）。反复打击聚集在近处的敌人并将其击退。射程短。</span></div></div><div class="skill g-laser"><img src="img/surv_orb.png" alt="" width="56" height="56" loading="lazy"><div><b>宝珠圣光</b><span class="d">蓄力后放出光球（蓄力时大范围包覆圣女，打击接触到的敌人）。光球缓慢前进，吸引周围的敌人并持续打击。擅长对付首领和大型敌人。</span></div></div></div>
+
+<h2 id="passive-zh-Hans">防御与移动（被动）</h2><p>没有增强攻击的被动技能，都是用来生存的能力（均最高 Lv5）。</p>
+<div class="grid"><div class="skill g-passive"><img src="img/surv_armor.png" alt="" width="56" height="56" loading="lazy"><div><b>守护之铠</b><span class="d">受到的伤害 −1</span></div></div><div class="skill g-passive"><img src="img/surv_heart.png" alt="" width="56" height="56" loading="lazy"><div><b>生命之泉</b><span class="d">最大体力 +20%（同伴的体力也按相同比例增加）</span></div></div><div class="skill g-passive"><img src="img/surv_wind.png" alt="" width="56" height="56" loading="lazy"><div><b>治愈之风</b><span class="d">每秒恢复 0.3 体力</span></div></div><div class="skill g-passive"><img src="img/surv_boots.png" alt="" width="56" height="56" loading="lazy"><div><b>疾风之靴</b><span class="d">行走速度 +10%</span></div></div><div class="skill g-passive"><img src="img/surv_magnet.png" alt="" width="56" height="56" loading="lazy"><div><b>引力之石</b><span class="d">拾取宝珠的范围 +30%</span></div></div></div>
+
+<h2 id="allies-zh-Hans">同伴圣女与阵形</h2>
+<div class="grid"><div class="skill g-saint"><img src="img/surv_ally.png" alt="" width="56" height="56" loading="lazy"><div><b>同伴圣女（最多 2 人）</b><span class="d">与主角一起发动相同的攻击。同伴拥有自己的体力，受到敌人攻击耗尽就会倒下（倒下的同伴可以再次加入）。回复也会作用于同伴，必杀技的宝石也会增加。</span></div></div><div class="skill g-saint"><img src="img/surv_form_follow.png" alt="" width="56" height="56" loading="lazy"><div><b>阵形：跟随</b><span class="d">同伴沿着主角走过的路径跟随射击。初始阵形。可以再次切换为横向展开。</span></div></div><div class="skill g-saint"><img src="img/surv_form_side.png" alt="" width="56" height="56" loading="lazy"><div><b>阵形：横向展开</b><span class="d">同伴在主角左右稍后方排开射击。升级时偶尔出现。可以再次切换为跟随。</span></div></div></div>
+
+<h2 id="special-zh-Hans">必杀技</h2>
+<div class="grid one"><div class="skill g-saint"><img src="img/surv_sp.png" alt="" width="56" height="56" loading="lazy"><div><b>圣女的必杀技（Lv1～4）</b><span class="d">升级时选择后，主角和同伴都能使用必杀技。<b>选择之前槽不会积累。</b>命中攻击会积累槽，完美闪避也能积累 1/3。主角和每位同伴各有 1 颗宝石，按下充满的宝石，该圣女会对主角前方大范围造成大量伤害（发动期间战斗时间暂停）。等级越高，所有人的必杀技威力和范围越大。</span></div></div></div>
+
+<h2 id="items-zh-Hans">拾取物</h2>
+<div class="card"><table><tr><th>经验宝珠</th><td>被打倒的敌人掉落。收集后升级。</td></tr><tr><th>宝箱</th><td>由途中广场的失心圣女群中的 1 个掉落（每群 1 个）。随机提升你拥有的 1 个技能或被动的等级（15% 概率提升 3 个）。没有可提升的项目时，体力 +30。</td></tr><tr><th>生命之果</th><td>恢复最大体力的 30%（同伴也会恢复）。</td></tr><tr><th>圣钟</th><td>6 秒内周围的敌人全部逃跑。</td></tr><tr><th>吸引之石</th><td>把地上所有经验宝珠吸过来。</td></tr></table></div>
+
+<h2 id="stages-zh-Hans">关卡与首领</h2>
+<div class="card"><table class="stages"><tr><th>关卡</th><th>途中的广场</th><th>首领</th></tr>
+<tr><td>STAGE 1「绿风之谷」</td><td>失心圣女 2 个 → 3 个</td><td>锁链工匠莫尔德</td></tr>
+<tr><td>STAGE 2「黄昏荒野」</td><td>3 个 → 4 个</td><td>铁壁加尔凡</td></tr>
+<tr><td>STAGE 3「枯野祭坛」</td><td>4 个 → 4 个</td><td>影锁维尔</td></tr>
+<tr><td>STAGE 4「红莲龙之谷」</td><td>4 个 → 5 个</td><td>红莲龙</td></tr>
+</table><p class="note">越往后的关卡，道路越长，敌人越强。首领和红莲龙都会使用范围攻击和弹幕（越往后越多）。危险范围会以 黄 → 红 → 紫 的标记提示。失心圣女有 5 种不同外观（攻击相同）。</p></div>
+
+<h2 id="tips-zh-Hans">攻略技巧</h2>
+<div class="card"><ul class="tips"><li><b>尽早选择必杀技。</b>选择之前槽不会积累，拖后会吃亏。</li><li><b>攻击技能分为圣矢・圣火・圣光 3 类。</b>升级时出现哪个技能是随机的。每一类最先选择的技能就会成为该类的攻击，之后通过升级不断强化。</li><li><b>用技能组合弥补死角。</b>前方用圣光或初始弹，后方用背向・回身圣矢或小散圣火，选择方向不重叠的技能，就不容易被包围。</li><li><b>尽早加入同伴。</b>同伴发动与主角相同的攻击，射击数量直接增加，必杀技宝石也会增加。同伴体力耗尽也会倒下，请用生命之果和治愈之风支援。倒下后也可以再次加入。</li><li><b>紫色标记是好机会。</b>在危险范围变成紫色的 0.5 秒内闪避即为完美闪避。取得必杀技后，必杀技槽积累 1/3。</li><li><b>进入广场前调整好体力。</b>失心圣女群是强敌。准备好治愈之风和生命之泉会更稳。</li></ul></div>
+
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">游玩免费 PC 体验版（itch.io）</a><p class="note">体验版中加入 SURVIVORS 也在准备中。</p><p><a class="back" href="./">返回官方网站</a></p></div>
+</section>
+<section class="L" data-l="zh-Hant" lang="zh-Hant">
+<header><img src="img/surv_title_zh.png" alt="SURVIVORS" class="logo">
+<p class="lead">《聖女行進軍》的另一種模式。憑藉聖女之力，在洶湧而來的敵群中殺出一條血路的倖存者類玩法。在標題畫面選擇「切換模式」即可遊玩。</p></header>
+<div class="notice"><b>SURVIVORS 目前正在準備上線。</b>本頁內容來自開發中的版本，正式推出前可能會有變動。</div>
+<nav class="toc"><a href="#flow-zh-Hant">流程</a><a href="#controls-zh-Hant">操作</a><a href="#skills-zh-Hant">技能</a><a href="#passive-zh-Hant">防禦與移動</a><a href="#allies-zh-Hant">同伴聖女</a><a href="#special-zh-Hant">必殺技</a><a href="#items-zh-Hant">拾取物</a><a href="#stages-zh-Hant">關卡與首領</a><a href="#tips-zh-Hant">攻略技巧</a></nav>
+
+<h2 id="flow-zh-Hant">一個關卡的流程</h2>
+<div class="flow"><div>沿著山谷的道路向深處前進，敵人從四面八方湧來</div><div>拾取被打倒的敵人掉落的經驗寶珠來升級，從 3 項中選 1 項</div><div>在途中的 2 個廣場與「失心聖女」群戰鬥（全部打倒才能前進）</div><div>在道路盡頭與首領決戰，擊敗即可過關</div></div>
+<p class="note">下一關會從 1 級重新開始。體驗版可以遊玩第 1 關。</p>
+
+<h2 id="controls-zh-Hant">操作</h2>
+<p class="note">所有攻擊都是自動的。初始彈和選擇的技能（聖矢・聖火・聖光）會自動發射，你可以專心移動、閃避和使用必殺技。</p>
+<div class="ctrl">
+<div class="card"><h3>鍵盤</h3><table>
+<tr><th>移動</th><td><kbd>W</kbd><kbd>A</kbd><kbd>X</kbd>（<kbd>Z</kbd>）<kbd>D</kbd></td></tr><tr><th>閃避</th><td><kbd>Enter</kbd></td></tr><tr><th>必殺技</th><td><kbd>Space</kbd> （第一顆可用的寶石）</td></tr><tr><th>轉向前進方向</th><td><kbd>S</kbd></td></tr>
+<tr><th>視角</th><td><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></td></tr><tr><th>縮放</th><td><kbd>Q</kbd><kbd>E</kbd></td></tr><tr><th>暫停</th><td><kbd>Esc</kbd></td></tr><tr><th>全螢幕・聲音</th><td><kbd>F11</kbd>・<kbd>Alt</kbd>+<kbd>Enter</kbd>・聲音： <kbd>M</kbd></td></tr>
+</table></div>
+<div class="card"><h3>滑鼠（PC）</h3><table>
+<tr><th>移動</th><td>左鍵點擊開始行走，再點一次停下（行走時朝游標方向）</td></tr><tr><th>閃避</th><td>右鍵（不拖動就放開，朝游標方向閃避）</td></tr><tr><th>必殺技</th><td>點擊寶石</td></tr><tr><th>視角</th><td>按住右鍵拖動</td></tr><tr><th>縮放</th><td>滾輪</td></tr><tr><th>暫停</th><td>點擊右上角的 ‖</td></tr>
+</table><p class="note">用按鍵移動會取消行走。升級選擇和暫停期間會停下，結束後繼續行走。</p></div>
+<div class="card"><h3>手機</h3><table>
+<tr><th>移動</th><td>左側搖桿</td></tr><tr><th>閃避</th><td>右上角的「閃避」按鈕（按住滑動可朝該方向閃避）</td></tr><tr><th>必殺技</th><td>點擊右下角的寶石</td></tr><tr><th>轉向前進方向</th><td>雙擊螢幕右側</td></tr><tr><th>視角</th><td>拖動螢幕右側</td></tr><tr><th>縮放</th><td>雙指</td></tr><tr><th>暫停</th><td>右上角的 ‖・返回鍵</td></tr>
+</table></div>
+</div>
+<p class="note">「轉向前進方向」會把鏡頭轉向前方道路一次。也支援手把（閃避 A／×、必殺技 Y／△、轉向 R1）。閃避方向依序取：滑動方向 → 移動方向 → 聖女面朝的方向。</p>
+<h3>完美閃避</h3>
+<p>首領攻擊前，地面會顯示危險範圍。顏色依 黃（1 秒）→ 紅（1 秒）→ 紫 變化，在<b class="purple">變成紫色的 0.5 秒內</b>閃避即為「完美閃避！」。飛來的子彈（首領和失心聖女的子彈、弓兵的箭）沒有標記，但在命中前 0.5 秒內按下閃避也算完美閃避。大型敵人的拳擊也一樣。取得必殺技後，完美閃避會讓必殺技槽累積 1/3（每次閃避僅一次）。</p>
+
+<h2 id="skills-zh-Hant">技能：聖矢・聖火・聖光</h2>
+<p>攻擊技能分為聖矢、聖火、聖光 3 類，<b>每一類只能選擇 1 個技能</b>。選定後無法更換，之後透過提升等級（最高 Lv9）來變強。技能的組合就是你的戰鬥方式。</p>
+<div class="grid one"><div class="skill g-double"><img src="img/surv_bolt.png" alt="" width="56" height="56" loading="lazy"><div><b>初始彈</b><span class="d">從一開始就向前連射的子彈。選擇聖光類技能後，會替換為光線。</span></div></div></div>
+<h3 class="g-double">聖矢 — 增加射擊方向</h3><p class="slot">向其他方向發射與初始彈相同的子彈。各技能只有方向不同，Lv1 為 1 發，Lv2 為 2 發（只有扇形從一開始就是 2 發）。不穿透。威力隨等級提升，Lv3・5・7 時射速加快。</p>
+<div class="grid"><div class="skill g-double"><img src="img/surv_dbl.png" alt="" width="56" height="56" loading="lazy"><div><b>斜向聖矢</b><span class="d">同時向斜前方（45°）射擊。Lv2 時左右兩側。</span></div></div><div class="skill g-double"><img src="img/surv_vert.png" alt="" width="56" height="56" loading="lazy"><div><b>橫向聖矢</b><span class="d">同時向正側方（90°）射擊。Lv2 時左右兩側。</span></div></div><div class="skill g-double"><img src="img/surv_tail.png" alt="" width="56" height="56" loading="lazy"><div><b>背向聖矢</b><span class="d">同時向正後方射擊。Lv2 時 2 發，稍微張開。對付後方來敵。</span></div></div><div class="skill g-double"><img src="img/surv_backdbl.png" alt="" width="56" height="56" loading="lazy"><div><b>回身聖矢</b><span class="d">向正後方射擊。Lv2 時 2 發橫向並排（雙發）。</span></div></div><div class="skill g-double"><img src="img/surv_spread.png" alt="" width="56" height="56" loading="lazy"><div><b>扇形聖矢</b><span class="d">向左右斜前方（15°）扇形射擊。從一開始就是 2 發。</span></div></div></div>
+<h3 class="g-missile">聖火 — 爆裂之火</h3><p class="slot">落下或貼地爬行，碰到敵人就會爆炸。擅長對付成群的敵人。</p>
+<div class="grid"><div class="skill g-missile"><img src="img/surv_crawl.png" alt="" width="56" height="56" loading="lazy"><div><b>地行聖火</b><span class="d">落在側面，貼地向前爬行。碰到敵人時大範圍爆炸。Lv2 時左右兩側。</span></div></div><div class="skill g-missile"><img src="img/surv_hawk.png" alt="" width="56" height="56" loading="lazy"><div><b>疾風聖火</b><span class="d">落在側面，向外側斜前方（45°）高速爬行。碰到山或牆會轉 90° 繼續爬行。碰到敵人爆炸，並反彈 1 次。Lv2 時左右兩側。</span></div></div><div class="skill g-missile"><img src="img/surv_back2.png" alt="" width="56" height="56" loading="lazy"><div><b>前後聖火</b><span class="d">同時飛向斜前方和另一側的斜後方。碰到敵人爆炸。Lv2 時變為 4 個。</span></div></div><div class="skill g-missile"><img src="img/surv_sspread.png" alt="" width="56" height="56" loading="lazy"><div><b>小散聖火</b><span class="d">落在斜後方，小範圍爆炸並持續燃燒一段時間。對付後方的敵人。Lv2 時左右斜後方各 1 個。</span></div></div><div class="skill g-missile"><img src="img/surv_bomb.png" alt="" width="56" height="56" loading="lazy"><div><b>散華聖火</b><span class="d">向前拋出，在落點大範圍爆炸並持續燃燒。範圍最廣。</span></div></div></div>
+<h3 class="g-laser">聖光 — 貫穿之光</h3><p class="slot">貫穿敵人的光。<b>選擇後，初始彈會替換為光線。</b>各技能擅長的對象截然不同（成列・近處敵群・遠處敵群・單體・首領）。</p>
+<div class="grid"><div class="skill g-laser"><img src="img/surv_laser.png" alt="" width="56" height="56" loading="lazy"><div><b>一道聖光</b><span class="d">瞬間向前放出細長的貫穿光線。擅長對付排成一列的敵人。只有前方一條細線，打不到側面的敵人。</span></div></div><div class="skill g-laser"><img src="img/surv_ripple.png" alt="" width="56" height="56" loading="lazy"><div><b>波紋聖光</b><span class="d">向前放出邊飛邊擴大的光環。可貫穿。擅長對付遠處的敵群。Lv3・6・9 時各增加 1 個光環。剛放出時光環較小。</span></div></div><div class="skill g-laser"><img src="img/surv_twin.png" alt="" width="56" height="56" loading="lazy"><div><b>雙子聖光</b><span class="d">瞄準前方（左右 30° 以內）最近的敵人，快速發射 2 道並排的短光。每道最多貫穿 2 個敵人。擅長對付首領、大型敵人等單體。</span></div></div><div class="skill g-laser"><img src="img/surv_cyclone.png" alt="" width="56" height="56" loading="lazy"><div><b>漩渦聖光</b><span class="d">向前持續放出一段粗短的漩渦之光（隨朝向移動）。反覆打擊聚集在近處的敵人並將其擊退。射程短。</span></div></div><div class="skill g-laser"><img src="img/surv_orb.png" alt="" width="56" height="56" loading="lazy"><div><b>寶珠聖光</b><span class="d">蓄力後放出光球（蓄力時大範圍包覆聖女，打擊接觸到的敵人）。光球緩慢前進，吸引周圍的敵人並持續打擊。擅長對付首領和大型敵人。</span></div></div></div>
+
+<h2 id="passive-zh-Hant">防禦與移動（被動）</h2><p>沒有增強攻擊的被動技能，都是用來生存的能力（均最高 Lv5）。</p>
+<div class="grid"><div class="skill g-passive"><img src="img/surv_armor.png" alt="" width="56" height="56" loading="lazy"><div><b>守護之鎧</b><span class="d">受到的傷害 −1</span></div></div><div class="skill g-passive"><img src="img/surv_heart.png" alt="" width="56" height="56" loading="lazy"><div><b>生命之泉</b><span class="d">最大體力 +20%（同伴的體力也按相同比例增加）</span></div></div><div class="skill g-passive"><img src="img/surv_wind.png" alt="" width="56" height="56" loading="lazy"><div><b>治癒之風</b><span class="d">每秒恢復 0.3 體力</span></div></div><div class="skill g-passive"><img src="img/surv_boots.png" alt="" width="56" height="56" loading="lazy"><div><b>疾風之靴</b><span class="d">行走速度 +10%</span></div></div><div class="skill g-passive"><img src="img/surv_magnet.png" alt="" width="56" height="56" loading="lazy"><div><b>引力之石</b><span class="d">拾取寶珠的範圍 +30%</span></div></div></div>
+
+<h2 id="allies-zh-Hant">同伴聖女與陣形</h2>
+<div class="grid"><div class="skill g-saint"><img src="img/surv_ally.png" alt="" width="56" height="56" loading="lazy"><div><b>同伴聖女（最多 2 人）</b><span class="d">與主角一起發動相同的攻擊。同伴擁有自己的體力，受到敵人攻擊耗盡就會倒下（倒下的同伴可以再次加入）。回復也會作用於同伴，必殺技的寶石也會增加。</span></div></div><div class="skill g-saint"><img src="img/surv_form_follow.png" alt="" width="56" height="56" loading="lazy"><div><b>陣形：跟隨</b><span class="d">同伴沿著主角走過的路徑跟隨射擊。初始陣形。可以再次切換為橫向展開。</span></div></div><div class="skill g-saint"><img src="img/surv_form_side.png" alt="" width="56" height="56" loading="lazy"><div><b>陣形：橫向展開</b><span class="d">同伴在主角左右稍後方排開射擊。升級時偶爾出現。可以再次切換為跟隨。</span></div></div></div>
+
+<h2 id="special-zh-Hant">必殺技</h2>
+<div class="grid one"><div class="skill g-saint"><img src="img/surv_sp.png" alt="" width="56" height="56" loading="lazy"><div><b>聖女的必殺技（Lv1～4）</b><span class="d">升級時選擇後，主角和同伴都能使用必殺技。<b>選擇之前槽不會累積。</b>命中攻擊會累積槽，完美閃避也能累積 1/3。主角和每位同伴各有 1 顆寶石，按下充滿的寶石，該聖女會對主角前方大範圍造成大量傷害（發動期間戰鬥時間暫停）。等級越高，所有人的必殺技威力和範圍越大。</span></div></div></div>
+
+<h2 id="items-zh-Hant">拾取物</h2>
+<div class="card"><table><tr><th>經驗寶珠</th><td>被打倒的敵人掉落。收集後升級。</td></tr><tr><th>寶箱</th><td>由途中廣場的失心聖女群中的 1 個掉落（每群 1 個）。隨機提升你擁有的 1 個技能或被動的等級（15% 機率提升 3 個）。沒有可提升的項目時，體力 +30。</td></tr><tr><th>生命之果</th><td>恢復最大體力的 30%（同伴也會恢復）。</td></tr><tr><th>聖鍾</th><td>6 秒內周圍的敵人全部逃跑。</td></tr><tr><th>吸引之石</th><td>把地上所有經驗寶珠吸過來。</td></tr></table></div>
+
+<h2 id="stages-zh-Hant">關卡與首領</h2>
+<div class="card"><table class="stages"><tr><th>關卡</th><th>途中的廣場</th><th>首領</th></tr>
+<tr><td>STAGE 1「綠風之谷」</td><td>失心聖女 2 個 → 3 個</td><td>鎖鏈工匠莫爾德</td></tr>
+<tr><td>STAGE 2「黃昏荒野」</td><td>3 個 → 4 個</td><td>鐵壁加爾凡</td></tr>
+<tr><td>STAGE 3「枯野祭壇」</td><td>4 個 → 4 個</td><td>影鎖維爾</td></tr>
+<tr><td>STAGE 4「紅蓮龍之谷」</td><td>4 個 → 5 個</td><td>紅蓮龍</td></tr>
+</table><p class="note">越往後的關卡，道路越長，敵人越強。首領和紅蓮龍都會使用範圍攻擊和彈幕（越往後越多）。危險範圍會以 黃 → 紅 → 紫 的標記提示。失心聖女有 5 種不同外觀（攻擊相同）。</p></div>
+
+<h2 id="tips-zh-Hant">攻略技巧</h2>
+<div class="card"><ul class="tips"><li><b>盡早選擇必殺技。</b>選擇之前槽不會累積，拖延會吃虧。</li><li><b>攻擊技能分為聖矢・聖火・聖光 3 類。</b>升級時出現哪個技能是隨機的。每一類最先選擇的技能就會成為該類的攻擊，之後透過升級不斷強化。</li><li><b>用技能組合彌補死角。</b>前方用聖光或初始彈，後方用背向・回身聖矢或小散聖火，選擇方向不重疊的技能，就不容易被包圍。</li><li><b>盡早加入同伴。</b>同伴發動與主角相同的攻擊，射擊數量直接增加，必殺技寶石也會增加。同伴體力耗盡也會倒下，請用生命之果和治癒之風支援。倒下後也可以再次加入。</li><li><b>紫色標記是好機會。</b>在危險範圍變成紫色的 0.5 秒內閃避即為完美閃避。取得必殺技後，必殺技槽累積 1/3。</li><li><b>進入廣場前調整好體力。</b>失心聖女群是強敵。準備好治癒之風和生命之泉會更穩。</li></ul></div>
+
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">遊玩免費 PC 體驗版（itch.io）</a><p class="note">體驗版中加入 SURVIVORS 也在準備中。</p><p><a class="back" href="./">返回官方網站</a></p></div>
+</section>
+<section class="L" data-l="ko" lang="ko">
+<header><img src="img/surv_title_en.png" alt="SURVIVORS" class="logo">
+<p class="lead">『The March of the Saints』의 또 하나의 모드. 몰려오는 적의 무리를 성녀의 힘으로 뚫고 나아가는 서바이버 장르입니다. 타이틀 화면의 「모드 전환」에서 플레이할 수 있습니다.</p></header>
+<div class="notice"><b>SURVIVORS는 현재 출시를 준비 중입니다.</b> 이 페이지의 내용은 개발 중인 버전 기준이며, 출시 전에 바뀔 수 있습니다.</div>
+<nav class="toc"><a href="#flow-ko">흐름</a><a href="#controls-ko">조작</a><a href="#skills-ko">스킬</a><a href="#passive-ko">방어와 이동</a><a href="#allies-ko">동료 성녀</a><a href="#special-ko">필살기</a><a href="#items-ko">획득 아이템</a><a href="#stages-ko">스테이지와 보스</a><a href="#tips-ko">공략 팁</a></nav>
+
+<h2 id="flow-ko">한 스테이지의 흐름</h2>
+<div class="flow"><div>계곡 길을 따라 안쪽으로 나아간다. 적은 사방에서 몰려온다</div><div>쓰러뜨린 적이 떨어뜨린 경험치 구슬을 모아 레벨업. 3개 중 1개를 고른다</div><div>도중의 광장 2곳에서 「마음 잃은 성녀」 무리와 싸운다(모두 쓰러뜨려야 앞으로 나아갈 수 있다)</div><div>길 끝에서 보스와 대결. 쓰러뜨리면 스테이지 클리어</div></div>
+<p class="note">다음 스테이지는 레벨 1부터 다시 시작합니다. 체험판에서는 스테이지 1을 플레이할 수 있습니다.</p>
+
+<h2 id="controls-ko">조작</h2>
+<p class="note">공격은 모두 자동입니다. 기본 탄과 고른 스킬(성시・성화・성광)이 알아서 발사되므로, 이동과 회피, 필살기에 집중할 수 있습니다.</p>
+<div class="ctrl">
+<div class="card"><h3>키보드</h3><table>
+<tr><th>이동</th><td><kbd>W</kbd><kbd>A</kbd><kbd>X</kbd>（<kbd>Z</kbd>）<kbd>D</kbd></td></tr><tr><th>회피</th><td><kbd>Enter</kbd></td></tr><tr><th>필살기</th><td><kbd>Space</kbd> (사용 가능한 첫 번째 보석)</td></tr><tr><th>진행 방향으로 돌아보기</th><td><kbd>S</kbd></td></tr>
+<tr><th>시점</th><td><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></td></tr><tr><th>줌</th><td><kbd>Q</kbd><kbd>E</kbd></td></tr><tr><th>일시정지</th><td><kbd>Esc</kbd></td></tr><tr><th>전체 화면・소리</th><td><kbd>F11</kbd>・<kbd>Alt</kbd>+<kbd>Enter</kbd>・소리: <kbd>M</kbd></td></tr>
+</table></div>
+<div class="card"><h3>마우스(PC)</h3><table>
+<tr><th>이동</th><td>왼쪽 클릭으로 걷기 시작, 다시 클릭하면 멈춤(걷는 동안은 커서 방향으로)</td></tr><tr><th>회피</th><td>오른쪽 클릭(움직이지 않고 떼면 커서 방향으로 회피)</td></tr><tr><th>필살기</th><td>보석 클릭</td></tr><tr><th>시점</th><td>오른쪽 버튼을 누른 채 드래그</td></tr><tr><th>줌</th><td>휠</td></tr><tr><th>일시정지</th><td>오른쪽 위의 ‖ 클릭</td></tr>
+</table><p class="note">키로 움직이면 걷기가 해제됩니다. 레벨업 선택이나 일시정지 중에는 멈췄다가, 끝나면 다시 걷습니다.</p></div>
+<div class="card"><h3>스마트폰</h3><table>
+<tr><th>이동</th><td>왼쪽 스틱</td></tr><tr><th>회피</th><td>오른쪽 위의 「회피」 버튼(누른 채 스와이프하면 그 방향으로)</td></tr><tr><th>필살기</th><td>오른쪽 아래의 보석을 탭</td></tr><tr><th>진행 방향으로 돌아보기</th><td>화면 오른쪽을 더블 탭</td></tr><tr><th>시점</th><td>화면 오른쪽을 드래그</td></tr><tr><th>줌</th><td>두 손가락</td></tr><tr><th>일시정지</th><td>오른쪽 위의 ‖・뒤로</td></tr>
+</table></div>
+</div>
+<p class="note">「진행 방향으로 돌아보기」는 카메라를 앞쪽 길로 한 번 돌립니다. 게임패드도 지원합니다(회피 A／×, 필살기 Y／△, 돌아보기 R1). 회피 방향은 스와이프한 방향 → 움직이는 방향 → 성녀가 바라보는 방향 순서로 정해집니다.</p>
+<h3>저스트 회피</h3>
+<p>보스가 공격하기 전에 바닥에 위험 범위가 표시됩니다. 노랑(1초) → 빨강(1초) → 보라로 바뀌며, <b class="purple">보라색이 된 0.5초 동안</b> 회피하면 「저스트 회피!」. 날아오는 탄(보스와 마음 잃은 성녀의 탄, 궁수의 화살)은 표시가 없지만, 맞기 0.5초 전까지 회피를 누르면 저스트 회피가 됩니다. 대형 적의 주먹도 마찬가지입니다. 필살기를 얻은 뒤에는 저스트 회피로 필살기 게이지가 1/3 찹니다(회피 1번에 1회만).</p>
+
+<h2 id="skills-ko">스킬: 성시・성화・성광</h2>
+<p>공격 스킬은 성시・성화・성광의 3종류로 나뉘며, <b>각 종류에서 고를 수 있는 스킬은 1개뿐</b>입니다. 한번 고른 스킬은 바꿀 수 없고, 이후에는 레벨(최대 Lv9)을 올려 강하게 만듭니다. 어떤 스킬을 조합하느냐가 곧 전투 방식이 됩니다.</p>
+<div class="grid one"><div class="skill g-double"><img src="img/surv_bolt.png" alt="" width="56" height="56" loading="lazy"><div><b>기본 탄</b><span class="d">처음부터 앞으로 연사하는 탄. 성광 스킬을 고르면 광선으로 바뀝니다.</span></div></div></div>
+<h3 class="g-double">성시 — 쏘는 방향을 더한다</h3><p class="slot">기본 탄과 같은 탄을 다른 방향으로도 쏩니다. 스킬마다 다른 것은 쏘는 방향뿐이며, 모두 Lv1에서 1발, Lv2에서 2발이 됩니다(부채만 처음부터 2발). 적을 관통하지 않습니다. 레벨이 오르면 위력이 오르고, Lv3・5・7에서 연사가 빨라집니다.</p>
+<div class="grid"><div class="skill g-double"><img src="img/surv_dbl.png" alt="" width="56" height="56" loading="lazy"><div><b>사선 성시</b><span class="d">앞쪽 사선(45°)으로도 쏜다. Lv2에서 좌우 양쪽으로.</span></div></div><div class="skill g-double"><img src="img/surv_vert.png" alt="" width="56" height="56" loading="lazy"><div><b>측면 성시</b><span class="d">바로 옆(90°)으로도 쏜다. Lv2에서 좌우 양쪽으로.</span></div></div><div class="skill g-double"><img src="img/surv_tail.png" alt="" width="56" height="56" loading="lazy"><div><b>후방 성시</b><span class="d">바로 뒤로도 쏜다. Lv2에서 2발, 조금 벌어져서. 뒤에서 오는 적에게.</span></div></div><div class="skill g-double"><img src="img/surv_backdbl.png" alt="" width="56" height="56" loading="lazy"><div><b>반격 성시</b><span class="d">바로 뒤로 쏜다. Lv2에서 2발을 나란히(트윈).</span></div></div><div class="skill g-double"><img src="img/surv_spread.png" alt="" width="56" height="56" loading="lazy"><div><b>부채 성시</b><span class="d">좌우 앞쪽 사선(15°)으로 부채꼴로 퍼뜨려 쏜다. 처음부터 2발.</span></div></div></div>
+<h3 class="g-missile">성화 — 폭발하는 불꽃</h3><p class="slot">떨어지거나 땅을 기어가다가 적에게 닿으면 폭발합니다. 뭉쳐 있는 적에게 강한 스킬입니다.</p>
+<div class="grid"><div class="skill g-missile"><img src="img/surv_crawl.png" alt="" width="56" height="56" loading="lazy"><div><b>지주 성화</b><span class="d">옆으로 떨어져 땅을 기어 앞으로 나아간다. 적에게 닿으면 넓게 폭발한다. Lv2에서 좌우 양쪽으로.</span></div></div><div class="skill g-missile"><img src="img/surv_hawk.png" alt="" width="56" height="56" loading="lazy"><div><b>질풍 성화</b><span class="d">옆으로 떨어져 바깥쪽 앞 사선(45°)으로 빠르게 기어간다. 산이나 벽에 닿으면 90° 꺾여 계속 기어간다. 적에게 닿으면 폭발하고 한 번만 튕긴다. Lv2에서 좌우 양쪽으로.</span></div></div><div class="skill g-missile"><img src="img/surv_back2.png" alt="" width="56" height="56" loading="lazy"><div><b>전후 성화</b><span class="d">앞 사선과 반대쪽 뒤 사선으로 2개가 동시에 날아간다. 적에게 닿으면 폭발한다. Lv2에서 4개로.</span></div></div><div class="skill g-missile"><img src="img/surv_sspread.png" alt="" width="56" height="56" loading="lazy"><div><b>소산 성화</b><span class="d">뒤 사선으로 떨어뜨려 작게 폭발하고, 잠시 불길이 남는다. 뒤쪽 적에게. Lv2에서 좌우 뒤 사선으로 2개.</span></div></div><div class="skill g-missile"><img src="img/surv_bomb.png" alt="" width="56" height="56" loading="lazy"><div><b>산화 성화</b><span class="d">앞으로 던져 떨어진 곳에서 크게 폭발하고 불길이 남는다. 가장 넓다.</span></div></div></div>
+<h3 class="g-laser">성광 — 관통하는 빛</h3><p class="slot">적을 관통하는 빛. <b>고르면 기본 탄이 광선으로 바뀝니다.</b> 스킬마다 강한 상대가 뚜렷하게 나뉩니다(일렬・가까운 무리・먼 무리・단일・보스).</p>
+<div class="grid"><div class="skill g-laser"><img src="img/surv_laser.png" alt="" width="56" height="56" loading="lazy"><div><b>일직선 성광</b><span class="d">앞으로 적을 관통하는 가늘고 긴 빛을 순간적으로 쏜다. 일렬로 늘어선 적에게 강하다. 가늘고 앞쪽뿐이라 옆의 적에게는 맞지 않는다.</span></div></div><div class="skill g-laser"><img src="img/surv_ripple.png" alt="" width="56" height="56" loading="lazy"><div><b>파문 성광</b><span class="d">날아가며 크게 퍼지는 빛의 고리를 앞으로 쏜다. 관통한다. 떨어진 무리에게 강하다. Lv3・6・9에서 고리가 하나씩 늘어난다. 막 나온 고리는 작다.</span></div></div><div class="skill g-laser"><img src="img/surv_twin.png" alt="" width="56" height="56" loading="lazy"><div><b>쌍둥이 성광</b><span class="d">앞쪽(좌우 30° 이내)의 가장 가까운 적을 노려, 짧은 빛 2줄을 나란히 빠르게 쏜다. 1줄당 2체까지 관통한다. 보스나 큰 적 등 단일 적에게 강하다.</span></div></div><div class="skill g-laser"><img src="img/surv_cyclone.png" alt="" width="56" height="56" loading="lazy"><div><b>소용돌이 성광</b><span class="d">앞으로 굵고 짧은 소용돌이 빛을 잠시 계속 낸다(바라보는 방향을 따라 움직인다). 가까이 뭉친 적을 여러 번 때리고 밀어낸다. 멀리는 닿지 않는다.</span></div></div><div class="skill g-laser"><img src="img/surv_orb.png" alt="" width="56" height="56" loading="lazy"><div><b>보주 성광</b><span class="d">빛의 구슬을 모았다가 쏜다(모으는 동안 성녀를 크게 감싸고, 닿은 적을 때린다). 천천히 나아가며 주변 적을 끌어당겨 계속 때린다. 보스나 큰 적에게 강하다.</span></div></div></div>
+
+<h2 id="passive-ko">방어와 이동(패시브)</h2><p>공격을 강하게 하는 패시브는 없습니다. 살아남기 위한 힘입니다(모두 최대 Lv5).</p>
+<div class="grid"><div class="skill g-passive"><img src="img/surv_armor.png" alt="" width="56" height="56" loading="lazy"><div><b>수호의 갑옷</b><span class="d">받는 피해 −1</span></div></div><div class="skill g-passive"><img src="img/surv_heart.png" alt="" width="56" height="56" loading="lazy"><div><b>생명의 샘</b><span class="d">최대 체력 +20%(동료의 체력도 같은 비율로 증가)</span></div></div><div class="skill g-passive"><img src="img/surv_wind.png" alt="" width="56" height="56" loading="lazy"><div><b>치유의 바람</b><span class="d">체력이 매초 0.3 회복</span></div></div><div class="skill g-passive"><img src="img/surv_boots.png" alt="" width="56" height="56" loading="lazy"><div><b>질풍의 신발</b><span class="d">걷는 속도 +10%</span></div></div><div class="skill g-passive"><img src="img/surv_magnet.png" alt="" width="56" height="56" loading="lazy"><div><b>인력의 돌</b><span class="d">구슬을 줍는 범위 +30%</span></div></div></div>
+
+<h2 id="allies-ko">동료 성녀와 진형</h2>
+<div class="grid"><div class="skill g-saint"><img src="img/surv_ally.png" alt="" width="56" height="56" loading="lazy"><div><b>동료 성녀(최대 2명)</b><span class="d">주인공과 같은 공격을 함께 쏩니다. 동료는 자신의 체력을 가지며, 적의 공격을 받아 다 떨어지면 쓰러집니다(쓰러진 동료는 다시 합류시킬 수 있습니다). 회복은 동료에게도 닿고, 필살기 보석도 늘어납니다.</span></div></div><div class="skill g-saint"><img src="img/surv_form_follow.png" alt="" width="56" height="56" loading="lazy"><div><b>진형: 추종</b><span class="d">동료가 주인공이 지나간 자리를 따라오며 쏜다. 처음에는 이 형태. 횡전개와 다시 바꿀 수 있다.</span></div></div><div class="skill g-saint"><img src="img/surv_form_side.png" alt="" width="56" height="56" loading="lazy"><div><b>진형: 횡전개</b><span class="d">동료가 주인공의 좌우, 조금 뒤에 늘어서서 쏜다. 레벨업 선택지에 가끔 나온다. 추종과 다시 바꿀 수 있다.</span></div></div></div>
+
+<h2 id="special-ko">필살기</h2>
+<div class="grid one"><div class="skill g-saint"><img src="img/surv_sp.png" alt="" width="56" height="56" loading="lazy"><div><b>성녀의 필살기(Lv1~4)</b><span class="d">레벨업에서 고르면 주인공도 동료도 필살기를 쓸 수 있게 됩니다. <b>고르기 전에는 게이지가 차지 않습니다.</b> 공격을 맞히면 게이지가 차고, 저스트 회피로도 1/3 찹니다. 주인공과 동료에게 보석이 1개씩 있으며, 가득 찬 보석을 누르면 그 성녀가 주인공 앞의 넓은 범위에 큰 피해를 줍니다(쓰는 동안 전투 시간이 멈춥니다). 레벨이 오르면 모두의 필살기 위력과 범위가 커집니다.</span></div></div></div>
+
+<h2 id="items-ko">획득 아이템</h2>
+<div class="card"><table><tr><th>경험치 구슬</th><td>쓰러뜨린 적이 떨어뜨린다. 모으면 레벨업.</td></tr><tr><th>보물 상자</th><td>도중 광장의 마음 잃은 성녀 무리 중 1명이 떨어뜨린다(무리당 1개). 가진 스킬이나 패시브 중 하나의 레벨이 오른다(15% 확률로 3개). 올릴 것이 없으면 체력 +30.</td></tr><tr><th>생명의 열매</th><td>체력이 최대치의 30% 회복된다(동료도).</td></tr><tr><th>성스러운 종</th><td>6초 동안 주변의 적이 모두 도망친다.</td></tr><tr><th>흡인의 돌</th><td>바닥의 경험치 구슬을 모두 끌어당긴다.</td></tr></table></div>
+
+<h2 id="stages-ko">스테이지와 보스</h2>
+<div class="card"><table class="stages"><tr><th>스테이지</th><th>도중의 광장</th><th>보스</th></tr>
+<tr><td>STAGE 1 「녹풍의 계곡」</td><td>마음 잃은 성녀 2체 → 3체</td><td>사슬 장인 몰드</td></tr>
+<tr><td>STAGE 2 「황혼의 황야」</td><td>3체 → 4체</td><td>철벽의 갈반</td></tr>
+<tr><td>STAGE 3 「시든 들판의 제단」</td><td>4체 → 4체</td><td>그림자 사슬 베일</td></tr>
+<tr><td>STAGE 4 「홍련룡의 계곡」</td><td>4체 → 5체</td><td>홍련룡</td></tr>
+</table><p class="note">뒤쪽 스테이지일수록 길이 길고 적이 단단해집니다. 보스와 홍련룡은 범위 공격과 탄막을 사용합니다(뒤쪽 스테이지일수록 많음). 위험 범위는 노랑 → 빨강 → 보라 표시로 알려줍니다. 마음 잃은 성녀는 겉모습이 다른 5명이 나옵니다(공격은 같음).</p></div>
+
+<h2 id="tips-ko">공략 팁</h2>
+<div class="card"><ul class="tips"><li><b>필살기는 빨리 고른다.</b>고르기 전에는 게이지가 차지 않으므로, 미루면 손해입니다.</li><li><b>공격 스킬은 성시・성화・성광의 3종류.</b>레벨업 선택지에 어떤 스킬이 나올지는 랜덤입니다. 각 종류에서 처음 고른 스킬이 그대로 그 종류의 공격이 되고, 이후 레벨업으로 강화되어 갑니다.</li><li><b>스킬 조합으로 빈틈을 막는다.</b>앞은 성광이나 기본 탄, 뒤는 후방・반격 성시나 소산 성화처럼 방향이 겹치지 않게 고르면 잘 포위되지 않습니다.</li><li><b>동료는 빨리 합류시킨다.</b>동료는 주인공과 같은 공격을 쏘므로 쏘는 수가 그대로 늘고, 필살기 보석도 늘어납니다. 동료도 체력이 다 떨어지면 쓰러지니, 생명의 열매나 치유의 바람으로 받쳐 줍시다. 쓰러져도 다시 합류시킬 수 있습니다.</li><li><b>보라색 표시가 기회.</b>위험 범위가 보라색이 된 0.5초 동안 회피하면 저스트 회피. 필살기를 얻었다면 게이지가 1/3 찹니다.</li><li><b>광장 전에 체력을 갖춘다.</b>마음 잃은 성녀 무리는 강적입니다. 치유의 바람이나 생명의 샘으로 대비해 두면 안정적입니다.</li></ul></div>
+
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">무료 PC 체험판 플레이(itch.io)</a><p class="note">체험판에 SURVIVORS를 추가하는 것도 준비 중입니다.</p><p><a class="back" href="./">공식 페이지로 돌아가기</a></p></div>
+</section>
+<section class="L" data-l="es" lang="es">
+<header><img src="img/surv_title_en.png" alt="SURVIVORS" class="logo">
+<p class="lead">El segundo modo de <i>The March of the Saints</i>: un modo de supervivencia en el que te abres paso entre hordas de enemigos con el poder de las Santas. Elige «Cambiar modo» en la pantalla de título para jugar.</p></header>
+<div class="notice"><b>SURVIVORS se está preparando para su lanzamiento.</b> El contenido de esta página corresponde a la versión en desarrollo y puede cambiar antes del lanzamiento.</div>
+<nav class="toc"><a href="#flow-es">Desarrollo</a><a href="#controls-es">Controles</a><a href="#skills-es">Habilidades</a><a href="#passive-es">Defensa y movimiento</a><a href="#allies-es">Santas aliadas</a><a href="#special-es">Especiales</a><a href="#items-es">Objetos</a><a href="#stages-es">Fases y jefes</a><a href="#tips-es">Consejos</a></nav>
+
+<h2 id="flow-es">Cómo se juega una fase</h2>
+<div class="flow"><div>Avanza por el camino del valle mientras los enemigos llegan desde todas partes</div><div>Recoge los orbes de experiencia de los enemigos derrotados para subir de nivel y elige 1 de 3 opciones</div><div>Lucha contra grupos de Santas Sin Corazón en dos plazas del camino (no puedes seguir hasta derrotarlos a todos)</div><div>Enfréntate al jefe al final del camino. Derrótalo para superar la fase</div></div>
+<p class="note">Cada fase nueva empieza de nuevo en el nivel 1. La demo incluye la fase 1.</p>
+
+<h2 id="controls-es">Controles</h2>
+<p class="note">Todos los ataques son automáticos. El disparo inicial y las habilidades que elijas (Flecha Sagrada, Fuego Sagrado, Luz Sagrada) disparan solos, así que puedes centrarte en moverte, esquivar y usar los especiales.</p>
+<div class="ctrl">
+<div class="card"><h3>Teclado</h3><table>
+<tr><th>Moverse</th><td><kbd>W</kbd><kbd>A</kbd><kbd>X</kbd>（<kbd>Z</kbd>）<kbd>D</kbd></td></tr><tr><th>Esquivar</th><td><kbd>Enter</kbd></td></tr><tr><th>Especial</th><td><kbd>Space</kbd> (primera gema lista)</td></tr><tr><th>Mirar hacia el camino</th><td><kbd>S</kbd></td></tr>
+<tr><th>Cámara</th><td><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></td></tr><tr><th>Zoom</th><td><kbd>Q</kbd><kbd>E</kbd></td></tr><tr><th>Pausa</th><td><kbd>Esc</kbd></td></tr><tr><th>Pantalla completa / Sonido</th><td><kbd>F11</kbd>・<kbd>Alt</kbd>+<kbd>Enter</kbd>・Sonido: <kbd>M</kbd></td></tr>
+</table></div>
+<div class="card"><h3>Ratón (PC)</h3><table>
+<tr><th>Moverse</th><td>Clic izquierdo para empezar a caminar y otro clic para parar (caminas hacia el cursor)</td></tr><tr><th>Esquivar</th><td>Clic derecho (suelta sin mover para esquivar hacia el cursor)</td></tr><tr><th>Especial</th><td>Haz clic en una gema</td></tr><tr><th>Cámara</th><td>Mantén el botón derecho y arrastra</td></tr><tr><th>Zoom</th><td>Rueda del ratón</td></tr><tr><th>Pausa</th><td>Clic en ‖ arriba a la derecha</td></tr>
+</table><p class="note">Moverte con las teclas cancela la caminata. Se detiene al elegir una mejora o durante la pausa, y continúa después.</p></div>
+<div class="card"><h3>Móvil</h3><table>
+<tr><th>Moverse</th><td>Joystick izquierdo</td></tr><tr><th>Esquivar</th><td>Botón «Esquivar» arriba a la derecha (mantén y desliza para esquivar en esa dirección)</td></tr><tr><th>Especial</th><td>Toca una gema abajo a la derecha</td></tr><tr><th>Mirar hacia el camino</th><td>Doble toque en el lado derecho de la pantalla</td></tr><tr><th>Cámara</th><td>Arrastra el lado derecho de la pantalla</td></tr><tr><th>Zoom</th><td>Dos dedos</td></tr><tr><th>Pausa</th><td>‖ arriba a la derecha / Atrás</td></tr>
+</table></div>
+</div>
+<p class="note">«Mirar hacia el camino» gira la cámara una vez hacia el camino que tienes delante. También funciona con mando (esquivar A/×, especial Y/△, mirar hacia el camino R1). La dirección de esquiva se decide en este orden: dirección del deslizamiento → dirección de movimiento → hacia donde mira la Santa.</p>
+<h3>Esquiva perfecta</h3>
+<p>Antes de que ataque un jefe, aparece la zona de peligro en el suelo. Cambia de amarillo (1 s) → rojo (1 s) → morado. Esquiva <b class="purple">durante los 0,5 s en morado</b> para lograr una «¡Esquiva perfecta!». Los proyectiles (disparos de los jefes y de las Santas Sin Corazón, flechas de los arqueros) no tienen marca, pero esquivar en los 0,5 s antes del impacto también cuenta. Lo mismo vale para los puñetazos de los enemigos grandes. Una vez tengas el especial, la esquiva perfecta llena 1/3 de la barra (una vez por esquiva).</p>
+
+<h2 id="skills-es">Habilidades: Flecha Sagrada, Fuego Sagrado, Luz Sagrada</h2>
+<p>Las habilidades de ataque se dividen en tres tipos: Flecha Sagrada, Fuego Sagrado y Luz Sagrada. <b>Solo puedes elegir una habilidad de cada tipo.</b> Una vez elegida no se puede cambiar; la haces más fuerte subiendo su nivel (hasta Nv9). Tu combinación de habilidades es tu estilo de combate.</p>
+<div class="grid one"><div class="skill g-double"><img src="img/surv_bolt.png" alt="" width="56" height="56" loading="lazy"><div><b>Disparo inicial</b><span class="d">Dispara hacia delante en ráfaga desde el principio. Al elegir una habilidad de Luz Sagrada, se sustituye por un rayo.</span></div></div></div>
+<h3 class="g-double">Flecha Sagrada — añade direcciones de disparo</h3><p class="slot">Dispara los mismos proyectiles que el disparo inicial en otras direcciones. Las habilidades solo se diferencian en la dirección: 1 disparo en Nv1 y 2 en Nv2 (el Abanico empieza con 2). No atraviesa. El daño sube con el nivel y la cadencia aumenta en Nv3, 5 y 7.</p>
+<div class="grid"><div class="skill g-double"><img src="img/surv_dbl.png" alt="" width="56" height="56" loading="lazy"><div><b>Flecha Sagrada diagonal</b><span class="d">También dispara en diagonal hacia delante (45°). A ambos lados en Nv2.</span></div></div><div class="skill g-double"><img src="img/surv_vert.png" alt="" width="56" height="56" loading="lazy"><div><b>Flecha Sagrada lateral</b><span class="d">También dispara hacia el lado (90°). A ambos lados en Nv2.</span></div></div><div class="skill g-double"><img src="img/surv_tail.png" alt="" width="56" height="56" loading="lazy"><div><b>Flecha Sagrada trasera</b><span class="d">También dispara justo hacia atrás. En Nv2, 2 disparos algo abiertos. Para los enemigos que vienen por detrás.</span></div></div><div class="skill g-double"><img src="img/surv_backdbl.png" alt="" width="56" height="56" loading="lazy"><div><b>Flecha Sagrada de retorno</b><span class="d">Dispara justo hacia atrás. En Nv2, 2 disparos lado a lado (doble).</span></div></div><div class="skill g-double"><img src="img/surv_spread.png" alt="" width="56" height="56" loading="lazy"><div><b>Flecha Sagrada en abanico</b><span class="d">Dispara en abanico hacia ambas diagonales delanteras (15°). 2 disparos desde el principio.</span></div></div></div>
+<h3 class="g-missile">Fuego Sagrado — llamas que estallan</h3><p class="slot">Cae o se arrastra por el suelo y estalla al tocar a un enemigo. Fuerte contra enemigos agrupados.</p>
+<div class="grid"><div class="skill g-missile"><img src="img/surv_crawl.png" alt="" width="56" height="56" loading="lazy"><div><b>Fuego Sagrado rastrero</b><span class="d">Cae a un lado y avanza arrastrándose por el suelo. Al tocar a un enemigo, estalla en un área amplia. A ambos lados en Nv2.</span></div></div><div class="skill g-missile"><img src="img/surv_hawk.png" alt="" width="56" height="56" loading="lazy"><div><b>Fuego Sagrado vendaval</b><span class="d">Cae a un lado y avanza rápido en diagonal hacia fuera (45°). Si choca con una montaña o un muro, gira 90° y sigue. Estalla al tocar a un enemigo y rebota una vez. A ambos lados en Nv2.</span></div></div><div class="skill g-missile"><img src="img/surv_back2.png" alt="" width="56" height="56" loading="lazy"><div><b>Fuego Sagrado delantero y trasero</b><span class="d">Sale a la vez en diagonal hacia delante y en diagonal hacia atrás por el lado contrario. Estalla al tocar a un enemigo. 4 en Nv2.</span></div></div><div class="skill g-missile"><img src="img/surv_sspread.png" alt="" width="56" height="56" loading="lazy"><div><b>Fuego Sagrado disperso</b><span class="d">Cae en diagonal hacia atrás, estalla poco y sigue ardiendo un rato. Para los enemigos de atrás. 2 (ambas diagonales traseras) en Nv2.</span></div></div><div class="skill g-missile"><img src="img/surv_bomb.png" alt="" width="56" height="56" loading="lazy"><div><b>Fuego Sagrado floral</b><span class="d">Se lanza hacia delante; estalla con fuerza donde cae y sigue ardiendo. El área más amplia.</span></div></div></div>
+<h3 class="g-laser">Luz Sagrada — luz que atraviesa</h3><p class="slot">Luz que atraviesa a los enemigos. <b>Al elegirla, el disparo inicial se sustituye por un rayo.</b> Cada habilidad destaca contra un objetivo distinto (filas, grupos cercanos, grupos lejanos, enemigos únicos, jefes).</p>
+<div class="grid"><div class="skill g-laser"><img src="img/surv_laser.png" alt="" width="56" height="56" loading="lazy"><div><b>Rayo Sagrado</b><span class="d">Lanza al instante un rayo largo y fino que atraviesa hacia delante. Fuerte contra enemigos en fila. Es estrecho y solo frontal, así que no alcanza a los de los lados.</span></div></div><div class="skill g-laser"><img src="img/surv_ripple.png" alt="" width="56" height="56" loading="lazy"><div><b>Luz Sagrada ondulante</b><span class="d">Lanza hacia delante un anillo de luz que crece mientras vuela. Atraviesa. Fuerte contra grupos lejanos. Gana un anillo más en Nv3, 6 y 9. Los anillos son pequeños justo al salir.</span></div></div><div class="skill g-laser"><img src="img/surv_twin.png" alt="" width="56" height="56" loading="lazy"><div><b>Luz Sagrada gemela</b><span class="d">Apunta al enemigo más cercano por delante (hasta 30° a cada lado) y dispara rápido dos rayos cortos en paralelo. Cada uno atraviesa hasta 2 enemigos. Fuerte contra objetivos únicos como jefes y enemigos grandes.</span></div></div><div class="skill g-laser"><img src="img/surv_cyclone.png" alt="" width="56" height="56" loading="lazy"><div><b>Luz Sagrada espiral</b><span class="d">Mantiene un rato una espiral de luz gruesa y corta hacia delante (sigue tu orientación). Golpea varias veces a los enemigos cercanos agrupados y los empuja. Corto alcance.</span></div></div><div class="skill g-laser"><img src="img/surv_orb.png" alt="" width="56" height="56" loading="lazy"><div><b>Luz Sagrada de orbe</b><span class="d">Carga un orbe de luz y lo suelta (mientras carga, envuelve a la Santa y golpea a los enemigos que lo tocan). El orbe avanza despacio, atrae a los enemigos cercanos y los golpea sin parar. Fuerte contra jefes y enemigos grandes.</span></div></div></div>
+
+<h2 id="passive-es">Defensa y movimiento (pasivas)</h2><p>Ninguna pasiva aumenta tus ataques; sirven para sobrevivir (todas hasta Nv5).</p>
+<div class="grid"><div class="skill g-passive"><img src="img/surv_armor.png" alt="" width="56" height="56" loading="lazy"><div><b>Armadura guardiana</b><span class="d">Daño recibido −1</span></div></div><div class="skill g-passive"><img src="img/surv_heart.png" alt="" width="56" height="56" loading="lazy"><div><b>Fuente de la vida</b><span class="d">Vida máxima +20% (la vida de las aliadas sube en la misma proporción)</span></div></div><div class="skill g-passive"><img src="img/surv_wind.png" alt="" width="56" height="56" loading="lazy"><div><b>Viento sanador</b><span class="d">Recupera 0,3 de vida por segundo</span></div></div><div class="skill g-passive"><img src="img/surv_boots.png" alt="" width="56" height="56" loading="lazy"><div><b>Botas del vendaval</b><span class="d">Velocidad al caminar +10%</span></div></div><div class="skill g-passive"><img src="img/surv_magnet.png" alt="" width="56" height="56" loading="lazy"><div><b>Piedra imán</b><span class="d">Alcance para recoger orbes +30%</span></div></div></div>
+
+<h2 id="allies-es">Santas aliadas y formaciones</h2>
+<div class="grid"><div class="skill g-saint"><img src="img/surv_ally.png" alt="" width="56" height="56" loading="lazy"><div><b>Santa aliada (hasta 2)</b><span class="d">Dispara los mismos ataques que la protagonista. Las aliadas tienen su propia vida y caen cuando se les agota por los ataques enemigos (las aliadas caídas pueden volver a unirse). La curación también les llega y cada aliada añade una gema de especial.</span></div></div><div class="skill g-saint"><img src="img/surv_form_follow.png" alt="" width="56" height="56" loading="lazy"><div><b>Formación: Seguir</b><span class="d">Las aliadas siguen el rastro de la protagonista y disparan. Es la formación inicial. Se puede volver a cambiar a Desplegar.</span></div></div><div class="skill g-saint"><img src="img/surv_form_side.png" alt="" width="56" height="56" loading="lazy"><div><b>Formación: Desplegar</b><span class="d">Las aliadas se colocan a izquierda y derecha, un poco por detrás, y disparan. A veces aparece al subir de nivel. Se puede volver a cambiar a Seguir.</span></div></div></div>
+
+<h2 id="special-es">Especiales</h2>
+<div class="grid one"><div class="skill g-saint"><img src="img/surv_sp.png" alt="" width="56" height="56" loading="lazy"><div><b>Especial de la Santa (Nv1–4)</b><span class="d">Al elegirlo al subir de nivel, la protagonista y las aliadas pueden usar especiales. <b>La barra no se llena hasta que lo eliges.</b> Acertar ataques llena la barra, y una esquiva perfecta llena 1/3. La protagonista y cada aliada tienen una gema; pulsa una gema llena y esa Santa inflige mucho daño en un área amplia delante de la protagonista (el combate se detiene durante el especial). Al subir de nivel, aumentan el daño y el alcance de los especiales de todas.</span></div></div></div>
+
+<h2 id="items-es">Objetos</h2>
+<div class="card"><table><tr><th>Orbe de experiencia</th><td>Lo sueltan los enemigos derrotados. Reúnelos para subir de nivel.</td></tr><tr><th>Cofre</th><td>Lo suelta una de las Santas Sin Corazón de cada grupo de las plazas. Sube un nivel a una de tus habilidades o pasivas (a tres con un 15% de probabilidad). Si no hay nada que mejorar, recupera 30 de vida.</td></tr><tr><th>Fruto de la vida</th><td>Recupera el 30% de la vida máxima (también a las aliadas).</td></tr><tr><th>Campana sagrada</th><td>Durante 6 segundos, todos los enemigos cercanos huyen.</td></tr><tr><th>Piedra de atracción</th><td>Atrae todos los orbes de experiencia del suelo.</td></tr></table></div>
+
+<h2 id="stages-es">Fases y jefes</h2>
+<div class="card"><table class="stages"><tr><th>Fase</th><th>Plazas del camino</th><th>Jefe</th></tr>
+<tr><td>FASE 1 «Valle de los Vientos Verdes»</td><td>Santas Sin Corazón: 2 → 3</td><td>Mold, el Forjador de Cadenas</td></tr>
+<tr><td>FASE 2 «Páramo del Ocaso»</td><td>3 → 4</td><td>Galvan, el Muro de Hierro</td></tr>
+<tr><td>FASE 3 «Altar de los Campos Marchitos»</td><td>4 → 4</td><td>Veil de la Cadena de Sombra</td></tr>
+<tr><td>FASE 4 «Valle del Dragón Carmesí»</td><td>4 → 5</td><td>Dragón Carmesí</td></tr>
+</table><p class="note">Las fases posteriores tienen caminos más largos y enemigos más duros. Los jefes y el Dragón Carmesí usan ataques de área y lluvias de proyectiles (más en las fases posteriores). Las zonas de peligro se marcan en amarillo → rojo → morado. Las Santas Sin Corazón tienen cinco aspectos distintos, todos con los mismos ataques.</p></div>
+
+<h2 id="tips-es">Consejos</h2>
+<div class="card"><ul class="tips"><li><b>Elige el especial pronto.</b>La barra no se llena hasta que lo eliges, así que retrasarlo te hace perder carga.</li><li><b>Tres tipos de habilidades de ataque: Flecha Sagrada, Fuego Sagrado y Luz Sagrada.</b>Qué habilidades aparecen al subir de nivel es aleatorio. La primera que elijas de cada tipo será el ataque de ese tipo en la partida, y la irás mejorando al subir de nivel.</li><li><b>Cubre tus puntos ciegos con la combinación.</b>Elige habilidades que no se solapen en dirección —Luz Sagrada o el disparo inicial delante; Flecha Sagrada trasera o de retorno, o Fuego Sagrado disperso detrás— y te rodearán menos.</li><li><b>Suma aliadas pronto.</b>Las aliadas disparan los mismos ataques que la protagonista, así que multiplican tus disparos, y añaden gemas de especial. También caen si se quedan sin vida: apóyalas con el Fruto de la vida y el Viento sanador. Si caen, pueden volver a unirse.</li><li><b>Las marcas moradas son tu oportunidad.</b>Esquiva durante los 0,5 s en que la zona de peligro está en morado para lograr una esquiva perfecta. Si ya tienes el especial, llena 1/3 de la barra.</li><li><b>Prepara tu vida antes de las plazas.</b>Los grupos de Santas Sin Corazón son duros. El Viento sanador y la Fuente de la vida hacen esos combates más estables.</li></ul></div>
+
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Juega gratis a la demo para PC (itch.io)</a><p class="note">También estamos preparando SURVIVORS para la demo.</p><p><a class="back" href="./">Volver a la página oficial</a></p></div>
+</section>
+<footer>© 聖女行進軍 / The March of the Saints ・ This site uses Google Analytics.</footer>
+</div>
+<script>
+(function () {
+  var T = {"ja":"SURVIVORS 攻略ガイド｜聖女行進軍","en":"SURVIVORS Guide | The March of the Saints","zh-Hans":"SURVIVORS 攻略指南｜圣女行进军","zh-Hant":"SURVIVORS 攻略指南｜聖女行進軍","ko":"SURVIVORS 공략 가이드｜The March of the Saints","es":"Guía de SURVIVORS | The March of the Saints"}, codes = Object.keys(T);
+  function pick() {
+    try { var q = new URLSearchParams(location.search).get('lang'); if (q && T[q]) return q; } catch (e) {}
+    try { var s = localStorage.getItem('surv_lang'); if (s && T[s]) return s; } catch (e) {}
+    var n = (navigator.language || 'ja').toLowerCase();
+    if (n.indexOf('ja') === 0) return 'ja';
+    if (n.indexOf('zh') === 0) return /tw|hk|mo|hant/.test(n) ? 'zh-Hant' : 'zh-Hans';
+    if (n.indexOf('ko') === 0) return 'ko';
+    if (n.indexOf('es') === 0) return 'es';
+    return 'en';
+  }
+  function set(l, save) {
+    document.documentElement.setAttribute('data-lang', l); document.documentElement.lang = l; document.title = T[l];
+    [].forEach.call(document.querySelectorAll('[data-set]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set') === l ? 'true' : 'false'); });
+    if (save) { try { localStorage.setItem('surv_lang', l); } catch (e) {} }
+  }
+  [].forEach.call(document.querySelectorAll('[data-set]'), function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-set'), true); }); });
+  set(pick(), false);
+})();
+</script>
+</body>
+</html>
