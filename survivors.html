@@ -17,6 +17,7 @@ body { font:16px/1.75 "Hiragino Sans","Noto Sans JP","Noto Sans SC","Noto Sans T
 a { color:var(--cyan); }
 .wrap { max-width:980px; margin:0 auto; padding:0 16px 64px; }
 .top { display:flex; justify-content:flex-end; padding-top:12px; }
+.toplink { margin:12px 0 0; font-size:14px; }
 .langs { display:flex; flex-wrap:wrap; gap:4px; border:1px solid var(--line); border-radius:12px; padding:3px; }
 .langs button { border:0; background:transparent; color:var(--text); padding:5px 10px; border-radius:9px; font:inherit; font-size:13px; cursor:pointer; }
 .langs button[aria-pressed=true] { background:var(--pink); color:#fff; }
@@ -60,6 +61,7 @@ footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
 <div class="wrap">
 <div class="top"><div class="langs" role="group" aria-label="Language"><button type="button" data-set="ja" aria-pressed="false">日本語</button><button type="button" data-set="en" aria-pressed="false">English</button><button type="button" data-set="zh-Hans" aria-pressed="false">简体中文</button><button type="button" data-set="zh-Hant" aria-pressed="false">繁體中文</button><button type="button" data-set="ko" aria-pressed="false">한국어</button><button type="button" data-set="es" aria-pressed="false">Español</button></div></div>
 <section class="L" data-l="ja" lang="ja">
+<p class="toplink"><a href="./">← 聖女行進軍 トップ</a> ・ <a href="guide.html">本編（行軍）の遊び方ガイド</a></p>
 <header><img src="img/surv_title_ja.png" alt="SURVIVORS" class="logo">
 <p class="lead">『聖女行進軍』のもう一つのモード。押し寄せる敵の群れを、聖女の力で切り開いて進むサバイバーです。タイトルの「モード切替」から遊べます。</p></header>
 <div class="notice"><b>SURVIVORS は、ただいま実装の準備中です。</b>このページの内容は開発中のもので、公開までに変わることがあります。</div>
@@ -120,9 +122,10 @@ footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
 <h2 id="tips-ja">攻略のコツ</h2>
 <div class="card"><ul class="tips"><li><b>必殺技は早めに取る。</b>取るまではゲージがたまらないので、後回しにすると損をします。</li><li><b>攻撃のスキルは聖矢・聖火・聖光の 3 種類。</b>どのスキルがレベルアップの選択に出るかはランダムです。それぞれの種類で最初に選んだスキルが、そのままその種類の攻撃になり、あとはレベルアップで強化されていきます。</li><li><b>スキルの組み合わせで穴をふさぐ。</b>前は聖光か初めの弾、後ろは背・返しの聖矢か小散りの聖火、と向きが重ならないように選ぶと囲まれにくくなります。</li><li><b>仲間は早めに加える。</b>仲間は主人公と同じ攻撃を撃つので、撃つ数がそのまま増え、必殺技の宝石も増えます。仲間も体力が尽きると倒れるので、命の果実や癒やしの風で支えましょう。倒れても、また加えられます。</li><li><b>紫の印は狙い目。</b>危険な範囲が紫になった 0.5 秒の間に回避するとジャスト回避。必殺技を取っていれば、ゲージが 1/3 たまります。</li><li><b>広場の前に体力を整える。</b>心なき聖女の一団は強敵です。癒やしの風や生命の泉で備えておくと安定します。</li></ul></div>
 
-<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">無料の PC 体験版を遊ぶ（itch.io）</a><p class="note">体験版への SURVIVORS の追加も準備中です。</p><p><a class="back" href="./">公式ページへ戻る</a></p></div>
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">無料の PC 体験版を遊ぶ（itch.io）</a><p class="note">体験版への SURVIVORS の追加も準備中です。</p><p><a class="back" href="./">公式ページへ戻る</a> ・ <a class="back" href="guide.html">本編（行軍）の遊び方ガイド</a></p></div>
 </section>
 <section class="L" data-l="en" lang="en">
+<p class="toplink"><a href="./">← The March of the Saints</a> ・ <a href="guide.html">Main mode (the march) guide</a></p>
 <header><img src="img/surv_title_en.png" alt="SURVIVORS" class="logo">
 <p class="lead">The second mode of <i>The March of the Saints</i>: a survivors-style action mode where you carve through endless enemy hordes with the power of the Saints. Choose "Switch Mode" on the title screen to play.</p></header>
 <div class="notice"><b>SURVIVORS is currently being prepared for release.</b> Everything on this page is from the game in development and may change before launch.</div>
@@ -183,9 +186,10 @@ footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
 <h2 id="tips-en">Tips</h2>
 <div class="card"><ul class="tips"><li><b>Take the Special early.</b>The gauge does not fill until you take it, so putting it off wastes charge.</li><li><b>Three types of attack skills: Holy Arrow, Holy Fire, Holy Light.</b>Which skills appear on level-up is random. The first skill you pick in each type becomes that type's attack for the run, and you power it up as you level.</li><li><b>Cover your blind spots with your combination.</b>Pick skills that don't overlap in direction — Holy Light or the Starter Shot in front, Rear/Back-Diagonal Holy Arrow or Scatter Holy Fire behind — and you'll be surrounded less.</li><li><b>Recruit allies early.</b>Allies fire the same attacks as the hero, multiplying your shots, and add Special gems. They fall when their HP runs out, so support them with Fruit of Life and Healing Wind. Fallen allies can join again.</li><li><b>Purple marks are your chance.</b>Dodge during the 0.5 sec a danger area is purple for a Perfect Dodge. Once you have the Special, it fills 1/3 of the gauge.</li><li><b>Get your HP ready before the squares.</b>The Lost-Heart Saint groups are tough. Healing Wind and Fountain of Life make those fights steadier.</li></ul></div>
 
-<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Play the free PC demo (itch.io)</a><p class="note">SURVIVORS is also being prepared for the demo.</p><p><a class="back" href="./">Back to the official page</a></p></div>
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Play the free PC demo (itch.io)</a><p class="note">SURVIVORS is also being prepared for the demo.</p><p><a class="back" href="./">Back to the official page</a> ・ <a class="back" href="guide.html">Main mode (the march) guide</a></p></div>
 </section>
 <section class="L" data-l="zh-Hans" lang="zh-Hans">
+<p class="toplink"><a href="./">← 圣女行进军 首页</a> ・ <a href="guide.html">本篇（行军）玩法指南（日语／英语）</a></p>
 <header><img src="img/surv_title_zh.png" alt="SURVIVORS" class="logo">
 <p class="lead">《圣女行进军》的另一种模式。凭借圣女之力，在汹涌而来的敌群中杀出一条血路的幸存者类玩法。在标题画面选择「切换模式」即可游玩。</p></header>
 <div class="notice"><b>SURVIVORS 目前正在准备上线。</b>本页内容来自开发中的版本，正式推出前可能会有变动。</div>
@@ -246,9 +250,10 @@ footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
 <h2 id="tips-zh-Hans">攻略技巧</h2>
 <div class="card"><ul class="tips"><li><b>尽早选择必杀技。</b>选择之前槽不会积累，拖后会吃亏。</li><li><b>攻击技能分为圣矢・圣火・圣光 3 类。</b>升级时出现哪个技能是随机的。每一类最先选择的技能就会成为该类的攻击，之后通过升级不断强化。</li><li><b>用技能组合弥补死角。</b>前方用圣光或初始弹，后方用背向・回身圣矢或小散圣火，选择方向不重叠的技能，就不容易被包围。</li><li><b>尽早加入同伴。</b>同伴发动与主角相同的攻击，射击数量直接增加，必杀技宝石也会增加。同伴体力耗尽也会倒下，请用生命之果和治愈之风支援。倒下后也可以再次加入。</li><li><b>紫色标记是好机会。</b>在危险范围变成紫色的 0.5 秒内闪避即为完美闪避。取得必杀技后，必杀技槽积累 1/3。</li><li><b>进入广场前调整好体力。</b>失心圣女群是强敌。准备好治愈之风和生命之泉会更稳。</li></ul></div>
 
-<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">游玩免费 PC 体验版（itch.io）</a><p class="note">体验版中加入 SURVIVORS 也在准备中。</p><p><a class="back" href="./">返回官方网站</a></p></div>
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">游玩免费 PC 体验版（itch.io）</a><p class="note">体验版中加入 SURVIVORS 也在准备中。</p><p><a class="back" href="./">返回官方网站</a> ・ <a class="back" href="guide.html">本篇（行军）玩法指南（日语／英语）</a></p></div>
 </section>
 <section class="L" data-l="zh-Hant" lang="zh-Hant">
+<p class="toplink"><a href="./">← 聖女行進軍 首頁</a> ・ <a href="guide.html">本篇（行軍）玩法指南（日語／英語）</a></p>
 <header><img src="img/surv_title_zh.png" alt="SURVIVORS" class="logo">
 <p class="lead">《聖女行進軍》的另一種模式。憑藉聖女之力，在洶湧而來的敵群中殺出一條血路的倖存者類玩法。在標題畫面選擇「切換模式」即可遊玩。</p></header>
 <div class="notice"><b>SURVIVORS 目前正在準備上線。</b>本頁內容來自開發中的版本，正式推出前可能會有變動。</div>
@@ -309,9 +314,10 @@ footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
 <h2 id="tips-zh-Hant">攻略技巧</h2>
 <div class="card"><ul class="tips"><li><b>盡早選擇必殺技。</b>選擇之前槽不會累積，拖延會吃虧。</li><li><b>攻擊技能分為聖矢・聖火・聖光 3 類。</b>升級時出現哪個技能是隨機的。每一類最先選擇的技能就會成為該類的攻擊，之後透過升級不斷強化。</li><li><b>用技能組合彌補死角。</b>前方用聖光或初始彈，後方用背向・回身聖矢或小散聖火，選擇方向不重疊的技能，就不容易被包圍。</li><li><b>盡早加入同伴。</b>同伴發動與主角相同的攻擊，射擊數量直接增加，必殺技寶石也會增加。同伴體力耗盡也會倒下，請用生命之果和治癒之風支援。倒下後也可以再次加入。</li><li><b>紫色標記是好機會。</b>在危險範圍變成紫色的 0.5 秒內閃避即為完美閃避。取得必殺技後，必殺技槽累積 1/3。</li><li><b>進入廣場前調整好體力。</b>失心聖女群是強敵。準備好治癒之風和生命之泉會更穩。</li></ul></div>
 
-<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">遊玩免費 PC 體驗版（itch.io）</a><p class="note">體驗版中加入 SURVIVORS 也在準備中。</p><p><a class="back" href="./">返回官方網站</a></p></div>
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">遊玩免費 PC 體驗版（itch.io）</a><p class="note">體驗版中加入 SURVIVORS 也在準備中。</p><p><a class="back" href="./">返回官方網站</a> ・ <a class="back" href="guide.html">本篇（行軍）玩法指南（日語／英語）</a></p></div>
 </section>
 <section class="L" data-l="ko" lang="ko">
+<p class="toplink"><a href="./">← The March of the Saints 홈</a> ・ <a href="guide.html">본편(행군) 플레이 가이드(영어)</a></p>
 <header><img src="img/surv_title_en.png" alt="SURVIVORS" class="logo">
 <p class="lead">『The March of the Saints』의 또 하나의 모드. 몰려오는 적의 무리를 성녀의 힘으로 뚫고 나아가는 서바이버 장르입니다. 타이틀 화면의 「모드 전환」에서 플레이할 수 있습니다.</p></header>
 <div class="notice"><b>SURVIVORS는 현재 출시를 준비 중입니다.</b> 이 페이지의 내용은 개발 중인 버전 기준이며, 출시 전에 바뀔 수 있습니다.</div>
@@ -372,9 +378,10 @@ footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
 <h2 id="tips-ko">공략 팁</h2>
 <div class="card"><ul class="tips"><li><b>필살기는 빨리 고른다.</b>고르기 전에는 게이지가 차지 않으므로, 미루면 손해입니다.</li><li><b>공격 스킬은 성시・성화・성광의 3종류.</b>레벨업 선택지에 어떤 스킬이 나올지는 랜덤입니다. 각 종류에서 처음 고른 스킬이 그대로 그 종류의 공격이 되고, 이후 레벨업으로 강화되어 갑니다.</li><li><b>스킬 조합으로 빈틈을 막는다.</b>앞은 성광이나 기본 탄, 뒤는 후방・반격 성시나 소산 성화처럼 방향이 겹치지 않게 고르면 잘 포위되지 않습니다.</li><li><b>동료는 빨리 합류시킨다.</b>동료는 주인공과 같은 공격을 쏘므로 쏘는 수가 그대로 늘고, 필살기 보석도 늘어납니다. 동료도 체력이 다 떨어지면 쓰러지니, 생명의 열매나 치유의 바람으로 받쳐 줍시다. 쓰러져도 다시 합류시킬 수 있습니다.</li><li><b>보라색 표시가 기회.</b>위험 범위가 보라색이 된 0.5초 동안 회피하면 저스트 회피. 필살기를 얻었다면 게이지가 1/3 찹니다.</li><li><b>광장 전에 체력을 갖춘다.</b>마음 잃은 성녀 무리는 강적입니다. 치유의 바람이나 생명의 샘으로 대비해 두면 안정적입니다.</li></ul></div>
 
-<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">무료 PC 체험판 플레이(itch.io)</a><p class="note">체험판에 SURVIVORS를 추가하는 것도 준비 중입니다.</p><p><a class="back" href="./">공식 페이지로 돌아가기</a></p></div>
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">무료 PC 체험판 플레이(itch.io)</a><p class="note">체험판에 SURVIVORS를 추가하는 것도 준비 중입니다.</p><p><a class="back" href="./">공식 페이지로 돌아가기</a> ・ <a class="back" href="guide.html">본편(행군) 플레이 가이드(영어)</a></p></div>
 </section>
 <section class="L" data-l="es" lang="es">
+<p class="toplink"><a href="./">← Inicio de The March of the Saints</a> ・ <a href="guide.html">Guía del modo principal (la marcha, en inglés)</a></p>
 <header><img src="img/surv_title_en.png" alt="SURVIVORS" class="logo">
 <p class="lead">El segundo modo de <i>The March of the Saints</i>: un modo de supervivencia en el que te abres paso entre hordas de enemigos con el poder de las Santas. Elige «Cambiar modo» en la pantalla de título para jugar.</p></header>
 <div class="notice"><b>SURVIVORS se está preparando para su lanzamiento.</b> El contenido de esta página corresponde a la versión en desarrollo y puede cambiar antes del lanzamiento.</div>
@@ -435,9 +442,9 @@ footer { text-align:center; color:var(--sub); font-size:13px; margin-top:40px; }
 <h2 id="tips-es">Consejos</h2>
 <div class="card"><ul class="tips"><li><b>Elige el especial pronto.</b>La barra no se llena hasta que lo eliges, así que retrasarlo te hace perder carga.</li><li><b>Tres tipos de habilidades de ataque: Flecha Sagrada, Fuego Sagrado y Luz Sagrada.</b>Qué habilidades aparecen al subir de nivel es aleatorio. La primera que elijas de cada tipo será el ataque de ese tipo en la partida, y la irás mejorando al subir de nivel.</li><li><b>Cubre tus puntos ciegos con la combinación.</b>Elige habilidades que no se solapen en dirección —Luz Sagrada o el disparo inicial delante; Flecha Sagrada trasera o de retorno, o Fuego Sagrado disperso detrás— y te rodearán menos.</li><li><b>Suma aliadas pronto.</b>Las aliadas disparan los mismos ataques que la protagonista, así que multiplican tus disparos, y añaden gemas de especial. También caen si se quedan sin vida: apóyalas con el Fruto de la vida y el Viento sanador. Si caen, pueden volver a unirse.</li><li><b>Las marcas moradas son tu oportunidad.</b>Esquiva durante los 0,5 s en que la zona de peligro está en morado para lograr una esquiva perfecta. Si ya tienes el especial, llena 1/3 de la barra.</li><li><b>Prepara tu vida antes de las plazas.</b>Los grupos de Santas Sin Corazón son duros. El Viento sanador y la Fuente de la vida hacen esos combates más estables.</li></ul></div>
 
-<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Juega gratis a la demo para PC (itch.io)</a><p class="note">También estamos preparando SURVIVORS para la demo.</p><p><a class="back" href="./">Volver a la página oficial</a></p></div>
+<div class="cta"><a href="https://seijo-koshingun.itch.io/the-march-of-the-saints">Juega gratis a la demo para PC (itch.io)</a><p class="note">También estamos preparando SURVIVORS para la demo.</p><p><a class="back" href="./">Volver a la página oficial</a> ・ <a class="back" href="guide.html">Guía del modo principal (la marcha, en inglés)</a></p></div>
 </section>
-<footer>© 聖女行進軍 / The March of the Saints ・ This site uses Google Analytics.</footer>
+<footer><a href="./">聖女行進軍 / The March of the Saints</a> ・ <a href="guide.html">遊び方ガイド / Guide</a> ・ <a href="survivors.html">SURVIVORS</a> ・ <a href="https://x.com/seijo_koshingun">X @seijo_koshingun</a><br>© 2026 聖女行進軍プロジェクト / Saints March Project ・ This site uses Google Analytics.</footer>
 </div>
 <script>
 (function () {
